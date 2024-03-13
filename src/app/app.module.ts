@@ -19,6 +19,8 @@ import { WishListComponent } from './Pages/wish-list/wish-list.component';
 import { SearchComponent } from './Pages/search/search.component';
 import { ProfileComponent } from './Pages/Profile/profile/profile.component';
 import { SettingsComponent } from './Pages/Profile/settings/settings.component';
+import { ResetcodeComponent } from './Pages/Sign/resetcode/resetcode.component';
+import { FilterPlacesComponent } from './Pages/filter-places/filter-places.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { SettingsComponent } from './Pages/Profile/settings/settings.component';
     WishListComponent,
     SearchComponent,
     ProfileComponent,
-    SettingsComponent
+    SettingsComponent,
+    ResetcodeComponent,
+    FilterPlacesComponent
   ],
   imports: [
     BrowserModule,

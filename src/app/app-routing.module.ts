@@ -13,6 +13,7 @@ import { PaymentsComponent } from './Pages/payments/payments.component';
 import { PlaceDetailsComponent } from './Pages/Place/place-details/place-details.component';
 import { ProfileComponent } from './Pages/Profile/profile/profile.component';
 import { SettingsComponent } from './Pages/Profile/settings/settings.component';
+import { ResetcodeComponent } from './Pages/Sign/resetcode/resetcode.component';
 
 const routes: Routes = [
   // start Sign Routes
@@ -20,6 +21,7 @@ const routes: Routes = [
   {path : "Login" , component : LoginComponent},
   {path : "ForgotPassword" , component : ForgotPasswordComponent},
   {path : "ResetPassword" , component : ResetPasswordComponent},
+  {path : "Reset-Code" , component : ResetcodeComponent},
   // End Sign Routes
 
   {path : "" , redirectTo : "Home" , pathMatch : "full"},
@@ -43,4 +45,3 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-s
