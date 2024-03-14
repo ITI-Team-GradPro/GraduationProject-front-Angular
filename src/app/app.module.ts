@@ -20,6 +20,8 @@ import { WishListComponent } from './Pages/wish-list/wish-list.component';
 import { SearchComponent } from './Pages/search/search.component';
 import { ProfileComponent } from './Pages/Profile/profile/profile.component';
 import { SettingsComponent } from './Pages/Profile/settings/settings.component';
+import { NotfoundComponent } from './notfound/notfound.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -40,11 +42,13 @@ import { SettingsComponent } from './Pages/Profile/settings/settings.component';
     WishListComponent,
     SearchComponent,
     ProfileComponent,
-    SettingsComponent
+    SettingsComponent,
+    NotfoundComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [
     provideClientHydration()

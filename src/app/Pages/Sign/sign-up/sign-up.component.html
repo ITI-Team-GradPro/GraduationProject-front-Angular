@@ -1,1 +1,27 @@
-<p>sign-up works!</p>
+<div class="w-75 mx-auto py-3">
+    <form (ngSubmit)="SubmitRegisterForm(registerForm)" [formGroup]="registerForm">
+        <label for="first_name">first_name: </label>
+        <input formControlName="first_name" type="text" class="form-control mb-2 input-mine">
+        
+        <label for="last_name">last_name: </label>
+        <input formControlName="last_name" type="text" class="form-control mb-2 input-mine">
+
+        <label for="email">email: </label>
+        <input formControlName="email" type="email" class="form-control mb-2 input-mine">
+
+        <label for="Password">password: </label>
+        <input formControlName="Password" type="password" class="form-control mb-2 input-mine">
+
+        <label for="confirmPassword">confirmPassword: </label>
+        <input formControlName="confirmPassword" type="password" class="form-control mb-2 input-mine">
+        
+        <label for="Role">Choose a Role: </label>&nbsp;
+        
+        <select name="Role" id="Role">
+            <option value="Host">Host</option>
+            <option value="Guest">Guest </option>
+        </select><br><br>
+
+        <button type="submit" class="btn btn-info">SignUp</button>
+    </form>
+</div>

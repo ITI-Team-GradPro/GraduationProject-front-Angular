@@ -1,1 +1,31 @@
-/* You can add global styles to this file, and also import other style files */
+:root
+{
+    --bg-main: rgb(255, 70, 162);
+    --light-bg: rgb(250, 110, 180);
+    --text-color: #fff; 
+    --border-color: rgb(246, 133, 189);
+}
+
+body
+{
+    background-color: var(--bg-main);
+    color: var(--text-color);
+}
+
+.bg-mine-light
+{
+    background-color: var(--light-bg);
+}
+
+a,a:hover
+{
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.input-mine
+{
+    background-color: transparent;
+    color: var(--text-color);
+    border: solid 1px var(--border-color);
+}
