@@ -13,8 +13,8 @@ import { PaymentsComponent } from './Pages/payments/payments.component';
 import { PlaceDetailsComponent } from './Pages/Place/place-details/place-details.component';
 import { ProfileComponent } from './Pages/Profile/profile/profile.component';
 import { SettingsComponent } from './Pages/Profile/settings/settings.component';
-import { ResetcodeComponent } from './Pages/Sign/resetcode/resetcode.component';
-import { NotfoundComponent } from './notfound/notfound.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { NewPasswordComponent } from './Pages/Sign/new-password/new-password.component';
 
 const routes: Routes = [
   // start Sign Routes
@@ -22,9 +22,9 @@ const routes: Routes = [
 
   {path : "SignUp" , component : SignUpComponent},
   {path : "Login" , component : LoginComponent},
-  {path : "ForgotPassword" , component : ForgotPasswordComponent},
+  { path: "forgotpassword", component: ForgotPasswordComponent},
   {path : "ResetPassword" , component : ResetPasswordComponent},
-  {path : "Reset-Code" , component : ResetcodeComponent},
+  {path : "NewPassword" , component : NewPasswordComponent},
   // End Sign Routes
 
   {path : "Home" , component : HomeComponent},
@@ -40,12 +40,10 @@ const routes: Routes = [
   {path : "Profile" , component : ProfileComponent},
   {path : "Settings" , component : SettingsComponent },
 // End Profile 
-
-{path:'**', component:NotfoundComponent}
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
