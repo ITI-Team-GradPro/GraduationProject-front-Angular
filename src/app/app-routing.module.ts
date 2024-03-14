@@ -20,7 +20,7 @@ const routes: Routes = [
   // start Sign Routes
   {path : "SignUp" , component : SignUpComponent},
   {path : "Login" , component : LoginComponent},
-  {path : "ForgotPassword" , component : ForgotPasswordComponent},
+  { path: "forgotpassword", component: ForgotPasswordComponent},
   {path : "ResetPassword" , component : ResetPasswordComponent},
   {path : "NewPassword" , component : NewPasswordComponent},
   // End Sign Routes
