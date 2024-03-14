@@ -1,0 +1,60 @@
+.logo-width{
+    width: 80px;
+}
+
+.l-border{
+    box-shadow: 2px 2px 5px #888888;
+}
+
+
+.seach-input{
+    border-radius: 20px;
+    box-shadow: 2px 2px 5px #888888;
+}
+
+.btn-r{
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+}
+
+
+.p-search{
+    position: absolute;
+    right: 15px;
+    top: 7px;
+}
+
+.btn-pro{
+    border: 1px solid gray;
+    background-color: transparent;
+    padding: 5px;
+    border-radius: 20px;
+    transition: 0.5s;
+}
+
+.btn-pro:hover{
+    box-shadow: 2px 2px 5px #888888;
+}
+/* 
+.Active-btn{
+    
+} */
+
+
+.drop-list{
+position: absolute ;
+right: 0px;
+top: 50px;
+width: 200px;
+height: fit-content;
+background-color: #ffff;
+box-shadow: 2px 2px 5px #888888;
+border-radius: 10px;
+
+}
+
+.list-hover:hover{
+    background-color: lightgray;
+}
+
