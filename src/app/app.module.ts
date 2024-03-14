@@ -7,7 +7,6 @@ import { NavbarComponent } from './Componant/navbar/navbar.component';
 import { FooterComponent } from './Componant/footer/footer.component';
 import { HomeComponent } from './Pages/home/home.component';
 import { AboutComponent } from './Pages/about/about.component';
-import { SignUpComponent } from './Pages/Sign/sign-up/sign-up.component';
 import { LoginComponent } from './Pages/Sign/login/login.component';
 import { ForgotPasswordComponent } from './Pages/Sign/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './Pages/Sign/reset-password/reset-password.component';
@@ -20,8 +19,6 @@ import { WishListComponent } from './Pages/wish-list/wish-list.component';
 import { SearchComponent } from './Pages/search/search.component';
 import { ProfileComponent } from './Pages/Profile/profile/profile.component';
 import { SettingsComponent } from './Pages/Profile/settings/settings.component';
-import { NotfoundComponent } from './notfound/notfound.component';
-import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -30,7 +27,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     FooterComponent,
     HomeComponent,
     AboutComponent,
-    SignUpComponent,
     LoginComponent,
     ForgotPasswordComponent,
     ResetPasswordComponent,
@@ -43,7 +39,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     SearchComponent,
     ProfileComponent,
     SettingsComponent,
-    NotfoundComponent
+    ResetcodeComponent,
+    FilterPlacesComponent
   ],
   imports: [
     BrowserModule,

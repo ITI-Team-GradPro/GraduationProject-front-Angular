@@ -1,36 +1,43 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './Pages/home/home.component';
-import { LoginComponent } from './Pages/Sign/login/login.component';
+import { AboutComponent } from './Pages/about/about.component';
+import { ContactComponent } from './Pages/contact/contact.component';
 import { SignUpComponent } from './Pages/Sign/sign-up/sign-up.component';
+import { LoginComponent } from './Pages/Sign/login/login.component';
 import { ForgotPasswordComponent } from './Pages/Sign/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './Pages/Sign/reset-password/reset-password.component';
-import { AboutComponent } from './Pages/about/about.component';
 import { BookingComponent } from './Pages/booking/booking.component';
-import { ContactComponent } from './Pages/contact/contact.component';
+import { SearchComponent } from './Pages/search/search.component';
 import { PaymentsComponent } from './Pages/payments/payments.component';
 import { PlaceDetailsComponent } from './Pages/Place/place-details/place-details.component';
 import { ProfileComponent } from './Pages/Profile/profile/profile.component';
-import { SearchComponent } from './Pages/search/search.component';
-import { WishListComponent } from './Pages/wish-list/wish-list.component';
-import { NotfoundComponent } from './notfound/notfound.component';
+import { SettingsComponent } from './Pages/Profile/settings/settings.component';
+import { ResetcodeComponent } from './Pages/Sign/resetcode/resetcode.component';
 
 const routes: Routes = [
-  {path:'home' , component:HomeComponent},
-  {path:'about' , component:AboutComponent},
-  {path:'booking' , component:BookingComponent},
-  {path:'contact' , component:ContactComponent},
-  {path:'payments' , component:PaymentsComponent},
-  {path:'places' , component:PlaceDetailsComponent},
-  {path:'profile' , component:ProfileComponent},
-  {path:'search' , component:SearchComponent},
-  {path:'wishlist' , component:WishListComponent},
+  // start Sign Routes
+  {path : "SignUp" , component : SignUpComponent},
+  {path : "Login" , component : LoginComponent},
+  {path : "ForgotPassword" , component : ForgotPasswordComponent},
+  {path : "ResetPassword" , component : ResetPasswordComponent},
+  {path : "Reset-Code" , component : ResetcodeComponent},
+  // End Sign Routes
 
-  {path:'register' , component:SignUpComponent},
-  {path:'login' , component:LoginComponent},
-  {path:'forget password' , component:ForgotPasswordComponent},
-  {path:'reset password' , component:ResetPasswordComponent},
-  {path:'**', component:NotfoundComponent}
+  {path : "" , redirectTo : "Home" , pathMatch : "full"},
+  {path : "Home" , component : HomeComponent},
+  {path : "About" , component : AboutComponent},
+  {path : "Contact" , component : ContactComponent},
+
+  {path : "Booking" , component : BookingComponent},
+  {path : "Search" , component : SearchComponent},
+  {path : "Payment" , component : PaymentsComponent},
+  {path : "PlaceDetails:id" , component : PlaceDetailsComponent},
+
+// Start Profile 
+  {path : "Profile" , component : ProfileComponent},
+  {path : "Settings" , component : SettingsComponent }
+// End Profile 
 ];
 
 @NgModule({
