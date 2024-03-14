@@ -1,1 +1,264 @@
-<p>navbar works!</p>
+<nav class="navbar navbar-expand-lg l-border">
+  <div class="container">
+    <div class="navbar-brand logo-width">
+      <img class="w-100" src="../../../assets/Imgs/web logo.png" />
+    </div>
+    <!-- in mobile -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <!-- in large screen -->
+      <div class="d-none d-lg-flex" style="width: 100%;">
+              <!-- Navbar Link -->
+      <div class=" me-auto mb-lg-0 mx-5 d-flex d-md-block">
+        <button
+          class="btn btn-outline-none mx-2"
+          routerLinkActive="btn-success"
+          routerLink="Home"
+        >
+          Home
+        </button>
+        <button
+          class="btn btn-outline-none mx-2"
+          routerLinkActive="btn-success"
+          routerLink="About"
+        >
+          About us
+        </button>
+        <button
+          class="btn btn-outline-none mx-2"
+          routerLinkActive="btn-success"
+          routerLink="Contact"
+        >
+          Contact us
+        </button>
+      </div>
+      <!-- search -->
+      <form style="width: 300px" class="d-flex">
+        <div class="d-none d-md-block position-relative">
+          <input
+            position-relative
+            class="form-control seach-input p-2 w-100"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+          <button
+            class="p-search btn btn-success btn-r d-flex justify-content-center align-items-center"
+            type="submit"
+          >
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </div>
+      </form>
+      <!-- only for larg screen -->
+      <div style="position: relative" class="d-none d-lg-block">
+        <button class="btn-pro" (click)="toggleMenu()">
+          <i class="fa-solid fa-bars mx-2"></i>
+          <i class="fa-solid fa-user mx-2"></i>
+        </button>
+
+        <!-- Menu List In Large Screen -->
+        <div class="drop-list" *ngIf="isMenuOpen == true">
+          <!-- For Sign Up -->
+          <div
+            *ngIf="isUser == false"
+            style="
+              display: flex;
+              flex-direction: column;
+              border-bottom: 1px solid gray;
+            "
+          >
+            <button
+              class="btn list-hover"
+              (click)="toggleMenu()"
+              routerLink="SignUp"
+            >
+              Sign Up
+            </button>
+            <button
+              class="btn list-hover"
+              (click)="toggleMenu()"
+              routerLink="Login"
+            >
+              Log in
+            </button>
+          </div>
+
+          <!-- For Client User -->
+          <div
+            *ngIf="ClientUser == false"
+            style="display: flex; flex-direction: column"
+          >
+            <button class="btn list-hover" (click)="toggleMenu()" routerLink="">
+              Profile
+            </button>
+            <button class="btn list-hover" (click)="toggleMenu()" routerLink="">
+              WishList
+            </button>
+            <button class="btn list-hover" (click)="toggleMenu()" routerLink="">
+              Booking
+            </button>
+            <button class="btn list-hover" (click)="toggleMenu()" routerLink="">
+              LogOut
+            </button>
+          </div>
+
+          <!-- For Client User -->
+          <div
+            *ngIf="HostUser == false"
+            style="display: flex; flex-direction: column"
+          >
+            <button class="btn list-hover" (click)="toggleMenu()" routerLink="">
+              Profile
+            </button>
+            <button class="btn list-hover" (click)="toggleMenu()" routerLink="">
+              Add New Place
+            </button>
+            <button class="btn list-hover" (click)="toggleMenu()" routerLink="">
+              My Places
+            </button>
+            <button class="btn list-hover" (click)="toggleMenu()" routerLink="">
+              LogOut
+            </button>
+          </div>
+        </div>
+      </div>
+      </div>
+
+
+
+    <!-- in mobile screen -->
+    <div class="d-flex justify-content-center align-items-center flex-column d-lg-none" style="border: 2px solid black; width: 100%;">
+      <!-- search -->
+<form class="d-flex my-3">
+  <div class="d-none d-md-block position-relative">
+    <input
+      position-relative
+      class="form-control seach-input p-2 w-100"
+      type="search"
+      placeholder="Search"
+      aria-label="Search"
+    />
+    <button
+      class="p-search btn btn-success btn-r d-flex justify-content-center align-items-center"
+      type="submit"
+    >
+      <i class="fa-solid fa-magnifying-glass"></i>
+    </button>
+  </div>
+  </form>
+      
+      <!-- Navbar Link -->
+<div class="mx-5 d-flex d-md-block">
+<button
+  class="btn btn-outline-none mx-2"
+  routerLinkActive="btn-success"
+  routerLink="Home"
+>
+  Home
+</button>
+<button
+  class="btn btn-outline-none mx-2"
+  routerLinkActive="btn-success"
+  routerLink="About"
+>
+  About us
+</button>
+<button
+  class="btn btn-outline-none mx-2"
+  routerLinkActive="btn-success"
+  routerLink="Contact"
+>
+  Contact us
+</button>
+</div>
+
+<!-- only for larg screen -->
+<div style="position: relative" class="d-none d-lg-block">
+<button class="btn-pro" (click)="toggleMenu()">
+  <i class="fa-solid fa-bars mx-2"></i>
+  <i class="fa-solid fa-user mx-2"></i>
+</button>
+
+<!-- Menu List In Large Screen -->
+<div class="drop-list" *ngIf="isMenuOpen == true">
+  <!-- For Sign Up -->
+  <div
+    *ngIf="isUser == false"
+    style="
+      display: flex;
+      flex-direction: column;
+      border-bottom: 1px solid gray;
+    "
+  >
+    <button
+      class="btn list-hover"
+      (click)="toggleMenu()"
+      routerLink="SignUp"
+    >
+      Sign Up
+    </button>
+    <button
+      class="btn list-hover"
+      (click)="toggleMenu()"
+      routerLink="Login"
+    >
+      Log in
+    </button>
+  </div>
+
+  <!-- For Client User -->
+  <div
+    *ngIf="ClientUser == false"
+    style="display: flex; flex-direction: column"
+  >
+    <button class="btn list-hover" (click)="toggleMenu()" routerLink="">
+      Profile
+    </button>
+    <button class="btn list-hover" (click)="toggleMenu()" routerLink="">
+      WishList
+    </button>
+    <button class="btn list-hover" (click)="toggleMenu()" routerLink="">
+      Booking
+    </button>
+    <button class="btn list-hover" (click)="toggleMenu()" routerLink="">
+      LogOut
+    </button>
+  </div>
+
+  <!-- For Client User -->
+  <div
+    *ngIf="HostUser == false"
+    style="display: flex; flex-direction: column"
+  >
+    <button class="btn list-hover" (click)="toggleMenu()" routerLink="">
+      Profile
+    </button>
+    <button class="btn list-hover" (click)="toggleMenu()" routerLink="">
+      Add New Place
+    </button>
+    <button class="btn list-hover" (click)="toggleMenu()" routerLink="">
+      My Places
+    </button>
+    <button class="btn list-hover" (click)="toggleMenu()" routerLink="">
+      LogOut
+    </button>
+  </div>
+</div>
+</div>
+</div>
+
+
+    </div>
+  </div>
+</nav>

@@ -7,4 +7,18 @@ import { Component } from '@angular/core';
 })
 export class NavbarComponent {
 
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+    console.log(this.isMenuOpen)
+  }
+
+  isMenuOpen:boolean = false;
+
+  isUser:boolean = false;
+
+  ClientUser:boolean = true
+
+  HostUser:boolean = true
+
+
 }

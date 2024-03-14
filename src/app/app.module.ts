@@ -7,7 +7,6 @@ import { NavbarComponent } from './Componant/navbar/navbar.component';
 import { FooterComponent } from './Componant/footer/footer.component';
 import { HomeComponent } from './Pages/home/home.component';
 import { AboutComponent } from './Pages/about/about.component';
-import { SignUpComponent } from './Pages/Sign/sign-up/sign-up.component';
 import { LoginComponent } from './Pages/Sign/login/login.component';
 import { ForgotPasswordComponent } from './Pages/Sign/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './Pages/Sign/reset-password/reset-password.component';
@@ -23,6 +22,7 @@ import { SettingsComponent } from './Pages/Profile/settings/settings.component';
 import { FormsModule } from '@angular/forms';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { NewPasswordComponent } from './Pages/Sign/new-password/new-password.component';
+import { FilterPlacesComponent } from './Pages/filter-places/filter-places.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +31,6 @@ import { NewPasswordComponent } from './Pages/Sign/new-password/new-password.com
     FooterComponent,
     HomeComponent,
     AboutComponent,
-    SignUpComponent,
     LoginComponent,
     ForgotPasswordComponent,
     ResetPasswordComponent,
@@ -45,7 +44,8 @@ import { NewPasswordComponent } from './Pages/Sign/new-password/new-password.com
     ProfileComponent,
     SettingsComponent,
     NotFoundComponent,
-    NewPasswordComponent
+    NewPasswordComponent,
+    FilterPlacesComponent
   ],
   imports: [
     BrowserModule,
