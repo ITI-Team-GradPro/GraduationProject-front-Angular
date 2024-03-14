@@ -20,6 +20,7 @@ import { WishListComponent } from './Pages/wish-list/wish-list.component';
 import { SearchComponent } from './Pages/search/search.component';
 import { ProfileComponent } from './Pages/Profile/profile/profile.component';
 import { SettingsComponent } from './Pages/Profile/settings/settings.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { SettingsComponent } from './Pages/Profile/settings/settings.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
   ],
   providers: [
     provideClientHydration()
