@@ -19,6 +19,12 @@ import { WishListComponent } from './Pages/wish-list/wish-list.component';
 import { SearchComponent } from './Pages/search/search.component';
 import { ProfileComponent } from './Pages/Profile/profile/profile.component';
 import { SettingsComponent } from './Pages/Profile/settings/settings.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ResetcodeComponent } from './Pages/Sign/resetcode/resetcode.component';
+import { FilterPlacesComponent } from './Pages/filter-places/filter-places.component';
+import { NotfoundComponent } from './notfound/notfound.component';
+import { SignUpComponent } from './Pages/Sign/sign-up/sign-up.component';
+
 
 @NgModule({
   declarations: [
@@ -40,7 +46,9 @@ import { SettingsComponent } from './Pages/Profile/settings/settings.component';
     ProfileComponent,
     SettingsComponent,
     ResetcodeComponent,
-    FilterPlacesComponent
+    FilterPlacesComponent,
+    NotfoundComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,

@@ -14,9 +14,12 @@ import { PlaceDetailsComponent } from './Pages/Place/place-details/place-details
 import { ProfileComponent } from './Pages/Profile/profile/profile.component';
 import { SettingsComponent } from './Pages/Profile/settings/settings.component';
 import { ResetcodeComponent } from './Pages/Sign/resetcode/resetcode.component';
+import { NotfoundComponent } from './notfound/notfound.component';
 
 const routes: Routes = [
   // start Sign Routes
+  {path : "" , redirectTo : "Home" , pathMatch : "full"},
+
   {path : "SignUp" , component : SignUpComponent},
   {path : "Login" , component : LoginComponent},
   {path : "ForgotPassword" , component : ForgotPasswordComponent},
@@ -24,7 +27,6 @@ const routes: Routes = [
   {path : "Reset-Code" , component : ResetcodeComponent},
   // End Sign Routes
 
-  {path : "" , redirectTo : "Home" , pathMatch : "full"},
   {path : "Home" , component : HomeComponent},
   {path : "About" , component : AboutComponent},
   {path : "Contact" , component : ContactComponent},
@@ -36,8 +38,10 @@ const routes: Routes = [
 
 // Start Profile 
   {path : "Profile" , component : ProfileComponent},
-  {path : "Settings" , component : SettingsComponent }
+  {path : "Settings" , component : SettingsComponent },
 // End Profile 
+
+{path:'**', component:NotfoundComponent}
 ];
 
 @NgModule({

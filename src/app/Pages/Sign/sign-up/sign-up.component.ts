@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormGroup, FormControl, Validators} from'@angular/forms';
-import { first } from 'rxjs';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-sign-up',
@@ -8,6 +7,7 @@ import { first } from 'rxjs';
   styleUrl: './sign-up.component.css'
 })
 export class SignUpComponent {
+  
   registerForm:FormGroup = new FormGroup({
     first_name: new FormControl(null, [Validators.minLength(4), Validators.required]),
     last_name: new FormControl(null, [Validators.minLength(4), Validators.required]),
@@ -19,7 +19,7 @@ export class SignUpComponent {
   });
   SubmitRegisterForm(registerForm: FormGroup)
   {
-    console.log(registerForm);
+    console.log(registerForm.value);
   }
   constructor() { }
   ngOnInit(): void{
