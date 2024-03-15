@@ -1,4 +1,32 @@
-/* You can add global styles to this file, and also import other style files */
-body {
-  font-family: 'Roboto', sans-serif;
+:root
+{
+    --bg-main: white;
+    --light-bg: rgb(214, 209, 209);
+    --text-color: rgb(0, 0, 0); 
+    --border-color:rgb(14, 13, 13);
+}
+
+body
+{
+    background-color: var(--bg-main);
+    color: var(--text-color);
+    font-family: 'Roboto', sans-serif;
+}
+
+.bg-mine-light
+{
+    background-color: var(--light-bg);
+}
+
+a,a:hover
+{
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.input-mine
+{
+    background-color: transparent;
+    color: var(--text-color);
+    border: solid 1px var(--border-color);
 }

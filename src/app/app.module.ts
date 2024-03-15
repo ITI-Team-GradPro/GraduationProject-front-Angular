@@ -23,6 +23,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { NewPasswordComponent } from './Pages/Sign/new-password/new-password.component';
 import { FilterPlacesComponent } from './Pages/filter-places/filter-places.component';
+import { NotfoundComponent } from './notfound/notfound.component';
+import { SignUpComponent } from './Pages/Sign/sign-up/sign-up.component';
+
 
 @NgModule({
   declarations: [
@@ -43,9 +46,10 @@ import { FilterPlacesComponent } from './Pages/filter-places/filter-places.compo
     SearchComponent,
     ProfileComponent,
     SettingsComponent,
-    NotFoundComponent,
-    NewPasswordComponent,
-    FilterPlacesComponent
+    FilterPlacesComponent,
+    NotfoundComponent,
+    SignUpComponent,
+    NewPasswordComponent
   ],
   imports: [
     BrowserModule,
