@@ -1,9 +1,9 @@
 :root
 {
-    --bg-main: rgb(255, 70, 162);
-    --light-bg: rgb(250, 110, 180);
-    --text-color: #fff; 
-    --border-color: rgb(246, 133, 189);
+    --bg-main: white;
+    --light-bg: rgb(214, 209, 209);
+    --text-color: rgb(0, 0, 0); 
+    --border-color:rgb(14, 13, 13);
 }
 
 body
