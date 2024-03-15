@@ -6,7 +6,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   templateUrl: './sign-up.component.html',
   styleUrl: './sign-up.component.css'
 })
-export class SignUpComponent {
+export class SignUpComponent{
   
   registerForm:FormGroup = new FormGroup({
     first_name: new FormControl(null, [Validators.minLength(4), Validators.required]),

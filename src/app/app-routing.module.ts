@@ -13,8 +13,8 @@ import { PaymentsComponent } from './Pages/payments/payments.component';
 import { PlaceDetailsComponent } from './Pages/Place/place-details/place-details.component';
 import { ProfileComponent } from './Pages/Profile/profile/profile.component';
 import { SettingsComponent } from './Pages/Profile/settings/settings.component';
-import { NotFoundComponent } from './not-found/not-found.component';
 import { NewPasswordComponent } from './Pages/Sign/new-password/new-password.component';
+import { NotfoundComponent } from './notfound/notfound.component';
 
 const routes: Routes = [
   // start Sign Routes
@@ -40,6 +40,7 @@ const routes: Routes = [
   {path : "Profile" , component : ProfileComponent},
   {path : "Settings" , component : SettingsComponent },
 // End Profile 
+  {path:'**', component:NotfoundComponent}
 ];
 
 @NgModule({

@@ -19,7 +19,8 @@ import { WishListComponent } from './Pages/wish-list/wish-list.component';
 import { SearchComponent } from './Pages/search/search.component';
 import { ProfileComponent } from './Pages/Profile/profile/profile.component';
 import { SettingsComponent } from './Pages/Profile/settings/settings.component';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ResetcodeComponent } from './Pages/Sign/resetcode/resetcode.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { NewPasswordComponent } from './Pages/Sign/new-password/new-password.component';
 import { FilterPlacesComponent } from './Pages/filter-places/filter-places.component';
@@ -48,11 +49,14 @@ import { SignUpComponent } from './Pages/Sign/sign-up/sign-up.component';
     SettingsComponent,
     ResetcodeComponent,
     FilterPlacesComponent,
-    SignUpComponent
+    NotfoundComponent,
+    SignUpComponent,
+    NewPasswordComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [
     provideClientHydration()
