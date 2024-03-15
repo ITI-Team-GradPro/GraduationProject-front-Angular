@@ -13,13 +13,11 @@ import { PaymentsComponent } from './Pages/payments/payments.component';
 import { PlaceDetailsComponent } from './Pages/Place/place-details/place-details.component';
 import { ProfileComponent } from './Pages/Profile/profile/profile.component';
 import { SettingsComponent } from './Pages/Profile/settings/settings.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 import { NewPasswordComponent } from './Pages/Sign/new-password/new-password.component';
-import { NotfoundComponent } from './notfound/notfound.component';
 
 const routes: Routes = [
   // start Sign Routes
-  {path : "" , redirectTo : "Home" , pathMatch : "full"},
-
   {path : "SignUp" , component : SignUpComponent},
   {path : "Login" , component : LoginComponent},
   { path: "forgotpassword", component: ForgotPasswordComponent},
@@ -27,10 +25,10 @@ const routes: Routes = [
   {path : "NewPassword" , component : NewPasswordComponent},
   // End Sign Routes
 
+  {path : "" , redirectTo : "Home" , pathMatch : "full"},
   {path : "Home" , component : HomeComponent},
   {path : "About" , component : AboutComponent},
   {path : "Contact" , component : ContactComponent},
-
   {path : "Booking" , component : BookingComponent},
   {path : "Search" , component : SearchComponent},
   {path : "Payment" , component : PaymentsComponent},
@@ -40,7 +38,8 @@ const routes: Routes = [
   {path : "Profile" , component : ProfileComponent},
   {path : "Settings" , component : SettingsComponent },
 // End Profile 
-  {path:'**', component:NotfoundComponent}
+  {path : "**" , component : NotFoundComponent }
+
 ];
 
 @NgModule({

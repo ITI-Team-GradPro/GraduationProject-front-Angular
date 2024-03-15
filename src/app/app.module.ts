@@ -20,7 +20,6 @@ import { SearchComponent } from './Pages/search/search.component';
 import { ProfileComponent } from './Pages/Profile/profile/profile.component';
 import { SettingsComponent } from './Pages/Profile/settings/settings.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ResetcodeComponent } from './Pages/Sign/resetcode/resetcode.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { NewPasswordComponent } from './Pages/Sign/new-password/new-password.component';
 import { FilterPlacesComponent } from './Pages/filter-places/filter-places.component';
@@ -47,7 +46,6 @@ import { SignUpComponent } from './Pages/Sign/sign-up/sign-up.component';
     SearchComponent,
     ProfileComponent,
     SettingsComponent,
-    ResetcodeComponent,
     FilterPlacesComponent,
     NotfoundComponent,
     SignUpComponent,
