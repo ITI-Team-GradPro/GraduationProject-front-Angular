@@ -19,7 +19,7 @@ import { WishListComponent } from './Pages/wish-list/wish-list.component';
 import { SearchComponent } from './Pages/search/search.component';
 import { ProfileComponent } from './Pages/Profile/profile/profile.component';
 import { SettingsComponent } from './Pages/Profile/settings/settings.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { NewPasswordComponent } from './Pages/Sign/new-password/new-password.component';
 import { FilterPlacesComponent } from './Pages/filter-places/filter-places.component';
@@ -51,6 +51,7 @@ import { FilterPlacesComponent } from './Pages/filter-places/filter-places.compo
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     provideClientHydration()
