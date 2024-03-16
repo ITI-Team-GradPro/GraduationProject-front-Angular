@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './Pages/home/home.component';
 import { AboutComponent } from './Pages/about/about.component';
-import { ContactComponent } from './Pages/contact/contact.component';
 import { SignUpComponent } from './Pages/Sign/sign-up/sign-up.component';
 import { LoginComponent } from './Pages/Sign/login/login.component';
 import { ForgotPasswordComponent } from './Pages/Sign/forgot-password/forgot-password.component';
@@ -14,8 +13,8 @@ import { PlaceDetailsComponent } from './Pages/Place/place-details/place-details
 import { ProfileComponent } from './Pages/Profile/profile/profile.component';
 import { SettingsComponent } from './Pages/Profile/settings/settings.component';
 import { NewPasswordComponent } from './Pages/Sign/new-password/new-password.component';
-import { NotfoundComponent } from './notfound/notfound.component';
-
+import { NotFoundComponent } from './not-found/not-found.component';
+import { ContactComponent } from './Pages/contact/contact.component';
 const routes: Routes = [
   // start Sign Routes
   {path : "" , redirectTo : "Home" , pathMatch : "full"},
@@ -25,11 +24,11 @@ const routes: Routes = [
   { path: "forgotpassword", component: ForgotPasswordComponent},
   {path : "ResetPassword" , component : ResetPasswordComponent},
   {path : "NewPassword" , component : NewPasswordComponent},
+  {path:"ContactUs", component:ContactComponent},
   // End Sign Routes
 
   {path : "Home" , component : HomeComponent},
   {path : "About" , component : AboutComponent},
-  {path : "Contact" , component : ContactComponent},
 
   {path : "Booking" , component : BookingComponent},
   {path : "Search" , component : SearchComponent},
@@ -40,7 +39,7 @@ const routes: Routes = [
   {path : "Profile" , component : ProfileComponent},
   {path : "Settings" , component : SettingsComponent },
 // End Profile 
-  {path:'**', component:NotfoundComponent}
+  {path:  '**' , component: NotFoundComponent}
 ];
 
 @NgModule({
