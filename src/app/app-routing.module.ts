@@ -15,6 +15,7 @@ import { SettingsComponent } from './Pages/Profile/settings/settings.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { NewPasswordComponent } from './Pages/Sign/new-password/new-password.component';
 import { ContactComponent } from './Pages/contact/contact.component';
+import { FilterPlacesComponent } from './Pages/filter-places/filter-places.component';
 const routes: Routes = [
   // start Sign Routes
   {path : "SignUp" , component : SignUpComponent},
@@ -28,6 +29,7 @@ const routes: Routes = [
   {path : "" , redirectTo : "Home" , pathMatch : "full"},
   {path : "Home" , component : HomeComponent},
   {path : "About" , component : AboutComponent},
+  {path : "FilterPlaces" , component : FilterPlacesComponent},
 
   {path : "Booking" , component : BookingComponent},
   {path : "Search" , component : SearchComponent},
