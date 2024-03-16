@@ -24,6 +24,7 @@ const routes: Routes = [
   {path : "ResetPassword" , component : ResetPasswordComponent},
   {path : "NewPassword" , component : NewPasswordComponent},
   {path:"ContactUs", component:ContactComponent},
+  {path: "FilterPlaces", component:FilterPlacesComponent},
   // End Sign Routes
 
   {path : "" , redirectTo : "Home" , pathMatch : "full"},
