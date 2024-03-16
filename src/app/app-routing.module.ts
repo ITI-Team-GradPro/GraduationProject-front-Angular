@@ -12,13 +12,12 @@ import { PaymentsComponent } from './Pages/payments/payments.component';
 import { PlaceDetailsComponent } from './Pages/Place/place-details/place-details.component';
 import { ProfileComponent } from './Pages/Profile/profile/profile.component';
 import { SettingsComponent } from './Pages/Profile/settings/settings.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 import { NewPasswordComponent } from './Pages/Sign/new-password/new-password.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ContactComponent } from './Pages/contact/contact.component';
 const routes: Routes = [
   // start Sign Routes
-  {path : "" , redirectTo : "Home" , pathMatch : "full"},
-
   {path : "SignUp" , component : SignUpComponent},
   {path : "Login" , component : LoginComponent},
   { path: "forgotpassword", component: ForgotPasswordComponent},
@@ -27,6 +26,7 @@ const routes: Routes = [
   {path:"ContactUs", component:ContactComponent},
   // End Sign Routes
 
+  {path : "" , redirectTo : "Home" , pathMatch : "full"},
   {path : "Home" , component : HomeComponent},
   {path : "About" , component : AboutComponent},
 

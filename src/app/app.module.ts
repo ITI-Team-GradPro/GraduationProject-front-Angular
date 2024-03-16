@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './Componant/navbar/navbar.component';
@@ -20,7 +19,6 @@ import { SearchComponent } from './Pages/search/search.component';
 import { ProfileComponent } from './Pages/Profile/profile/profile.component';
 import { SettingsComponent } from './Pages/Profile/settings/settings.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NotFoundComponent } from './not-found/not-found.component';
 import { NewPasswordComponent } from './Pages/Sign/new-password/new-password.component';
 import { FilterPlacesComponent } from './Pages/filter-places/filter-places.component';
 import { SignUpComponent } from './Pages/Sign/sign-up/sign-up.component';
@@ -54,7 +52,7 @@ import { SignUpComponent } from './Pages/Sign/sign-up/sign-up.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [
     provideClientHydration()

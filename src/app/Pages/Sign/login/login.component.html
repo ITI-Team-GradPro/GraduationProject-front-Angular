@@ -1,3 +1,43 @@
-<p>login works!</p>
-
-<h2>Esraa</h2>
+<div class="container py-5">
+    
+    <div class="d-flex align-items-center justify-content-center "  >
+    
+        <div class="SignCard d-flex align-items-center justify-content-center">
+            <div style="width: 300px;" class="SignImage d-none d-lg-block">
+            <img class="w-100 h-100" src="../../../../assets/Imgs/Sign up img.jpg" alt="">
+            </div>
+    
+            <div class="SignForm mx-2 px-4">
+                <h2>Sign In</h2>
+                <form class="Signup-Form" (ngSubmit)="SubmitLoginForm(loginForm)" [formGroup]="loginForm">
+                <div>
+                    <label for="email">Email: </label>
+                    <input formControlName="email" type="email" class="form-control mb-2 input-mine">
+                    <div *ngIf="loginForm.get('email')?.errors && loginForm.get('email')?.touched" class="alert-danger">
+                        <p class="m-0" *ngIf="loginForm.get('email')?.getError('required')">Email is required</p>
+                        <p class="m-0" *ngIf="loginForm.get('email')?.getError('email')">Email format is invalid</p>      
+                    </div>
+                </div>
+    
+                <div>
+                    <label for="Password">Password: </label>
+                    <input formControlName="Password" type="password" class="form-control mb-2 input-mine">
+            
+                    <div *ngIf="loginForm.get('Password')?.errors && loginForm.get('Password')?.touched" class="alert-danger">
+                        <p class="m-0" *ngIf="loginForm.get('Password')?.getError('required')">Password is required</p>      
+                    </div>
+                </div>
+    
+                <button [disabled] ="loginForm.invalid" type="submit" class="btn btn-success my-3 w-100">SignUp</button>
+                <div class="text-center">
+                    <p><span class="register" routerLink="/forgotpassword">Forgotten password?</span></p>
+                    <p>Don't have acount ? <span class="register" routerLink="/SignUp">register</span></p>
+                </div>
+                
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+    
+    <!-- <div *ngIf="loginForm.get('first_name')?.errors && registerForm.get('first_name')?.touched "></div> -->
