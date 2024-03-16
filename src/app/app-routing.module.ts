@@ -14,7 +14,6 @@ import { ProfileComponent } from './Pages/Profile/profile/profile.component';
 import { SettingsComponent } from './Pages/Profile/settings/settings.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { NewPasswordComponent } from './Pages/Sign/new-password/new-password.component';
-import { NotFoundComponent } from './not-found/not-found.component';
 import { ContactComponent } from './Pages/contact/contact.component';
 const routes: Routes = [
   // start Sign Routes
