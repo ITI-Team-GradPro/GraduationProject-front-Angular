@@ -1,3 +1,5 @@
+import { PaymentComponent } from './Pages/Profile/payment/payment.component';
+import { SettingsComponent } from './Pages/Profile/settings/settings.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './Pages/home/home.component';
@@ -11,11 +13,13 @@ import { SearchComponent } from './Pages/search/search.component';
 import { PaymentsComponent } from './Pages/payments/payments.component';
 import { PlaceDetailsComponent } from './Pages/Place/place-details/place-details.component';
 import { ProfileComponent } from './Pages/Profile/profile/profile.component';
-import { SettingsComponent } from './Pages/Profile/settings/settings.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { NewPasswordComponent } from './Pages/Sign/new-password/new-password.component';
 import { ContactComponent } from './Pages/contact/contact.component';
 import { FilterPlacesComponent } from './Pages/filter-places/filter-places.component';
+import { ProfilePageComponent } from './Pages/Profile/profile-page/profile-page.component';
+import { SecurityComponent } from './Pages/Profile/security/security.component';
+import { HelpComponent } from './Pages/Profile/help/help.component';
 const routes: Routes = [
   // start Sign Routes
   {path : "SignUp" , component : SignUpComponent},
@@ -38,8 +42,15 @@ const routes: Routes = [
   {path : "PlaceDetails:id" , component : PlaceDetailsComponent},
 
 // Start Profile 
-  {path : "Profile" , component : ProfileComponent},
-  {path : "Settings" , component : SettingsComponent },
+  {path : "MyProfile", component : ProfilePageComponent , children : [
+    { path: '', redirectTo: 'Profile', pathMatch: 'full' }, 
+    {path : "Profile" , component : ProfileComponent },
+    {path : "Settings" , component : SettingsComponent },
+    {path : "Security" , component : SecurityComponent },
+    {path : "Payment" , component : PaymentComponent },
+    {path : "Help" , component : HelpComponent },
+  ]},
+
 // End Profile 
   {path:  '**' , component: NotFoundComponent}
 ];

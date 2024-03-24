@@ -7,7 +7,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrl: './sign-up.component.css'
 })
 export class SignUpComponent implements OnInit{
-  
+
   registerForm:FormGroup = new FormGroup({
     first_name: new FormControl(null, [Validators.minLength(4), Validators.required]),
     last_name: new FormControl(null, [Validators.minLength(4), Validators.required]),

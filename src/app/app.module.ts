@@ -17,12 +17,17 @@ import { PaymentsComponent } from './Pages/payments/payments.component';
 import { WishListComponent } from './Pages/wish-list/wish-list.component';
 import { SearchComponent } from './Pages/search/search.component';
 import { ProfileComponent } from './Pages/Profile/profile/profile.component';
-import { SettingsComponent } from './Pages/Profile/settings/settings.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NewPasswordComponent } from './Pages/Sign/new-password/new-password.component';
 import { FilterPlacesComponent } from './Pages/filter-places/filter-places.component';
 import { SignUpComponent } from './Pages/Sign/sign-up/sign-up.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { ProfileSidebarComponent } from './Componant/profile-sidebar/profile-sidebar.component';
+import { SettingsComponent } from './Pages/Profile/settings/settings.component';
+import { ProfilePageComponent } from './Pages/Profile/profile-page/profile-page.component';
+import { SecurityComponent } from './Pages/Profile/security/security.component';
+import { HelpComponent } from './Pages/Profile/help/help.component';
+import { PaymentComponent } from './Pages/Profile/payment/payment.component';
 
 
 @NgModule({
@@ -47,7 +52,12 @@ import { NotFoundComponent } from './not-found/not-found.component';
     FilterPlacesComponent,
     NotFoundComponent,
     SignUpComponent,
-    NewPasswordComponent
+    NewPasswordComponent,
+    ProfileSidebarComponent,
+    ProfilePageComponent,
+    SecurityComponent,
+    HelpComponent,
+    PaymentComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,13 @@
+.square-container {
+  width: 100%;
+  padding-top: 100%;
+  position: relative;
+  overflow: hidden;
+}
+.square-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: fit-content;
+  height: auto;
+}
