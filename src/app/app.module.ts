@@ -28,6 +28,7 @@ import { ProfilePageComponent } from './Pages/Profile/profile-page/profile-page.
 import { SecurityComponent } from './Pages/Profile/security/security.component';
 import { HelpComponent } from './Pages/Profile/help/help.component';
 import { PaymentComponent } from './Pages/Profile/payment/payment.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -64,6 +65,7 @@ import { PaymentComponent } from './Pages/Profile/payment/payment.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [
     provideClientHydration()
