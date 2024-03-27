@@ -3,9 +3,23 @@
 }
 
 .l-border{
-    box-shadow: 2px 2px 5px #888888;
+    position: sticky;
+    top: 0; 
+    left: 0; 
+    z-index: 1000; 
+    width: 100%; 
+    background-color: #fff ;
+
+    @media screen and (max-width: 991px) {
+        position: static;
+    }
+
 }
 
+.N-border{
+    border-bottom: 1px solid gray;
+
+}
 
 .seach-input{
     border-radius: 20px;
@@ -51,6 +65,7 @@ height: fit-content;
 background-color: #ffff;
 box-shadow: 2px 2px 5px #888888;
 border-radius: 10px;
+z-index: 10000;
 
 }
 

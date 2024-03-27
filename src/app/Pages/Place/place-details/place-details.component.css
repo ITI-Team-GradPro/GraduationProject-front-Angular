@@ -1,13 +1,12 @@
-.square-container {
-  width: 100%;
-  padding-top: 100%;
-  position: relative;
-  overflow: hidden;
+.Image{
+  border-radius: 15px;
 }
-.square-img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: fit-content;
-  height: auto;
+
+
+.card-container{
+  display: flex;
+  @media screen  and (max-width: 991px) {
+    display: flex;
+    justify-content: center;
+  }
 }

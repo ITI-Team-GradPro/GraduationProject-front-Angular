@@ -1,0 +1,104 @@
+.filter{
+display: flex;
+justify-content: center;
+align-items: center;
+padding: 10px;
+margin-top: 10px;
+position: sticky;
+z-index: 10;
+
+@media screen and (max-width: 991px) {
+    flex-direction: column-reverse;
+}
+
+
+}
+
+.tabs{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+
+.tab{
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+margin: 0 15px;
+padding: 0;
+width: fit-content;
+height: fit-content;
+cursor: pointer;
+@media screen and (max-width: 991px) {
+    margin: 0 5px;
+}
+}
+
+.filter-bar{
+    border: 2px solid black;
+}
+
+.tab h6{
+    @media screen and (max-width: 991px) {
+        font-size: 12px;
+    }
+}
+
+  form{
+    width: 70%;
+    @media screen and (max-width: 991px) {
+        width: 100%;
+    }
+  }
+
+  .seach-input{
+    border-radius: 20px;
+    box-shadow: 2px 2px 5px #888888;
+}
+
+.btn-r{
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+}
+
+
+.p-search{
+    position: absolute;
+    right: 15px;
+    top: 7px;
+}
+
+
+.Search-Filter{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @media screen and (max-width: 991px) {
+        margin-bottom: 20px;
+        width: 90%;
+    }
+}
+
+
+
+.btn-pro{
+    border: 1px solid gray;
+    background-color: transparent;
+    padding: 5px;
+    border-radius: 20px;
+    transition: 0.5s;
+}
+
+.btn-pro:hover{
+    box-shadow: 2px 2px 5px #888888;
+}
+
+
+.ActiveTab{
+    border-bottom: 3px solid green;
+    padding-bottom: 5px;
+}

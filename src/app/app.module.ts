@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA , NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -28,6 +28,12 @@ import { ProfilePageComponent } from './Pages/Profile/profile-page/profile-page.
 import { SecurityComponent } from './Pages/Profile/security/security.component';
 import { HelpComponent } from './Pages/Profile/help/help.component';
 import { PaymentComponent } from './Pages/Profile/payment/payment.component';
+import { FilterbarComponent } from './Componant/filterbar/filterbar.component';
+import { register } from 'swiper/element/bundle';
+import { PlaceCardComponent } from './Componant/place-card/place-card.component';
+import { FilterModalComponent } from './Componant/filter-modal/filter-modal.component';
+// register Swiper custom elements
+register();
 
 
 @NgModule({
@@ -57,7 +63,10 @@ import { PaymentComponent } from './Pages/Profile/payment/payment.component';
     ProfilePageComponent,
     SecurityComponent,
     HelpComponent,
-    PaymentComponent
+    PaymentComponent,
+    FilterbarComponent,
+    PlaceCardComponent,
+    FilterModalComponent
   ],
   imports: [
     BrowserModule,
@@ -68,6 +77,7 @@ import { PaymentComponent } from './Pages/Profile/payment/payment.component';
   providers: [
     provideClientHydration()
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA] ,
   bootstrap: [AppComponent]
 })
 export class AppModule { }

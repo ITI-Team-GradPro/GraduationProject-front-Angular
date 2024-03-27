@@ -1,0 +1,79 @@
+.Card{
+    width: 300px;
+    height: 380px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 1px 1px 1px #888888;
+    position: relative;
+    cursor: pointer;
+}
+
+.Images{
+    border-radius: 15px;
+}
+
+.Slider{
+    height: 250px;
+}
+
+.title{
+    font-weight:600;
+}
+
+.price{
+    font-weight:600;
+}
+
+.Rate{
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+}
+
+.fav{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 10;
+    cursor: pointer;
+}
+
+.swiper-button-next svg{
+    display: none !important ;
+}
+
+swiper-container::part(button-prev) {
+    background-color: #FFF;
+    width: 15px;
+    height: 15px;
+    padding: 7px;
+    margin: 0;
+    color: black;
+    border-radius: 50%;
+    display: none;
+  }
+  
+  swiper-container::part(button-next) {
+    background-color: #FFF;
+    width: 15px;
+    height: 15px;
+    padding: 7px;
+    color: black;
+    margin: 0;
+    border-radius: 50%;
+    display: none;
+  }
+
+  .Card:hover swiper-container::part(button-prev){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 3s;
+  }
+
+  .Card:hover swiper-container::part(button-next){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 3s;
+  }
