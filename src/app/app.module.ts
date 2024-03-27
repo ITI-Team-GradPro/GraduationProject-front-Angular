@@ -32,6 +32,7 @@ import { FilterbarComponent } from './Componant/filterbar/filterbar.component';
 import { register } from 'swiper/element/bundle';
 import { PlaceCardComponent } from './Componant/place-card/place-card.component';
 import { FilterModalComponent } from './Componant/filter-modal/filter-modal.component';
+import { HttpClientModule } from '@angular/common/http';
 // register Swiper custom elements
 register();
 
@@ -73,6 +74,7 @@ register();
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [
     provideClientHydration()
