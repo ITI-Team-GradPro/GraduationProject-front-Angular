@@ -9,7 +9,8 @@
     
             <div class="SignForm mx-2 px-4">
                 <h2>Sign In</h2>
-                <form class="Signup-Form" (ngSubmit)="SubmitLoginForm(loginForm)" [formGroup]="loginForm">
+                <h6 class="alert-danger">{{Errormsg}}</h6>
+                <form class="Signup-Form" (ngSubmit)="SubmitLoginForm()" [formGroup]="loginForm">
                 <div>
                     <label for="email">Email: </label>
                     <input formControlName="email" type="email" class="form-control mb-2 input-mine">
@@ -28,7 +29,10 @@
                     </div>
                 </div>
     
-                <button [disabled] ="loginForm.invalid" type="submit" class="btn btn-success my-3 w-100">SignIn</button>
+                <button [disabled] ="loginForm.invalid" type="submit" class="btn btn-success my-3 w-100">
+                    <i *ngIf="isLoading" class="fas fa-spinner fa-spin"></i>
+                    Login
+                </button>
                 <div class="text-center">
                     <p><span class="register" routerLink="/forgotpassword">Forgotten password?</span></p>
                     <p>Don't have acount ? <span class="register" routerLink="/SignUp">register</span></p>

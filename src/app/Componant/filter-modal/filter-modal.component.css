@@ -1,0 +1,7 @@
+.background{
+    background-color: rgba(0, 0, 0, 0.477);
+}
+
+.no-scroll.modal-backdrop {
+    overflow: hidden;
+  }

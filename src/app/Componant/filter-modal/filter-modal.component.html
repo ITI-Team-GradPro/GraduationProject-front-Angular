@@ -1,0 +1,45 @@
+<div class="modal background no-scroll" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Filter Places</h5>
+        <button (click)="CloseFilter()" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Form for filtration -->
+        <form>
+          <div class="mb-3">
+            <label for="name" class="form-label">Name:</label>
+            <input type="text" class="form-control" id="name" placeholder="Enter Place name">
+          </div>
+          <div class="mb-3">
+            <label for="price" class="form-label">Price Range:</label>
+            <div class="row">
+              <div class="col-6">
+                <input type="number" class="form-control" id="minPrice" placeholder="Min">              
+              </div>
+              <div class="col-6">
+                <input type="number" class="form-control" id="maxPrice" placeholder="Max">
+              </div>
+            </div>
+          </div>
+          <!-- Add more filtration options here -->
+
+          <div class="mb-3">
+            <label for="price" class="form-label">Rate</label>
+                <input type="number" class="form-control" id="rate" placeholder="Rate (from 1-5)">              
+          </div>
+
+          <div class="mb-3">
+            <label for="price" class="form-label">Location</label>
+                <input type="number" class="form-control" id="location" placeholder="Enter Location">              
+          </div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success">Apply Filters</button>
+      </div>
+    </div>
+  </div>
+</div>
