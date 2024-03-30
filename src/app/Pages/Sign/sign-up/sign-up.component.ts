@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { AuthService } from '../../../auth.service';
+import { AuthService } from '../../../Services/Auth/auth.service';
 import { Router} from '@angular/router';
 
 
@@ -28,6 +28,21 @@ export class SignUpComponent implements OnInit{
   });
   SubmitClientRegisterForm(registerForm: FormGroup)
   {
+    console.log(registerForm.value);
+    this.isLoading = true;
+    this._AuthService.clientSignUp(registerForm.value).subscribe({
+      next:(response)=>{
+        this.isLoading = false;
+        if(response.message === 'success')
+        {
+           this._Router.navigate(['/login']);
+        }
+        else
+        {
+          this.error = response.message
+        }
+      }
+    })
     //console.log(registerForm.value);
     //if(registerForm.value.RoleName == 'Client')
     //{
