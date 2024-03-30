@@ -1,4 +1,4 @@
-import { ApplicationConfig, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../../../auth.service';
 import { Router} from '@angular/router';
@@ -19,56 +19,62 @@ export class SignUpComponent implements OnInit{
   isLoading:boolean = false;
   
   registerForm:FormGroup = new FormGroup({
-    first_name: new FormControl(null, [Validators.minLength(4), Validators.required]),
-    last_name: new FormControl(null, [Validators.minLength(4), Validators.required]),
-    email: new FormControl(null, [Validators.required, Validators.email]),
+    Email: new FormControl(null, [Validators.required, Validators.email]),
     Password: new FormControl(null, [Validators.required]),
-    confirmPassword: new FormControl(null, [Validators.required]),
-    Role: new FormControl('Guest'),
+    FirstName: new FormControl(null, [Validators.minLength(4), Validators.required]),
+    LastName: new FormControl(null, [Validators.minLength(4), Validators.required]),
+    RoleName: new FormControl(null),
+    Role: new FormControl(1),
   });
   SubmitClientRegisterForm(registerForm: FormGroup)
   {
     //console.log(registerForm.value);
-    this.isLoading = true;
-    this._AuthService.clientSignUp(registerForm.value).subscribe({
-      next:(response)=>{
-        this.isLoading = false;
-        if(response.message === 'success')
-        {
-          //this._Router.navigate(['/src/app/Pages/home'])
-           this._Router.navigate(['/login']);
+    //if(registerForm.value.RoleName == 'Client')
+    //{
+      this.isLoading = true;
+      this._AuthService.clientSignUp(registerForm.value).subscribe({
+        next:(response)=>{
+          this.isLoading = false;
+          if(response.message === 'success')
+          {
+            //this._Router.navigate(['/src/app/Pages/home'])
+            this._Router.navigate(['/src/app/Pages/home']);
+          }
+          else
+          {
+            this.error = response.message
+          }
         }
-        else
-        {
-          this.error = response.message
-        }
-      }
-    })
+      })
+    // }
+    // else 
+    // {
+    //     this._AuthService.HostSignUp(registerForm.value).subscribe({
+    //       next:(response)=>{
+    //         if(response.message === 'success')
+    //         {
+    //           this._Router.navigate(['./src/app/Pages/home'])
+    //           // this._Router.navigate(['/src/app/Pages/Sign/login'])
+    //         }
+    //         else
+    //         {
+    //           this.error = response.message
+    //         }
+    //       }
+    //     })
+     // }
+    
   }
 
   // registerForm2:FormGroup = new FormGroup({
-  //   first_name: new FormControl(null, [Validators.minLength(4), Validators.required]),
-  //   last_name: new FormControl(null, [Validators.minLength(4), Validators.required]),
   //   email: new FormControl(null, [Validators.required, Validators.email]),
-  //   Password: new FormControl(null, [Validators.required]),
-  //   confirmPassword: new FormControl(null, [Validators.required]),
-  //   Role: new FormControl('Host'),
+  //   password: new FormControl(null, [Validators.required]),
+  //   firstName: new FormControl(null, [Validators.minLength(4), Validators.required]),
+  //   lastName: new FormControl(null, [Validators.minLength(4), Validators.required]),
+  //   RoleName: new FormControl('Host'),
+  //   Role: new FormControl(1),
   // });
-  SubmitHostregisterForm(registerForm: FormGroup) {
-    this._AuthService.HostSignUp(registerForm.value).subscribe({
-      next:(response)=>{
-        if(response.message === 'success')
-        {
-          this._Router.navigate(['./src/app/Pages/home'])
-          // this._Router.navigate(['/src/app/Pages/Sign/login'])
-        }
-        else
-        {
-          this.error = response.message
-        }
-      }
-    })
-  }
+  
   
   ngOnInit(): void{
 

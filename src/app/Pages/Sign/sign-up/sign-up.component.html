@@ -10,65 +10,66 @@
             <div class="SignForm mx-2 px-4">
                 <h2>Sign Up</h2>
                 <div *ngIf="error" class="alert alert-danger">{{error}}</div>
-                <form class="Signup-Form" *ngIf="registerForm.value.Role =='Guest'; else SubmitHostRegisterForm" (ngSubmit)="SubmitClientRegisterForm(registerForm)" [formGroup]="registerForm">
+                <!-- *ngIf="registerForm.value.Role =='Client'; else SubmitHostRegisterForm -->
+                <form class="Signup-Form" (ngSubmit)="SubmitClientRegisterForm(registerForm)" [formGroup]="registerForm">
                     <!-- for first Name -->
                     <div class="row">
                         <div class="col-md-6">
-                            <label for="first_name">firstname: </label>
-                            <input formControlName="first_name" type="text" class="form-control mb-2 input-mine">
-                            <div *ngIf="registerForm.get('first_name')?.errors && registerForm.get('first_name')?.touched" class="alert-danger">
-                                <p class="m-0" *ngIf="registerForm.get('first_name')?.getError('required')">firstname is required</p>
-                                <p class="m-0" *ngIf="registerForm.get('first_name')?.getError('minlength')">firstname is less than 3 Char</p>      
+                            <label for="FirstName">FirstName: </label>
+                            <input formControlName="FirstName" type="text" class="form-control mb-2 input-mine">
+                            <div *ngIf="registerForm.get('FirstName')?.errors && registerForm.get('FirstName')?.touched" class="alert-danger">
+                                <p class="m-0" *ngIf="registerForm.get('FirstName')?.getError('required')">FirstName is required</p>
+                                <p class="m-0" *ngIf="registerForm.get('FirstName')?.getError('minlength')">FirstName is less than 3 Char</p>      
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <label for="last_name">lastname: </label>
-                            <input formControlName="last_name" type="text" class="form-control mb-2 input-mine">
+                            <label for="LastName">LastName: </label>
+                            <input formControlName="LastName" type="text" class="form-control mb-2 input-mine">
                     
-                            <div *ngIf="registerForm.get('last_name')?.errors && registerForm.get('last_name')?.touched" class="alert-danger">
-                                <p class="m-0" *ngIf="registerForm.get('last_name')?.getError('required')">last_name is required</p>
-                                <p class="m-0" *ngIf="registerForm.get('last_name')?.getError('minlength')">last_name is less than 3</p>      
+                            <div *ngIf="registerForm.get('LastName')?.errors && registerForm.get('LastName')?.touched" class="alert-danger">
+                                <p class="m-0" *ngIf="registerForm.get('LastName')?.getError('required')">LastName is required</p>
+                                <p class="m-0" *ngIf="registerForm.get('LastName')?.getError('minlength')">LastName is less than 3</p>      
                             </div>
                         </div>
                     </div>
                     <div>
-                        <label for="email">Email: </label>
-                        <input formControlName="email" type="email" class="form-control mb-2 input-mine">
-                        <div *ngIf="registerForm.get('email')?.errors && registerForm.get('email')?.touched" class="alert-danger">
-                            <p class="m-0" *ngIf="registerForm.get('email')?.getError('required')">Email is required</p>
-                            <p class="m-0" *ngIf="registerForm.get('email')?.getError('email')">Email format is invalid</p>      
+                        <label for="Email">Email: </label>
+                        <input formControlName="Email" type="Email" class="form-control mb-2 input-mine">
+                        <div *ngIf="registerForm.get('Email')?.errors && registerForm.get('Email')?.touched" class="alert-danger">
+                            <p class="m-0" *ngIf="registerForm.get('Email')?.getError('required')">Email is required</p>
+                            <p class="m-0" *ngIf="registerForm.get('Email')?.getError('Email')">Email format is invalid</p>      
                         </div>
                     </div>
                     <div>
                         <label for="Password">Password: </label>
-                        <input formControlName="Password" type="password" class="form-control mb-2 input-mine">
+                        <input formControlName="Password" type="Password" class="form-control mb-2 input-mine">
                         <div *ngIf="registerForm.get('Password')?.errors && registerForm.get('Password')?.touched" class="alert-danger">
                             <p class="m-0" *ngIf="registerForm.get('Password')?.getError('required')">Password is required</p>      
                         </div>
                     </div>
 
-                    <div>
+                    <!-- <div>
                         <label for="confirmPassword">confirmPassword: </label>
                         <input formControlName="confirmPassword" type="password" class="form-control mb-2 input-mine">
                 
                         <div *ngIf="registerForm.get('confirmPassword')?.errors && registerForm.get('confirmPassword')?.touched" class="alert-danger">
                             <p class="m-0" *ngIf="registerForm.get('confirmPassword')?.getError('required')">ConfirmPassword is required</p>      
                         </div>
-                    </div>
+                    </div> -->
                     
                     <div>
-                        <label for="Role">Choose a Role: </label>&nbsp;
-                        <select name="Role" id="Role">
+                        <label for="RoleName">Choose a RoleName: </label>&nbsp;
+                        <select name="RoleName" id="RoleName">
                             <option value="Host">Host</option>
-                            <option value="Guest">Guest </option>
+                            <option value="Client">Client </option>
                         </select>
-                        <div *ngIf="registerForm.get('Role')?.errors && registerForm.get('Role')?.touched" class="alert alert-danger">
-                            <p class="m-0" *ngIf="registerForm.get('Role')?.getError('required')">Role is required</p>   
+                        <div *ngIf="registerForm.get('RoleName')?.errors && registerForm.get('RoleName')?.touched" class="alert alert-danger">
+                            <p class="m-0" *ngIf="registerForm.get('RoleName')?.getError('required')">RoleName is required</p>   
                         </div>
                     </div>
                 
                     <button [disabled] ="registerForm.invalid" type="submit" class="btn btn-success my-3 w-100">
-                        <span>SignUp</span>
+                        <span *ngIf="!isLoading">SignUp</span>
                         <i *ngIf="isLoading" class="fas fa-spinner fa-spin"></i>
                     </button>
                     <div class="text-center">
@@ -82,68 +83,68 @@
     </div>
 </div>
 
-<ng-template #SubmitHostRegisterForm >
-    <form class="Signup-Form" *ngIf="registerForm.value.Role =='Host' " (ngSubmit)="SubmitHostregisterForm(registerForm)" [formGroup]="registerForm">
+<!-- <ng-template #SubmitHostRegisterForm >
+    <form class="Signup-Form" *ngIf="registerForm.value == ''" (ngSubmit)="SubmitHostregisterForm(registerForm2)" [formGroup]="registerForm2">
         <-- for first Name ->
         <div class="row">
             <div class="col-md-6">
-                <label for="first_name">firstname: </label>
+                <label for="firstName">firstName: </label>
                 <input formControlName="first_name" type="text" class="form-control mb-2 input-mine">
-                <div *ngIf="registerForm.get('first_name')?.errors && registerForm.get('first_name')?.touched" class="alert-danger">
-                    <p class="m-0" *ngIf="registerForm.get('first_name')?.getError('required')">firstname is required</p>
-                    <p class="m-0" *ngIf="registerForm.get('first_name')?.getError('minlength')">firstname is less than 3 Char</p>      
+                <div *ngIf="registerForm2.get('firstName')?.errors && registerForm2.get('firstName')?.touched" class="alert-danger">
+                    <p class="m-0" *ngIf="registerForm2.get('firstName')?.getError('required')">firstName is required</p>
+                    <p class="m-0" *ngIf="registerForm2.get('firstName')?.getError('minlength')">firstName is less than 3 Char</p>      
                 </div>
             </div>
             <div class="col-md-6">
-                <label for="last_name">lastname: </label>
-                <input formControlName="last_name" type="text" class="form-control mb-2 input-mine">
+                <label for="lastName">lastname: </label>
+                <input formControlName="lastName" type="text" class="form-control mb-2 input-mine">
         
-                <div *ngIf="registerForm.get('last_name')?.errors && registerForm.get('last_name')?.touched" class="alert-danger">
-                    <p class="m-0" *ngIf="registerForm.get('last_name')?.getError('required')">last_name is required</p>
-                    <p class="m-0" *ngIf="registerForm.get('last_name')?.getError('minlength')">last_name is less than 3</p>      
+                <div *ngIf="registerForm2.get('lastName')?.errors && registerForm2.get('lastName')?.touched" class="alert-danger">
+                    <p class="m-0" *ngIf="registerForm2.get('lastName')?.getError('required')">lastName is required</p>
+                    <p class="m-0" *ngIf="registerForm2.get('lastName')?.getError('minlength')">lastName is less than 3</p>      
                 </div>
             </div>
         </div>
         <div>
             <label for="email">Email: </label>
             <input formControlName="email" type="email" class="form-control mb-2 input-mine">
-            <div *ngIf="registerForm.get('email')?.errors && registerForm.get('email')?.touched" class="alert-danger">
-                <p class="m-0" *ngIf="registerForm.get('email')?.getError('required')">Email is required</p>
-                <p class="m-0" *ngIf="registerForm.get('email')?.getError('email')">Email format is invalid</p>      
+            <div *ngIf="registerForm2.get('email')?.errors && registerForm2.get('email')?.touched" class="alert-danger">
+                <p class="m-0" *ngIf="registerForm2.get('email')?.getError('required')">Email is required</p>
+                <p class="m-0" *ngIf="registerForm2.get('email')?.getError('email')">Email format is invalid</p>      
             </div>
         </div>
         <div>
-            <label for="Password">Password: </label>
+            <label for="password">Password: </label>
             <input formControlName="Password" type="password" class="form-control mb-2 input-mine">
-            <div *ngIf="registerForm.get('Password')?.errors && registerForm.get('Password')?.touched" class="alert-danger">
-                <p class="m-0" *ngIf="registerForm.get('Password')?.getError('required')">Password is required</p>      
+            <div *ngIf="registerForm2.get('Password')?.errors && registerForm2.get('Password')?.touched" class="alert-danger">
+                <p class="m-0" *ngIf="registerForm2.get('Password')?.getError('required')">Password is required</p>      
             </div>
         </div>
 
-        <div>
+        <-- <div>
             <label for="confirmPassword">confirmPassword: </label>
             <input formControlName="confirmPassword" type="password" class="form-control mb-2 input-mine">
     
-            <div *ngIf="registerForm.get('confirmPassword')?.errors && registerForm.get('confirmPassword')?.touched" class="alert-danger">
-                <p class="m-0" *ngIf="registerForm.get('confirmPassword')?.getError('required')">ConfirmPassword is required</p>      
+            <div *ngIf="registerForm2.get('confirmPassword')?.errors && registerForm2.get('confirmPassword')?.touched" class="alert-danger">
+                <p class="m-0" *ngIf="registerForm2.get('confirmPassword')?.getError('required')">ConfirmPassword is required</p>      
             </div>
-        </div>
+        </div> >
         
         <div>
-            <label for="Role">Choose a Role: </label>&nbsp;
-            <select name="Role" id="Role">
+            <label for="RoleName">Choose a RoleName: </label>&nbsp;
+            <select name="RoleName" id="RoleName">
                 <option value="Host">Host</option>
-                <option value="Guest">Guest </option>
+                <option value="Client">Client<option>
             </select>
-            <div *ngIf="registerForm.get('Role')?.errors && registerForm.get('Role')?.touched" class="alert alert-danger">
-                <p class="m-0" *ngIf="registerForm.get('Role')?.getError('required')">Role is required</p>   
+            <div *ngIf="registerForm2.get('RoleName')?.errors && registerForm2.get('RoleName')?.touched" class="alert alert-danger">
+                <p class="m-0" *ngIf="registerForm2.get('RoleName')?.getError('required')">RoleName is required</p>   
             </div>
         </div>
     
-        <button [disabled] ="registerForm.invalid" type="submit" class="btn btn-success my-3 w-100">SignUp</button>
+        <button [disabled] ="registerForm2.invalid" type="submit" class="btn btn-success my-3 w-100">SignUp</button>
         <div class="text-center">
             <p>Already Have Acoount ? <span class="Login" routerLink="/Login">Login</span></p>
         </div>
     
     </form>
-</ng-template>
+</ng-template> -->
