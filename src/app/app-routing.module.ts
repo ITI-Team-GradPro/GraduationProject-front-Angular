@@ -20,28 +20,23 @@ import { FilterPlacesComponent } from './Pages/filter-places/filter-places.compo
 import { ProfilePageComponent } from './Pages/Profile/profile-page/profile-page.component';
 import { SecurityComponent } from './Pages/Profile/security/security.component';
 import { HelpComponent } from './Pages/Profile/help/help.component';
+import { AuthLayoutComponent } from './Layouts/auth-layout/auth-layout.component';
+import { ClientLayoutComponent } from './Layouts/client-layout/client-layout.component';
 const routes: Routes = [
-  // start Sign Routes
-  {path : "SignUp" , component : SignUpComponent},
-  {path : "Login" , component : LoginComponent},
-  { path: "forgotpassword", component: ForgotPasswordComponent},
-  {path : "ResetPassword" , component : ResetPasswordComponent},
-  {path : "NewPassword" , component : NewPasswordComponent},
-  {path:"ContactUs", component:ContactComponent},
-  {path: "FilterPlaces", component:FilterPlacesComponent},
-  // End Sign Routes
 
+// Start Client LayOut 
+  {path : "", component : ClientLayoutComponent , children : [
   {path : "" , redirectTo : "Home" , pathMatch : "full"},
   {path : "Home" , component : HomeComponent},
   {path : "About" , component : AboutComponent},
-  {path : "FilterPlaces" , component : FilterPlacesComponent},
+  {path:"ContactUs", component:ContactComponent},
 
+  {path : "FilterPlaces" , component : FilterPlacesComponent},
   {path : "Booking" , component : BookingComponent},
   {path : "Search" , component : SearchComponent},
   {path : "Payment" , component : PaymentsComponent},
   {path : "PlaceDetails:id" , component : PlaceDetailsComponent},
-
-// Start Profile 
+  // start Profile Routes
   {path : "MyProfile", component : ProfilePageComponent , children : [
     { path: '', redirectTo: 'Profile', pathMatch: 'full' }, 
     {path : "Profile" , component : ProfileComponent },
@@ -49,7 +44,33 @@ const routes: Routes = [
     {path : "Security" , component : SecurityComponent },
     {path : "Payment" , component : PaymentComponent },
     {path : "Help" , component : HelpComponent },
-  ]},
+  ]},  
+]},
+// end Client LayOut 
+
+
+// start Auth Layout
+{path : "", component : AuthLayoutComponent , children : [
+  { path: '', redirectTo: 'SignUp', pathMatch: 'full' }, 
+  {path : "SignUp" , component : SignUpComponent},
+  {path : "Login" , component : LoginComponent},
+  { path: "forgotpassword", component: ForgotPasswordComponent},
+  {path : "ResetPassword" , component : ResetPasswordComponent},
+  {path : "NewPassword" , component : NewPasswordComponent},
+]},
+// end Auth Layout
+
+
+// start Host Layout
+// End Host Layout
+
+
+// start Admin Layout
+// End Admin Layout
+
+
+
+
 
 // End Profile 
   {path:  '**' , component: NotFoundComponent}

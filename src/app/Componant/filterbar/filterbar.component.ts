@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MyGlobalServiceService } from '../../Services/Global/my-global-service.service';
 
 @Component({
   selector: 'app-filterbar',
@@ -6,9 +7,13 @@ import { Component } from '@angular/core';
   styleUrl: './filterbar.component.css'
 })
 export class FilterbarComponent {
-  // swiperOptions = {
-  //   slidesPerView: 3,
-  //   spaceBetween: 20,
-  //   navigation: true
-  // };
+
+  constructor(private myGlobalService: MyGlobalServiceService) { }
+
+  // Method to call the globally accessible function
+  OpenFilter(): void {
+    this.myGlobalService.OpenFilterModal();
+  }
+
+
 }
