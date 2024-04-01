@@ -1,1 +1,185 @@
-<p>add-place works!</p>
+<!--start wrapper-->
+<div class="d-flex flex-column min-vh-100 justify-content-center">
+  <div class="container p-4">
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-9 col-sm-10">
+        <div class="card rounded shadow mb-3 mx-auto">
+          <div class="card-body text-center p-4 p-sm-5">
+            <div class="d-flex flex-column p-2 m-2">
+              <h4 class="card-title text p-sm-4 text-danger">
+                Add a New Place to Our Website
+              </h4>
+              <p class="card-text fw-semibold">
+                Enter the details of your property below to ask for approval
+              </p>
+            </div>
+
+            <!--Start Form-->
+            <form [formGroup]="AddPlaceForm">
+              <div class="container">
+                <div class="p-sm-2 text-start">
+                  <div class="mb-3">
+                    <label for="PlaceName" class="form-label">Name</label>
+                    <input
+                      type="text"
+                      name="PlaceName"
+                      id="PlaceName"
+                      class="form-control"
+                      formControlName="PlaceName"
+                      placeholder="etc"
+                      aria-describedby="helpId"
+                    />
+                    <div class="d-flex text-danger flex-column">
+                      <small
+                        *ngIf="AddPlaceForm.get('PlaceName')?.errors?.['required'] || AddPlaceForm.get('PlaceName')?.errors?.['minLength']"
+                      >
+                        Name is required and must be at least 3 characters long.
+                      </small>
+                    </div>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="PlaceImages" class="form-label">Images</label>
+                    <input
+                      type="file"
+                      name="PlaceImages"
+                      id="PlaceImages"
+                      class="form-control"
+                      formControlName="PlaceImages"
+                      placeholder="inesrt your image files here "
+                      aria-describedby="helpId"
+                      multiple
+                    />
+                    <div class="d-flex flex-column text-danger">
+                      <small
+                        *ngIf="AddPlaceForm.get('PlaceImages')?.errors?.['required']"
+                      >
+                        Upload one image at least</small
+                      >
+                    </div>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="PlaceLocation" class="form-label"
+                      >Location</label
+                    >
+                    <input
+                      type="text"
+                      name="PlaceLocation"
+                      id="PlaceLocation"
+                      class="form-control"
+                      formControlName="PlaceLocation"
+                      placeholder="etc"
+                      aria-describedby="helpId"
+                    />
+                    <div class="d-flex text-danger flex-column">
+                      <small
+                        *ngIf="AddPlaceForm.get('PlaceLocation')?.errors?.['required']"
+                      >
+                        Location is required </small
+                      ><br />
+                      <small
+                        *ngIf="AddPlaceForm.get('PlaceLocation')?.errors?.['maxLength']"
+                      >
+                        No more than 100 characters allowed for location
+                      </small>
+                    </div>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="PlaceDescription" class="form-label"
+                      >Description</label
+                    >
+                    <textarea
+                      class="form-control"
+                      name="PlaceDescription"
+                      id="PlaceDescription"
+                      placeholder="Write a short description of the place..."
+                      rows="3"
+                    ></textarea>
+
+                    <small>
+                      256 characters at max, this will be shown in search
+                      results.
+                    </small>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="PlacePrice" class="form-label">Price</label>
+                    <input
+                      type="number"
+                      name="PlacePrice"
+                      id="PlacePrice"
+                      class="form-control"
+                      formControlName="PlacePrice"
+                      placeholder="etc"
+                      aria-describedby="helpId"
+                    />
+                    <small
+                      class="text-danger"
+                      *ngIf="AddPlaceForm.get('PlacePrice')?.errors?.['required']"
+                    >
+                      Property Price is required
+                    </small>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="PlaceCategory">Choose Place Category</label>
+                    <select
+                      title="Choose Place Category"
+                      class="form-control"
+                      id="PlaceCategory"
+                      name="PlaceCategory"
+                      formControlName="PlaceCategory"
+                    >
+                      <option value="Cat1" selected>Select a Category</option>
+                      <option value="Cat2">Action</option>
+                      <option value="Cat3">Disabled (Optional)</option>
+                    </select>
+                    <small
+                      class="text-muted"
+                      *ngIf="AddPlaceForm.get('PlaceCategory')?.errors?.['required']"
+                    >
+                      Selecting the category of your property from the list
+                      provided is required.
+                    </small>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="" class="form-label">Capacity</label>
+                    <input
+                      type="number"
+                      name="PlaceCapacity"
+                      id="PlaceCapacity"
+                      class="form-control"
+                      formControlName="PlaceCapacity"
+                      placeholder="etc"
+                      aria-describedby="helpId"
+                    />
+                    <small
+                      class="text-danger"
+                      *ngIf="AddPlaceForm.get('PlaceCapacity')?.errors?.['required']"
+                    >
+                      Place capacity is required
+                    </small>
+                  </div>
+                </div>
+              </div>
+
+              <div class="d-flex justify-content-end mt-4">
+                <button
+                  type="submit"
+                  class="btn btn-danger rounded mt-4"
+                  [disabled]="!AddPlaceForm.valid"
+                >
+                  Submit Request
+                </button>
+              </div>
+            </form>
+            <!--end of form-->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

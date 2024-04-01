@@ -1,6 +1,6 @@
 import { PaymentComponent } from './Pages/Profile/payment/payment.component';
 import { SettingsComponent } from './Pages/Profile/settings/settings.component';
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './Pages/home/home.component';
 import { AboutComponent } from './Pages/about/about.component';
@@ -22,6 +22,7 @@ import { SecurityComponent } from './Pages/Profile/security/security.component';
 import { HelpComponent } from './Pages/Profile/help/help.component';
 import { AuthLayoutComponent } from './Layouts/auth-layout/auth-layout.component';
 import { ClientLayoutComponent } from './Layouts/client-layout/client-layout.component';
+import { AddPlaceComponent } from './Pages/Place/add-place/add-place.component';
 const routes: Routes = [
 
 // Start Client LayOut 
@@ -62,6 +63,8 @@ const routes: Routes = [
 
 
 // start Host Layout
+{path : "AddPlace" , component : AddPlaceComponent },
+// end Host Layout
 // End Host Layout
 
 
