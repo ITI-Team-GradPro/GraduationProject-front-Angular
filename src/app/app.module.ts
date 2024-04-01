@@ -1,5 +1,8 @@
-import { CUSTOM_ELEMENTS_SCHEMA , NgModule } from '@angular/core';
-import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import {
+  BrowserModule,
+  provideClientHydration,
+} from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './Componant/navbar/navbar.component';
@@ -37,9 +40,9 @@ import { AuthLayoutComponent } from './Layouts/auth-layout/auth-layout.component
 import { ClientLayoutComponent } from './Layouts/client-layout/client-layout.component';
 import { AdminLayoutComponent } from './Layouts/admin-layout/admin-layout.component';
 import { HostLayoutComponent } from './Layouts/host-layout/host-layout.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 // register Swiper custom elements
 register();
-
 
 @NgModule({
   declarations: [
@@ -75,19 +78,18 @@ register();
     AuthLayoutComponent,
     ClientLayoutComponent,
     AdminLayoutComponent,
-    HostLayoutComponent
+    HostLayoutComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    DragDropModule,
   ],
-  providers: [
-    provideClientHydration()
-  ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA] ,
-  bootstrap: [AppComponent]
+  providers: [provideClientHydration()],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

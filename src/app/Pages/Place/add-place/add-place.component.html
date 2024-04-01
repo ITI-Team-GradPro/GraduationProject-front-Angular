@@ -2,9 +2,10 @@
 <div class="d-flex flex-column min-vh-100 justify-content-center">
   <div class="container p-4">
     <div class="row justify-content-center">
-      <div class="col-md-8 col-lg-9 col-sm-10">
-        <div class="card rounded shadow mb-3 mx-auto">
-          <div class="card-body text-center p-4 p-sm-5">
+      <div class="col-md-9 col-lg-9 col-sm-10">
+        <div class="mb-3 mx-auto">
+          <div class="text-center p-4 p-sm-5">
+            <!-- Form Header -->
             <div class="d-flex flex-column p-2 m-2">
               <h4 class="card-title text p-sm-4 text-danger">
                 Add a New Place to Our Website
@@ -18,6 +19,7 @@
             <form [formGroup]="AddPlaceForm">
               <div class="container">
                 <div class="p-sm-2 text-start">
+                  <!-- Property Name-->
                   <div class="mb-3">
                     <label for="PlaceName" class="form-label">Name</label>
                     <input
@@ -37,7 +39,7 @@
                       </small>
                     </div>
                   </div>
-
+                  <!-- Place Images -->
                   <div class="mb-3">
                     <label for="PlaceImages" class="form-label">Images</label>
                     <input
@@ -48,7 +50,9 @@
                       formControlName="PlaceImages"
                       placeholder="inesrt your image files here "
                       aria-describedby="helpId"
+                      (change)="onFilesSelected($event)"
                       multiple
+                      accept="image/*"
                     />
                     <div class="d-flex flex-column text-danger">
                       <small
@@ -58,7 +62,19 @@
                       >
                     </div>
                   </div>
-
+                  <!-- Images Preview -->
+                  <label for="imagesPreview">Images Preview</label>
+                  <div class="imagesPreview my-2">
+                    <div class="imageWrapper justify-content-center d-flex">
+                      <img
+                        *ngFor="let previewUrl of previewUrls; let i = index"
+                        [src]="previewUrl"
+                        alt="Image Preview"
+                        class="rounded img-thumbnail imageWrapper"
+                      />
+                    </div>
+                  </div>
+                  <!-- Place Location -->
                   <div class="mb-3">
                     <label for="PlaceLocation" class="form-label"
                       >Location</label
@@ -85,7 +101,7 @@
                       </small>
                     </div>
                   </div>
-
+                  <!-- Place Description -->
                   <div class="mb-3">
                     <label for="PlaceDescription" class="form-label"
                       >Description</label
@@ -103,7 +119,7 @@
                       results.
                     </small>
                   </div>
-
+                  <!-- Property Price -->
                   <div class="mb-3">
                     <label for="PlacePrice" class="form-label">Price</label>
                     <input
@@ -122,7 +138,7 @@
                       Property Price is required
                     </small>
                   </div>
-
+                  <!-- Category -->
                   <div class="mb-3">
                     <label for="PlaceCategory">Choose Place Category</label>
                     <select
@@ -144,7 +160,7 @@
                       provided is required.
                     </small>
                   </div>
-
+                  <!-- Capacity -->
                   <div class="mb-3">
                     <label for="" class="form-label">Capacity</label>
                     <input
@@ -165,7 +181,7 @@
                   </div>
                 </div>
               </div>
-
+              <!-- Submit Button -->
               <div class="d-flex justify-content-end mt-4">
                 <button
                   type="submit"

@@ -2,11 +2,35 @@
     padding: 10px 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    background-image: url('../../../../assets/Imgs/skyline_269947.png'); /* Replace with your image path */
+  }
+
+  .imagesPreview{
+    
+    padding: 10px 20px;
+    border: 1px dashed #ccc;
+    border-radius: 5px;
+    background-image: url('../../../../assets/images/drag-and-drop.png'); 
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
     width: 100%;
-    min-height: 360px;
+    z-index: -1;
+    min-height: 180px;
+    min-width: 80%;
+  }
+
+  .imageWrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    border: 2px solid black;
+    min-height: 160px;
+    min-width: 80%;
+  }
+
+  .imageWrapper img{
+    max-width: 90%;
+    z-index: 10;
   }
   
