@@ -1,4 +1,4 @@
-import { ApplicationConfig, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../../../Services/Auth/auth.service';
 import { Router} from '@angular/router';
@@ -13,55 +13,61 @@ import { Router} from '@angular/router';
 
 export class SignUpComponent implements OnInit{
 
-  constructor(private _AuthService:AuthService, private _Router:Router) { }
-
   error:string = '';
   isLoading:boolean = false;
+
+  constructor(private _AuthService:AuthService, private _Router:Router) { }
+  ngOnInit(): void {
+  }
+  
   
   registerForm:FormGroup = new FormGroup({
-    first_name: new FormControl(null, [Validators.minLength(4), Validators.required]),
-    last_name: new FormControl(null, [Validators.minLength(4), Validators.required]),
     email: new FormControl(null, [Validators.required, Validators.email]),
     Password: new FormControl(null, [Validators.required]),
-    confirmPassword: new FormControl(null, [Validators.required]),
-    Role: new FormControl('Guest'),
+    firstName: new FormControl(null, [Validators.minLength(4), Validators.required]),
+    lastName: new FormControl(null, [Validators.minLength(4), Validators.required]),
+    RoleName: new FormControl(null,[Validators.required]),
+    Role: new FormControl(1),
   });
-  SubmitClientRegisterForm(registerForm: FormGroup)
+
+  RegisterForm(registerForm: FormGroup)
   {
     console.log(registerForm.value);
     this.isLoading = true;
     this._AuthService.clientSignUp(registerForm.value).subscribe({
-      next:(response)=>{
+      next:(Response)=>{
         this.isLoading = false;
-        if(response.message === 'success')
+        console.log(Response)
+        if(Response.message === "User created successfully!.")
         {
-           this._Router.navigate(['/login']);
+            this._Router.navigate(["/Login"])
         }
         else
         {
-          this.error = response.message
+          this.error = Response.message
         }
       }
     })
   }
 
-  SubmitHostregisterForm(registerForm: FormGroup) {
+  Hostregisteration(registerForm: FormGroup)
+  {
+    console.log(registerForm.value);
+    this.isLoading = true;
     this._AuthService.HostSignUp(registerForm.value).subscribe({
-      next:(response)=>{
-        if(response.message === 'success')
+      next:(Response)=>{
+        this.isLoading = false;
+        console.log(Response)
+        if(Response.message === "User created successfully!")
         {
-          this._Router.navigate(['./src/app/Pages/home'])
+            this._Router.navigate(["/Home"])
         }
         else
         {
-          this.error = response.message
+          this.error = Response.message
         }
       }
     })
-  }
-  
-  ngOnInit(): void{
-
   }
 
 }
