@@ -41,6 +41,7 @@ import { ClientLayoutComponent } from './Layouts/client-layout/client-layout.com
 import { AdminLayoutComponent } from './Layouts/admin-layout/admin-layout.component';
 import { HostLayoutComponent } from './Layouts/host-layout/host-layout.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { EditPlaceComponent } from './Pages/Place/edit-place/edit-place.component';
 // register Swiper custom elements
 register();
 
@@ -79,6 +80,7 @@ register();
     ClientLayoutComponent,
     AdminLayoutComponent,
     HostLayoutComponent,
+    EditPlaceComponent,
   ],
   imports: [
     BrowserModule,

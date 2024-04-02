@@ -1,20 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import {
   FormGroup,
   FormBuilder,
   Validators,
   FormControl,
+  SelectControlValueAccessor,
 } from '@angular/forms';
 import { throwError } from 'rxjs';
+import { CssSelector } from '@angular/compiler';
 @Component({
-  selector: 'app-add-place',
-  templateUrl: './add-place.component.html',
-  styleUrl: './add-place.component.css',
+  selector: 'app-edit-place',
+  templateUrl: './edit-place.component.html',
+  styleUrl: './edit-place.component.css',
 })
-export class AddPlaceComponent {
+export class EditPlaceComponent {
   //array of selected imagess
   previewUrls: string[] = [];
+  intialValues: any;
 
   //on selection function to handle preview
   onFilesSelected(event: any) {
@@ -51,7 +54,6 @@ export class AddPlaceComponent {
     }
   }
 
-  //on files drop into input cancel select if any file is not a picture
   onFileDrop(event: any) {
     const files = event.dataTransfer.files;
     for (const file of files) {
@@ -64,27 +66,36 @@ export class AddPlaceComponent {
     }
   }
 
-  ngOnInit() {
-    this.resetForm();
-    this.previewUrls = [];
-
+  onEditClick(event: any){
+    let Pic=document.getElementById("editableImg");
+    Pic?.setAttribute("src", '');
+    this.onEditSelect();
   }
 
-  AddPlaceForm: FormGroup = new FormGroup({
+
+  onEditSelect(){
+    console.log("Inside Edit Select Function");
+    var selectBox= <HTMLSelectElement>document.getElementById("editableImg")!;
+    selectBox.disabled=false;
+  }
+  
+  ngOnInit() {
+    this.intialValues = this.editplaceform.value;
+    this.editplaceform.reset();
+    this.previewUrls = [];
+  }
+
+  editplaceform: FormGroup = new FormGroup({
     //name control
     PlaceName: new FormControl(null, [
       Validators.minLength(3),
-
-      Validators.required,
       Validators.maxLength(50),
+      // Validators.required
     ]),
     //price control
-    PlacePrice: new FormControl(null, [Validators.required, Validators.min(1)]),
+    PlacePrice: new FormControl(null, [Validators.min(1)]),
     //location control
-    PlaceLocation: new FormControl(null, [
-      Validators.maxLength(256),
-      Validators.required,
-    ]),
+    PlaceLocation: new FormControl(null, [Validators.maxLength(256)]),
     //location description
     PlaceDescription: new FormControl(null, [
       Validators.required,
@@ -93,23 +104,25 @@ export class AddPlaceComponent {
     //place capacity
     PlaceCapacity: new FormControl(null, [
       Validators.min(1),
-      Validators.required,
+      // Validators.required,
     ]),
     //place category
-    PlaceCategory: new FormControl(null, [Validators.required]),
+    PlaceCategory: new FormControl(null),
     //place images
-    PlaceImages: new FormControl(null, [Validators.required]),
+    PlaceImages: new FormControl(null),
   });
 
   constructor(private fb: FormBuilder) {}
 
-  submitForm(): void {
-    if (this.AddPlaceForm.invalid) return;
-    console.log(`You submitted: ${JSON.stringify(this.AddPlaceForm.value)}`);
-  }
-
   resetForm(): void {
-    this.AddPlaceForm.reset();
+    this.editplaceform.reset();
+
+    //to remove older images preview not the images themselves
+    const oldImages = document.getElementsByClassName('oldImages');
+
+    while (oldImages.length > 0) {
+      oldImages[0].remove(); // Remove the first element each time
+    }
     this.previewUrls = [];
   }
 }

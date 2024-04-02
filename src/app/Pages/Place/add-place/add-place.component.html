@@ -6,11 +6,11 @@
         <div class="mb-3 mx-auto">
           <div class="text-center p-4 p-sm-5">
             <!-- Form Header -->
-            <div class="d-flex flex-column p-2 m-2">
-              <h4 class="card-title text p-sm-4 text-danger">
+            <div class="d-flex flex-column p-2 m-2 bg-light">
+              <h4 class=" text p-sm-4 text-danger">
                 Add a New Place to Our Website
               </h4>
-              <p class="card-text fw-semibold">
+              <p class=" fw-semibold">
                 Enter the details of your property below to ask for approval
               </p>
             </div>
@@ -44,6 +44,7 @@
                     <label for="PlaceImages" class="form-label">Images</label>
                     <input
                       type="file"
+                      accept="image/*"
                       name="PlaceImages"
                       id="PlaceImages"
                       class="form-control"
@@ -51,14 +52,14 @@
                       placeholder="inesrt your image files here "
                       aria-describedby="helpId"
                       (change)="onFilesSelected($event)"
+                      (drop)="onFileDrop( $event )"
                       multiple
-                      accept="image/*"
                     />
                     <div class="d-flex flex-column text-danger">
                       <small
                         *ngIf="AddPlaceForm.get('PlaceImages')?.errors?.['required']"
                       >
-                        Upload one image at least</small
+                        Upload 5 images at least</small
                       >
                     </div>
                   </div>
@@ -70,7 +71,7 @@
                         *ngFor="let previewUrl of previewUrls; let i = index"
                         [src]="previewUrl"
                         alt="Image Preview"
-                        class="rounded img-thumbnail imageWrapper"
+                        class="rounded img-thumbnail col-lg-4 col-md-4 col-sm-4"
                       />
                     </div>
                   </div>
@@ -109,13 +110,14 @@
                     <textarea
                       class="form-control"
                       name="PlaceDescription"
+                      formControlName="PlaceDescription"
                       id="PlaceDescription"
                       placeholder="Write a short description of the place..."
                       rows="3"
                     ></textarea>
 
                     <small>
-                      256 characters at max, this will be shown in search
+                      1000 characters at max, this will be shown in search
                       results.
                     </small>
                   </div>
@@ -148,7 +150,7 @@
                       name="PlaceCategory"
                       formControlName="PlaceCategory"
                     >
-                      <option value="Cat1" selected>Select a Category</option>
+                      <option value="Cat1">Select a Category</option>
                       <option value="Cat2">Action</option>
                       <option value="Cat3">Disabled (Optional)</option>
                     </select>
@@ -180,6 +182,12 @@
                     </small>
                   </div>
                 </div>
+              </div>
+              <!-- Reset Button -->
+              <div class="d-flex justify-content-end mt-4">
+                <button type="button" class="btn btn-danger rounded mt-4" (click)="resetForm()">
+                  Reset Form
+                </button>
               </div>
               <!-- Submit Button -->
               <div class="d-flex justify-content-end mt-4">

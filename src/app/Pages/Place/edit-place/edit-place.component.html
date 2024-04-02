@@ -1,0 +1,299 @@
+<!--start wrapper-->
+<div class="d-flex flex-column min-vh-100 justify-content-center">
+  <div class="container p-4">
+    <div class="row justify-content-center">
+      <div class="col-md-9 col-lg-9 col-sm-10">
+        <div class="mb-3 mx-auto">
+          <div class="text-center p-4 p-sm-5">
+            <!-- Form Header -->
+            <div class="d-flex flex-column p-2 m-2 bg-light rounded">
+              <h4 class="text p-sm-4 text-danger">Edit Property Details</h4>
+              <p class="fw-semibold">Choose what to edit below</p>
+            </div>
+
+            <!--Start Form-->
+            <form [formGroup]="editplaceform">
+              <div class="container">
+                <div class="p-sm-2 text-start">
+                  <!-- Property Name-->
+                  <div class="mb-3">
+                    <label for="PlaceName" class="form-label">Name</label>
+                    <input
+                      type="text"
+                      name="PlaceName"
+                      id="PlaceName"
+                      class="form-control"
+                      formControlName="PlaceName"
+                      placeholder="etc"
+                      aria-describedby="helpId"
+                    />
+                    <div class="d-flex text-danger flex-column">
+                      <small
+                        *ngIf="editplaceform.get('PlaceName')?.errors?.['required'] || editplaceform.get('PlaceName')?.errors?.['minLength']"
+                      >
+                        Name is required and must be at least 3 characters long.
+                      </small>
+                    </div>
+                  </div>
+
+                  <!-- Place Images -->
+                  <div class="mb-3">
+                    <label for="PlaceImages" class="form-label">Images</label>
+                    <input
+                      type="file"
+                      accept="image/*"
+                      name="PlaceImages"
+                      id="PlaceImages"
+                      class="form-control"
+                      formControlName="PlaceImages"
+                      placeholder="inesrt your image files here "
+                      aria-describedby="helpId"
+                      (change)="onFilesSelected($event)"
+                      (drop)="onFileDrop($event)"
+                      multiple
+                    />
+                  </div>
+                  <!-- Images Preview -->
+                  <label for="imagesPreview">Selected Images Preview</label>
+                  <div
+                    class="container d-flex flex-wrap gap-2 imagesPreview justify-content-center"
+                  >
+                    <!-- Image with absolute button div -->
+                    <div
+                      class="d-flex flex-wrap justify-content-start editImageDiv col-lg-3 col-md-3 col-sm-3"
+                    >
+                      <img
+                        class="imageWrapper"
+                        id="editableImg"
+                        src="../../../../assets/11668755_20945761.jpg"
+                        alt=""
+                      />
+                      <button
+                        type="button"
+                        class="rounded bg-danger text-white editImageBtn"
+                        (click)="onEditClick($event)"
+                      >
+                        <i class="fas fa-file-edit fa-xs"></i>
+                        edit
+                      </button>
+                    </div>
+                    <!-- end of img with btn -->
+                    <div
+                      class="d-flex flex-wrap justify-content-start editImageDiv col-lg-3 col-md-3 col-sm-3"
+                    >
+                      <img
+                        class="imageWrapper"
+                        src="../../../../assets/11668755_20945761.jpg"
+                        alt=""
+                      />
+                      <button
+                        type="button"
+                        class="rounded bg-danger text-white editImageBtn"
+                      >
+                        <i class="fas fa-file-edit fa-xs"></i>
+                        edit
+                      </button>
+                    </div>
+                    <div
+                      class="d-flex flex-wrap justify-content-start editImageDiv col-lg-3 col-md-3 col-sm-3"
+                    >
+                      <img
+                        class="imageWrapper"
+                        src="../../../../assets/11668755_20945761.jpg"
+                        alt=""
+                      />
+                      <button
+                        type="button"
+                        class="rounded bg-danger text-white editImageBtn"
+                      >
+                        <i class="fas fa-file-edit fa-xs"></i>
+                        edit
+                      </button>
+                    </div>
+                    <div
+                      class="d-flex flex-wrap justify-content-start editImageDiv col-lg-3 col-md-3 col-sm-3"
+                    >
+                      <img
+                        class="imageWrapper"
+                        src="../../../../assets/11668755_20945761.jpg"
+                        alt=""
+                      />
+                      <button
+                        type="button"
+                        class="rounded bg-danger text-white editImageBtn"
+                      >
+                        <i class="fas fa-file-edit fa-xs"></i>
+                        edit
+                      </button>
+                    </div>
+                    <div
+                      class="d-flex flex-wrap justify-content-start editImageDiv col-lg-3 col-md-3 col-sm-3"
+                    >
+                      <img
+                        class="imageWrapper"
+                        src="../../../../assets/11668755_20945761.jpg"
+                        alt=""
+                      />
+                      <button
+                        type="button"
+                        class="rounded bg-danger text-white editImageBtn"
+                      >
+                        <i class="fas fa-file-edit fa-xs"></i>
+                        edit
+                      </button>
+                    </div>
+                    <div
+                      class="d-flex flex-wrap justify-content-start editImageDiv col-lg-3 col-md-3 col-sm-3"
+                    >
+                      <img
+                        class="imageWrapper"
+                        src="../../../../assets/11668755_20945761.jpg"
+                        alt=""
+                      />
+                      <button
+                        type="button"
+                        class="rounded bg-danger text-white editImageBtn"
+                      >
+                        <i class="fas fa-file-edit fa-xs"></i>
+                        edit
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- Place Location -->
+                  <div class="mb-3">
+                    <label for="PlaceLocation" class="form-label"
+                      >Location</label
+                    >
+                    <input
+                      type="text"
+                      name="PlaceLocation"
+                      id="PlaceLocation"
+                      class="form-control"
+                      formControlName="PlaceLocation"
+                      placeholder="etc"
+                      aria-describedby="helpId"
+                    />
+                    <div class="d-flex text-danger flex-column">
+                      <small
+                        *ngIf="editplaceform.get('PlaceLocation')?.errors?.['required']"
+                      >
+                        Location is required </small
+                      ><br />
+                      <small
+                        *ngIf="editplaceform.get('PlaceLocation')?.errors?.['maxLength']"
+                      >
+                        No more than 100 characters allowed for location
+                      </small>
+                    </div>
+                  </div>
+                  <!-- Location iframe -->
+                  <div class="container">
+                    <iframe
+                    width="600"
+                    height="400"
+                    id="map"
+                    src="**PASTE_IFRAME_CODE_HERE**"
+                    frameborder="0"
+                    allowfullscreen
+                    aria-label="Map of Egypt"
+                  ></iframe>
+                  </div>
+                  
+
+                  <!-- Place Description -->
+                  <div class="mb-3">
+                    <label for="PlaceDescription" class="form-label"
+                      >Description</label
+                    >
+                    <textarea
+                      class="form-control"
+                      name="PlaceDescription"
+                      formControlName="PlaceDescription"
+                      id="PlaceDescription"
+                      placeholder="Write a short description of the place..."
+                      rows="3"
+                    ></textarea>
+
+                    <small
+                      *ngIf="
+                        editplaceform
+                          .get('PlaceDescription')
+                          ?.hasError('required' || 'maxLength')
+                      "
+                    >
+                      this field is required. 1000 characters at max, this will
+                      be shown in search results.
+                    </small>
+                  </div>
+                  <!-- Property Price -->
+                  <div class="mb-3">
+                    <label for="PlacePrice" class="form-label">Price</label>
+                    <input
+                      type="number"
+                      name="PlacePrice"
+                      id="PlacePrice"
+                      class="form-control"
+                      formControlName="PlacePrice"
+                      placeholder="etc"
+                      aria-describedby="helpId"
+                    />
+                  </div>
+                  <!-- Category -->
+                  <div class="mb-3">
+                    <label for="PlaceCategory">Choose Place Category</label>
+                    <select
+                      title="Choose Place Category"
+                      class="form-control"
+                      id="PlaceCategory"
+                      name="PlaceCategory"
+                      formControlName="PlaceCategory"
+                    >
+                      <option value="Cat1">Select a Category</option>
+                      <option value="Cat2">Action</option>
+                      <option value="Cat3">Disabled (Optional)</option>
+                    </select>
+                  </div>
+                  <!-- Capacity -->
+                  <div class="mb-3">
+                    <label for="" class="form-label">Capacity</label>
+                    <input
+                      type="number"
+                      name="PlaceCapacity"
+                      id="PlaceCapacity"
+                      class="form-control"
+                      formControlName="PlaceCapacity"
+                      placeholder="etc"
+                      aria-describedby="helpId"
+                    />
+                  </div>
+                </div>
+              </div>
+              <!-- Reset Button -->
+              <div class="d-flex justify-content-end mt-4">
+                <button
+                  type="button"
+                  class="btn btn-danger rounded mt-4"
+                  (click)="resetForm()"
+                >
+                  Reset Form
+                </button>
+              </div>
+              <!-- Submit Button -->
+              <div class="d-flex justify-content-end mt-4">
+                <button
+                  type="submit"
+                  class="btn btn-danger rounded mt-4"
+                  [disabled]="!editplaceform.valid"
+                >
+                  Confirm Modifications
+                </button>
+              </div>
+            </form>
+            <!--end of form-->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

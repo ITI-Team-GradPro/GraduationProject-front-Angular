@@ -23,6 +23,7 @@ import { HelpComponent } from './Pages/Profile/help/help.component';
 import { AuthLayoutComponent } from './Layouts/auth-layout/auth-layout.component';
 import { ClientLayoutComponent } from './Layouts/client-layout/client-layout.component';
 import { AddPlaceComponent } from './Pages/Place/add-place/add-place.component';
+import { EditPlaceComponent } from './Pages/Place/edit-place/edit-place.component';
 const routes: Routes = [
 
 // Start Client LayOut 
@@ -64,6 +65,8 @@ const routes: Routes = [
 
 // start Host Layout
 {path : "AddPlace" , component : AddPlaceComponent },
+{path: "editplace" , component : EditPlaceComponent },
+
 // end Host Layout
 // End Host Layout
 
