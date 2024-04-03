@@ -1,17 +1,18 @@
 <!--start wrapper-->
-<div class="d-flex flex-column min-vh-100 justify-content-center">
+<div class="d-flex flex-column min-vh-100 justify-content-center bg">
   <div class="container p-4">
     <div class="row justify-content-center">
-      <div class="col-md-9 col-lg-9 col-sm-10">
+      <div class="col-md-9 col-lg-8 col-sm-10">
         <div class="mb-3 mx-auto">
-          <div class="text-center p-4 p-sm-5">
+          <div class="card rounded shadow text-center p-4 p-sm-5">
             <!-- Form Header -->
-            <div class="d-flex flex-column p-2 m-2 bg-light">
+            <div class="d-flex flex-column p-2 m-2 rounded bg-light">
               <h4 class="text p-sm-4 text-danger">
-                Add a New Place to Our Website
+                Add a New Property to
+                <span class="text-danger fw-bold">Event.ly</span>
               </h4>
               <p class="fw-semibold">
-                Enter the details of your property below to ask for approval
+                Enter the details of your property below
               </p>
             </div>
 
@@ -28,7 +29,7 @@
                       id="PlaceName"
                       class="form-control"
                       formControlName="PlaceName"
-                      placeholder="etc"
+                      placeholder="Your Property Name"
                       aria-describedby="helpId"
                     />
                     <div class="d-flex text-danger flex-column">
@@ -39,6 +40,7 @@
                       </small>
                     </div>
                   </div>
+
                   <!-- Place Images -->
                   <div class="mb-3">
                     <label for="PlaceImages" class="form-label">Images</label>
@@ -49,7 +51,6 @@
                       id="PlaceImages"
                       class="form-control"
                       formControlName="PlaceImages"
-                      placeholder="inesrt your image files here "
                       aria-describedby="helpId"
                       (change)="onFilesSelected($event)"
                       (drop)="onFileDrop($event)"
@@ -59,13 +60,14 @@
                       <small
                         *ngIf="AddPlaceForm.get('PlaceImages')?.errors?.['required']"
                       >
-                        Upload 5 images at least</small
+                        Uploading 5 images at least is required</small
                       >
                     </div>
                   </div>
+
                   <!-- Images Preview -->
                   <label for="imagesPreview">Images Preview</label>
-                  <div class="imagesPreview my-2">
+                  <div class="imagesPreview my-2 bg-light">
                     <div class="imageWrapper justify-content-center d-flex">
                       <img
                         *ngFor="let previewUrl of previewUrls; let i = index"
@@ -78,6 +80,10 @@
 
                   <!-- Location iframe -->
                   <div style="width: 100%">
+                    <small class="text-muted">
+                      Click on view larger map in the frame below to get the location of your place as a link and
+                      copy it in location input.
+                    </small>
                     <iframe
                       width="100%"
                       height="480"
@@ -86,10 +92,7 @@
                       marginheight="0"
                       marginwidth="0"
                       src="https://maps.google.com/maps?width=100%25&amp;height=480&amp;hl=en&amp;q=Alexandria,%20Egypt.+(Evently)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
-                      ><a href="https://www.gps.ie/"
-                        >gps tracker sport</a
-                      ></iframe
-                    >
+                    ></iframe>
                   </div>
 
                   <!-- Place Location -->
@@ -103,7 +106,7 @@
                       id="PlaceLocation"
                       class="form-control"
                       formControlName="PlaceLocation"
-                      placeholder="etc"
+                      placeholder="Your Property's Location"
                       aria-describedby="helpId"
                     />
                     <div class="d-flex text-danger flex-column">
@@ -112,13 +115,10 @@
                       >
                         Location is required </small
                       ><br />
-                      <small
-                        *ngIf="AddPlaceForm.get('PlaceLocation')?.errors?.['maxLength']"
-                      >
-                        No more than 100 characters allowed for location
-                      </small>
+                      
                     </div>
                   </div>
+
                   <!-- Place Description -->
                   <div class="mb-3">
                     <label for="PlaceDescription" class="form-label"
@@ -133,6 +133,13 @@
                       rows="3"
                     ></textarea>
 
+                    <small
+                      class="text-danger"
+                      *ngIf="AddPlaceForm.get('PlaceDescription')?.errors?.['required']"
+                    >
+                      Description is required
+                    </small>
+
                     <small>
                       1000 characters at max, this will be shown in search
                       results.
@@ -146,7 +153,7 @@
                       name="PlacePrice"
                       id="PlacePrice"
                       class="form-control"
-                      formControlName="PlacePrice"
+                      formControlName="9999"
                       placeholder="etc"
                       aria-describedby="helpId"
                     />
@@ -188,7 +195,7 @@
                       id="PlaceCapacity"
                       class="form-control"
                       formControlName="PlaceCapacity"
-                      placeholder="etc"
+                      placeholder="999"
                       aria-describedby="helpId"
                     />
                     <small

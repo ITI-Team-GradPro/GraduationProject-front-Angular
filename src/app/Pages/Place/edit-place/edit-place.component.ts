@@ -54,6 +54,7 @@ export class EditPlaceComponent {
     }
   }
 
+
   onFileDrop(event: any) {
     const files = event.dataTransfer.files;
     for (const file of files) {
@@ -66,18 +67,11 @@ export class EditPlaceComponent {
     }
   }
 
-  onEditClick(event: any){
-    let Pic=document.getElementById("editableImg");
-    Pic?.setAttribute("src", '');
-    this.onEditSelect();
-  }
-
-
-  onEditSelect(){
-    console.log("Inside Edit Select Function");
-    var selectBox= <HTMLSelectElement>document.getElementById("editableImg")!;
-    selectBox.disabled=false;
-  }
+  // onEditClick(event: any){
+  //   let Pic=document.getElementById("editableImg");
+  //   Pic?.setAttribute("src", '');
+  //   this.onEditSelect();
+  // }
   
   ngOnInit() {
     this.intialValues = this.editplaceform.value;
@@ -116,13 +110,12 @@ export class EditPlaceComponent {
 
   resetForm(): void {
     this.editplaceform.reset();
-
     //to remove older images preview not the images themselves
-    const oldImages = document.getElementsByClassName('oldImages');
+    // const oldImages = document.getElementsByClassName('oldImages');
 
-    while (oldImages.length > 0) {
-      oldImages[0].remove(); // Remove the first element each time
-    }
-    this.previewUrls = [];
+    // while (oldImages.length > 0) {
+    //   oldImages[0].remove(); // Remove the first element each time
+    // }
+    // this.previewUrls = [];
   }
 }

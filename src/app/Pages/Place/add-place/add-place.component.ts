@@ -19,12 +19,13 @@ export class AddPlaceComponent {
   //on selection function to handle preview
   onFilesSelected(event: any) {
     this.previewUrls = []; // Reset previewUrls on new selection
-    const files = event.target.files;
+    let files = event.target.files;
     if (files.length < 5) {
+      this.resetForm();
       alert('Please select at least 5 images');
-      event.target.value = null;
       return;
-    } else {
+    } 
+    else {
       for (const file of files) {
         //allowed formats
         const validImageTypes = [
@@ -54,6 +55,13 @@ export class AddPlaceComponent {
   //on files drop into input cancel select if any file is not a picture
   onFileDrop(event: any) {
     const files = event.dataTransfer.files;
+    if(files.length < 5){
+      alert('You must upload 5 images at least');
+      files.forEach(()=>{
+        event.dataTransfer.items.remove(event.dataTransfer.items.get(0));
+      });
+      return;
+    }
     for (const file of files) {
       if (!(file instanceof File && file.type.match('image.*'))) {
         alert(
@@ -64,25 +72,20 @@ export class AddPlaceComponent {
     }
   }
 
-  ngOnInit() {
+  ngOnInit() {//on intialization of form
     this.resetForm();
-    this.previewUrls = [];
-
   }
 
   AddPlaceForm: FormGroup = new FormGroup({
     //name control
     PlaceName: new FormControl(null, [
       Validators.minLength(3),
-
       Validators.required,
-      Validators.maxLength(50),
     ]),
     //price control
     PlacePrice: new FormControl(null, [Validators.required, Validators.min(1)]),
     //location control
     PlaceLocation: new FormControl(null, [
-      Validators.maxLength(256),
       Validators.required,
     ]),
     //location description
@@ -103,10 +106,10 @@ export class AddPlaceComponent {
 
   constructor(private fb: FormBuilder) {}
 
-  submitForm(): void {
-    if (this.AddPlaceForm.invalid) return;
-    console.log(`You submitted: ${JSON.stringify(this.AddPlaceForm.value)}`);
-  }
+  // submitForm(): void {
+  //   if (this.AddPlaceForm.invalid) return;
+  //   console.log(`You submitted: ${JSON.stringify(this.AddPlaceForm.value)}`);
+  // }
 
   resetForm(): void {
     this.AddPlaceForm.reset();

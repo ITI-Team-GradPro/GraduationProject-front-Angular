@@ -1,3 +1,11 @@
+.bg{
+  background-image: url(../../../../assets/Imgs/hero1.jpg);
+}
+
+/* #formHeader{
+  background-image: linear-gradient(to bottom, rgba(62, 62, 62, 0.555), rgb(206, 206, 206));
+} */
+
 #PlaceImages {
     padding: 10px 20px;
     border: 1px solid #ccc;
