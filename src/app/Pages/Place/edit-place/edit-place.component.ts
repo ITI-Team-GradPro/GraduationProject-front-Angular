@@ -24,8 +24,8 @@ export class EditPlaceComponent {
     this.previewUrls = []; // Reset previewUrls on new selection
     const files = event.target.files;
     if (files.length < 5) {
+      this.resetForm();
       alert('Please select at least 5 images');
-      event.target.value = null;
       return;
     } else {
       for (const file of files) {
@@ -82,9 +82,7 @@ export class EditPlaceComponent {
   editplaceform: FormGroup = new FormGroup({
     //name control
     PlaceName: new FormControl(null, [
-      Validators.minLength(3),
-      Validators.maxLength(50),
-      // Validators.required
+      Validators.minLength(3)
     ]),
     //price control
     PlacePrice: new FormControl(null, [Validators.min(1)]),

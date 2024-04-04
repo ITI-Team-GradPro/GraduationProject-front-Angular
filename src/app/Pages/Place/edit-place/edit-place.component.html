@@ -35,7 +35,11 @@
                       </small>
                     </div>
                   </div>
-
+                  <small class="text-danger"
+                    *ngIf="editplaceform.get('PlaceName')?.invalid||editplaceform.get('PlaceName')?.untouched"
+                  >
+                    The property's name is required and must be at least 3 characters long
+                  </small>
                   <!-- Place Images -->
                   <div class="mb-3">
                     <label for="PlaceImages" class="form-label">Images</label>
@@ -160,6 +164,11 @@
 
                   <!-- Location iframe -->
                   <div class="container my-2" style="width: 100%">
+                    <small class="text-muted">
+                      Click on view larger map in the frame below to get the
+                      location of your place as a link and copy it in location
+                      input.
+                    </small>
                     <iframe
                       width="100%"
                       height="480"
@@ -167,7 +176,6 @@
                       scrolling="no"
                       marginheight="0"
                       marginwidth="0"
-                      
                       src="https://maps.google.com/maps?width=100%25&amp;height=480&amp;hl=en&amp;q=Alexandria,%20Egypt.+(Evently)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
                     ></iframe>
                   </div>
