@@ -17,24 +17,24 @@
             </div>
 
             <!--Start Form-->
-            <form [formGroup]="AddPlaceForm">
+            <form (ngSubmit)="AddPlaces(AddPlaceForm)" [formGroup]="AddPlaceForm">
               <div class="container">
                 <div class="p-sm-2 text-start">
                   <!-- Property Name-->
                   <div class="mb-3">
-                    <label for="PlaceName" class="form-label">Name</label>
+                    <label for="Name" class="form-label">Name</label>
                     <input
                       type="text"
-                      name="PlaceName"
+                      name="Name"
                       id="PlaceName"
                       class="form-control"
-                      formControlName="PlaceName"
+                      formControlName="Name"
                       placeholder="Your Property Name"
                       aria-describedby="helpId"
                     />
                     <div class="d-flex text-danger flex-column">
                       <small
-                        *ngIf="AddPlaceForm.get('PlaceName')?.errors?.['required'] || AddPlaceForm.get('PlaceName')?.errors?.['minLength']"
+                        *ngIf="AddPlaceForm.get('Name')?.errors?.['required'] || AddPlaceForm.get('Name')?.errors?.['minLength']"
                       >
                         Name is required and must be at least 3 characters long.
                       </small>
@@ -43,14 +43,14 @@
 
                   <!-- Place Images -->
                   <div class="mb-3">
-                    <label for="PlaceImages" class="form-label">Images</label>
+                    <label for="files" class="form-label">files</label>
                     <input
                       type="file"
-                      accept="image/*"
-                      name="PlaceImages"
+                      accept="files/*"
+                      name="files"
                       id="PlaceImages"
                       class="form-control"
-                      formControlName="PlaceImages"
+                      formControlName="files"
                       aria-describedby="helpId"
                       (change)="onFilesSelected($event)"
                       (drop)="onFileDrop($event)"
@@ -58,7 +58,7 @@
                     />
                     <div class="d-flex flex-column text-danger">
                       <small
-                        *ngIf="AddPlaceForm.get('PlaceImages')?.errors?.['required']"
+                        *ngIf="AddPlaceForm.get('files')?.errors?.['required']"
                       >
                         Uploading 5 images at least is required</small
                       >
@@ -97,21 +97,21 @@
 
                   <!-- Place Location -->
                   <div class="mb-3">
-                    <label for="PlaceLocation" class="form-label"
+                    <label for="Location" class="form-label"
                       >Location</label
                     >
                     <input
                       type="text"
-                      name="PlaceLocation"
+                      name="Location"
                       id="PlaceLocation"
                       class="form-control"
-                      formControlName="PlaceLocation"
+                      formControlName="Location"
                       placeholder="Your Property's Location"
                       aria-describedby="helpId"
                     />
                     <div class="d-flex text-danger flex-column">
                       <small
-                        *ngIf="AddPlaceForm.get('PlaceLocation')?.errors?.['required']"
+                        *ngIf="AddPlaceForm.get('Location')?.errors?.['required']"
                       >
                         Location is required </small
                       ><br />
@@ -121,21 +121,20 @@
 
                   <!-- Place Description -->
                   <div class="mb-3">
-                    <label for="PlaceDescription" class="form-label"
+                    <label for="Description" class="form-label"
                       >Description</label
                     >
                     <textarea
                       class="form-control"
-                      name="PlaceDescription"
-                      formControlName="PlaceDescription"
+                      name="Description"
+                      formControlName="Description"
                       id="PlaceDescription"
                       placeholder="Write a short description of the place..."
-                      rows="3"
                     ></textarea>
 
                     <small
                       class="text-danger"
-                      *ngIf="AddPlaceForm.get('PlaceDescription')?.errors?.['required']"
+                      *ngIf="AddPlaceForm.get('Description')?.errors?.['required']"
                     >
                       Description is required
                     </small>
@@ -147,32 +146,32 @@
                   </div>
                   <!-- Property Price -->
                   <div class="mb-3">
-                    <label for="PlacePrice" class="form-label">Price</label>
+                    <label for="Price" class="form-label">Price</label>
                     <input
                       type="number"
-                      name="PlacePrice"
+                      name="Price"
                       id="PlacePrice"
                       class="form-control"
-                      formControlName="9999"
-                      placeholder="etc"
+                      formControlName="Price"
+                      placeholder="Your Property's Location"
                       aria-describedby="helpId"
                     />
                     <small
                       class="text-danger"
-                      *ngIf="AddPlaceForm.get('PlacePrice')?.errors?.['required']"
+                      *ngIf="AddPlaceForm.get('Price')?.errors?.['required']"
                     >
                       Property Price is required
                     </small>
                   </div>
                   <!-- Category -->
                   <div class="mb-3">
-                    <label for="PlaceCategory">Choose Place Category</label>
+                    <label for="CategoryName">Choose Place Category</label>
                     <select
                       title="Choose Place Category"
                       class="form-control"
                       id="PlaceCategory"
-                      name="PlaceCategory"
-                      formControlName="PlaceCategory"
+                      name="CategoryName"
+                      formControlName="CategoryName"
                     >
                       <option value="Cat1">Select a Category</option>
                       <option value="Cat2">Action</option>
@@ -180,7 +179,7 @@
                     </select>
                     <small
                       class="text-muted"
-                      *ngIf="AddPlaceForm.get('PlaceCategory')?.errors?.['required']"
+                      *ngIf="AddPlaceForm.get('CategoryName')?.errors?.['required']"
                     >
                       Selecting the category of your property from the list
                       provided is required.
@@ -191,16 +190,16 @@
                     <label for="" class="form-label">Capacity</label>
                     <input
                       type="number"
-                      name="PlaceCapacity"
+                      name="PeopleCapacity"
                       id="PlaceCapacity"
                       class="form-control"
-                      formControlName="PlaceCapacity"
+                      formControlName="PeopleCapacity"
                       placeholder="999"
                       aria-describedby="helpId"
                     />
                     <small
                       class="text-danger"
-                      *ngIf="AddPlaceForm.get('PlaceCapacity')?.errors?.['required']"
+                      *ngIf="AddPlaceForm.get('PeopleCapacity')?.errors?.['required']"
                     >
                       Place capacity is required
                     </small>
@@ -222,7 +221,7 @@
                 <button
                   type="submit"
                   class="btn btn-danger rounded mt-4"
-                  [disabled]="!AddPlaceForm.valid"
+                  [disabled]="AddPlaceForm.invalid"
                 >
                   Submit Request
                 </button>

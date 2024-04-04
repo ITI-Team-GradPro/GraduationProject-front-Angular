@@ -7,12 +7,17 @@ import {
   FormControl,
 } from '@angular/forms';
 import { throwError } from 'rxjs';
+import { PlacesService } from '../../../Services/places.service';
+import { LoginService } from '../../../Services/Login/login.service';
+
+
+
 @Component({
   selector: 'app-add-place',
   templateUrl: './add-place.component.html',
   styleUrl: './add-place.component.css',
 })
-export class AddPlaceComponent {
+export class AddPlaceComponent implements OnInit{
   //array of selected imagess
   previewUrls: string[] = [];
 
@@ -71,40 +76,68 @@ export class AddPlaceComponent {
       }
     }
   }
-
+  //userData? : any;
   ngOnInit() {//on intialization of form
+    // this._LoginService.user();
+    // this.userData = this._LoginService.UserData;
     this.resetForm();
   }
 
   AddPlaceForm: FormGroup = new FormGroup({
     //name control
-    PlaceName: new FormControl(null, [
+    Name: new FormControl(null, [
       Validators.minLength(3),
       Validators.required,
     ]),
     //price control
-    PlacePrice: new FormControl(null, [Validators.required, Validators.min(1)]),
+    Price: new FormControl(null, [Validators.required, Validators.min(1)]),
     //location control
-    PlaceLocation: new FormControl(null, [
+    Location: new FormControl(null, [
       Validators.required,
     ]),
     //location description
-    PlaceDescription: new FormControl(null, [
+    Description: new FormControl(null, [
       Validators.required,
       Validators.maxLength(1000),
     ]),
     //place capacity
-    PlaceCapacity: new FormControl(null, [
+    PeopleCapacity: new FormControl(null, [
       Validators.min(1),
       Validators.required,
     ]),
+    OwnerId: new FormControl(),
     //place category
-    PlaceCategory: new FormControl(null, [Validators.required]),
+    CategoryName: new FormControl(null, [Validators.required]),
     //place images
-    PlaceImages: new FormControl(null, [Validators.required]),
+    files: new FormControl(null, [Validators.required]),
   });
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private _PlacesService:PlacesService, private _LoginService:LoginService) {}
+  error:string = '';
+  isLoading:boolean = false;
+  AddPlaces(AddPlaceForm: FormGroup)
+  {
+    console.log(AddPlaceForm.value);
+    //console.log(this.userData);
+    
+    this.isLoading = true;
+    this._PlacesService.AddPlace(AddPlaceForm.value).subscribe({
+      next:(Response)=>{
+        this.isLoading = false;
+        console.log(Response)
+        if(Response.message === "Place Added Successfully.")
+        {
+            // this._PlacesService.navigate(["/Login"])
+            console.log("success");
+            
+        }
+        else
+        {
+          this.error = Response.message
+        }
+      }
+    })
+  }
 
   // submitForm(): void {
   //   if (this.AddPlaceForm.invalid) return;
