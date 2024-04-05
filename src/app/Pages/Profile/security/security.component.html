@@ -17,12 +17,38 @@
         </section>
         <section class="mb-3">
             <div class="btn-group dropend">
-                <button routerLink="/MyProfile/Payment" routerLinkActive="active-parent" type="button" type="button"
-                    class="btn  border-black dropdown-toggle width" data-bs-toggle="dropdown" aria-expanded="false">
+                <button type="button" class="btn border-black dropdown-toggle width" data-bs-toggle="modal" data-bs-target="#changePasswordModal">
                     Change Password
                 </button>
             </div>
         </section>
+        
+        <div class="modal fade" id="changePasswordModal" tabindex="-1" aria-labelledby="changePasswordModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="changePasswordModalLabel">Change Password</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="mb-3">
+                                <label for="oldPassword" class="form-label">Old Password</label>
+                                <input type="password" class="form-control" id="oldPassword" placeholder="Enter your old password">
+                            </div>
+                            <div class="mb-3">
+                                <label for="newPassword" class="form-label">New Password</label>
+                                <input type="password" class="form-control" id="newPassword" placeholder="Enter your new password">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" (click)="changePassword(userData.Id)">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
         <h4 class="mb-3 fw-bold ">Account management</h4>
         <p>Control other options to manage your data, like deleting your account.</p>
         <section class="mb-3 w-100">
@@ -37,5 +63,7 @@
         <section class="mb-3 ">
             <button class="btn text-primary fw-bold btn-outline-none ">Delete Account</button>
         </section>
+
+        
     </div>
 </div>
