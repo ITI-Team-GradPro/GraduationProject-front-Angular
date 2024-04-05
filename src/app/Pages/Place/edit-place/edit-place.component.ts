@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
+import { Cloudinary } from '@cloudinary/url-gen';
+
 import {
   FormGroup,
   FormBuilder,
@@ -9,6 +11,11 @@ import {
 } from '@angular/forms';
 import { throwError } from 'rxjs';
 import { CssSelector } from '@angular/compiler';
+import { PlacesService } from '../../../Services/places.service';
+import { LoginService } from '../../../Services/Login/login.service';
+import { json } from 'stream/consumers';
+import { HttpClient } from '@angular/common/http';
+import { response } from 'express';
 @Component({
   selector: 'app-edit-place',
   templateUrl: './edit-place.component.html',
@@ -17,8 +24,20 @@ import { CssSelector } from '@angular/compiler';
 export class EditPlaceComponent {
   //array of selected imagess
   previewUrls: string[] = [];
-  intialValues: any;
+  intialFormValues: any;
+  
 
+
+
+  ngOnInit() {
+    // const cld = new Cloudinary({ cloud: { cloudName: 'dkqgchxph' } });
+    this._PlacesService.GetPlaceDataById(9).subscribe((response)=>{
+      console.log(response);
+      this.intialFormValues=response;
+    });
+  }
+
+  
   //on selection function to handle preview
   onFilesSelected(event: any) {
     this.previewUrls = []; // Reset previewUrls on new selection
@@ -54,7 +73,6 @@ export class EditPlaceComponent {
     }
   }
 
-
   onFileDrop(event: any) {
     const files = event.dataTransfer.files;
     for (const file of files) {
@@ -67,44 +85,37 @@ export class EditPlaceComponent {
     }
   }
 
-  // onEditClick(event: any){
-  //   let Pic=document.getElementById("editableImg");
-  //   Pic?.setAttribute("src", '');
-  //   this.onEditSelect();
-  // }
-  
-  ngOnInit() {
-    this.intialValues = this.editplaceform.value;
-    this.editplaceform.reset();
-    this.previewUrls = [];
-  }
-
+  //
   editplaceform: FormGroup = new FormGroup({
     //name control
-    PlaceName: new FormControl(null, [
-      Validators.minLength(3)
-    ]),
+    Name: new FormControl(null, [Validators.minLength(3)]),
     //price control
-    PlacePrice: new FormControl(null, [Validators.min(1)]),
+    Price: new FormControl(null, [Validators.min(1)]),
     //location control
-    PlaceLocation: new FormControl(null, [Validators.maxLength(256)]),
+    Location: new FormControl(null),
     //location description
-    PlaceDescription: new FormControl(null, [
+    Description: new FormControl(null, [
       Validators.required,
       Validators.maxLength(1000),
     ]),
     //place capacity
-    PlaceCapacity: new FormControl(null, [
+    PeopleCapacity: new FormControl(null, [
       Validators.min(1),
       // Validators.required,
     ]),
     //place category
-    PlaceCategory: new FormControl(null),
+    CategoryName: new FormControl(null),
     //place images
-    PlaceImages: new FormControl(null),
+    files: new FormControl(null),
   });
 
-  constructor(private fb: FormBuilder) {}
+  //
+  constructor(
+    private fb: FormBuilder,
+    private _PlacesService: PlacesService,
+    private _LoginService: LoginService,
+    private http: HttpClient
+  ) {}
 
   resetForm(): void {
     this.editplaceform.reset();

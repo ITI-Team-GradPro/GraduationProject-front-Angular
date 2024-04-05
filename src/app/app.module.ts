@@ -35,13 +35,18 @@ import { FilterbarComponent } from './Componant/filterbar/filterbar.component';
 import { register } from 'swiper/element/bundle';
 import { PlaceCardComponent } from './Componant/place-card/place-card.component';
 import { FilterModalComponent } from './Componant/filter-modal/filter-modal.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, withFetch } from '@angular/common/http';
 import { AuthLayoutComponent } from './Layouts/auth-layout/auth-layout.component';
 import { ClientLayoutComponent } from './Layouts/client-layout/client-layout.component';
 import { AdminLayoutComponent } from './Layouts/admin-layout/admin-layout.component';
 import { HostLayoutComponent } from './Layouts/host-layout/host-layout.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { EditPlaceComponent } from './Pages/Place/edit-place/edit-place.component';
+// In app.module.ts, import the Cloudinary module:
+import {CloudinaryModule} from '@cloudinary/ng';
+
+
+
 // register Swiper custom elements
 register();
 
@@ -89,6 +94,7 @@ register();
     ReactiveFormsModule,
     HttpClientModule,
     DragDropModule,
+    CloudinaryModule
   ],
   providers: [provideClientHydration()],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

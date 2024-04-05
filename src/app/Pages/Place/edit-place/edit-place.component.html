@@ -11,46 +11,51 @@
               <p class="fw-semibold">Choose what to edit below</p>
             </div>
 
+            <div class="container">
+              <p class="text-danger" >
+                {{intialFormValues}}
+              </p>
+            </div>
             <!--Start Form-->
             <form [formGroup]="editplaceform">
               <div class="container">
                 <div class="p-sm-2 text-start">
                   <!-- Property Name-->
                   <div class="mb-3">
-                    <label for="PlaceName" class="form-label">Name</label>
+                    <label for="Name" class="form-label">Name</label>
                     <input
                       type="text"
-                      name="PlaceName"
+                      name="Name"
                       id="PlaceName"
                       class="form-control"
-                      formControlName="PlaceName"
-                      placeholder="etc"
+                      formControlName="Name"
+                      placeholder="name"
                       aria-describedby="helpId"
                     />
                     <div class="d-flex text-danger flex-column">
                       <small
-                        *ngIf="editplaceform.get('PlaceName')?.errors?.['required'] || editplaceform.get('PlaceName')?.errors?.['minLength']"
+                        class="text-danger"
+                        *ngIf="
+                          editplaceform.get('Name')?.invalid ||
+                          editplaceform.get('Name')?.untouched
+                        "
                       >
-                        Name is required and must be at least 3 characters long.
+                        The property's name is required and must be at least 3
+                        characters long
                       </small>
                     </div>
                   </div>
-                  <small class="text-danger"
-                    *ngIf="editplaceform.get('PlaceName')?.invalid||editplaceform.get('PlaceName')?.untouched"
-                  >
-                    The property's name is required and must be at least 3 characters long
-                  </small>
+
                   <!-- Place Images -->
                   <div class="mb-3">
-                    <label for="PlaceImages" class="form-label">Images</label>
+                    <label for="files" class="form-label">Images</label>
                     <input
                       type="file"
                       accept="image/*"
-                      name="PlaceImages"
+                      name="files"
                       id="PlaceImages"
                       class="form-control"
-                      formControlName="PlaceImages"
-                      placeholder="inesrt your image files here "
+                      formControlName="files"
                       aria-describedby="helpId"
                       (change)="onFilesSelected($event)"
                       (drop)="onFileDrop($event)"
@@ -66,102 +71,34 @@
                     <div
                       class="d-flex flex-wrap justify-content-start editImageDiv col-lg-3 col-md-3 col-sm-3"
                     >
-                      <img
-                        class="imageWrapper"
-                        id="editableImg"
-                        src="../../../../assets/11668755_20945761.jpg"
-                        alt=""
-                      />
+                      <!-- *ngFor="let image of {{ files }}" -->
+                      <img class="imageWrapper" src=" " alt="" />
                       <input
                         type="file"
                         accept="image/*"
-                        name="PlaceImages"
-                        id="PlaceImages"
+                        name="files"
+                        id="PlaceImagesPreview"
                       />
                     </div>
                     <!-- end of img with btn -->
                     <div
-                      class="d-flex flex-wrap justify-content-start editImageDiv col-lg-3 col-md-3 col-sm-3"
+                    class="d-flex flex-wrap justify-content-start editImageDiv col-lg-3 col-md-3 col-sm-3"
+                  >
+                    <img
+                      class="imageWrapper"
+                      src="../../../../assets/11668755_20945761.jpg"
+                      alt=""
+                    />
+                    <button
+                      type="button"
+                      class="rounded bg-danger text-white editImageBtn"
                     >
-                      <img
-                        class="imageWrapper"
-                        src="../../../../assets/11668755_20945761.jpg"
-                        alt=""
-                      />
-                      <button
-                        type="button"
-                        class="rounded bg-danger text-white editImageBtn"
-                      >
-                        <i class="fas fa-file-edit fa-xs"></i>
-                        edit
-                      </button>
-                    </div>
-                    <div
-                      class="d-flex flex-wrap justify-content-start editImageDiv col-lg-3 col-md-3 col-sm-3"
-                    >
-                      <img
-                        class="imageWrapper"
-                        src="../../../../assets/11668755_20945761.jpg"
-                        alt=""
-                      />
-                      <button
-                        type="button"
-                        class="rounded bg-danger text-white editImageBtn"
-                      >
-                        <i class="fas fa-file-edit fa-xs"></i>
-                        edit
-                      </button>
-                    </div>
-                    <div
-                      class="d-flex flex-wrap justify-content-start editImageDiv col-lg-3 col-md-3 col-sm-3"
-                    >
-                      <img
-                        class="imageWrapper"
-                        src="../../../../assets/11668755_20945761.jpg"
-                        alt=""
-                      />
-                      <button
-                        type="button"
-                        class="rounded bg-danger text-white editImageBtn"
-                      >
-                        <i class="fas fa-file-edit fa-xs"></i>
-                        edit
-                      </button>
-                    </div>
-                    <div
-                      class="d-flex flex-wrap justify-content-start editImageDiv col-lg-3 col-md-3 col-sm-3"
-                    >
-                      <img
-                        class="imageWrapper"
-                        src="../../../../assets/11668755_20945761.jpg"
-                        alt=""
-                      />
-                      <button
-                        type="button"
-                        class="rounded bg-danger text-white editImageBtn"
-                      >
-                        <i class="fas fa-file-edit fa-xs"></i>
-                        edit
-                      </button>
-                    </div>
-                    <div
-                      class="d-flex flex-wrap justify-content-start editImageDiv col-lg-3 col-md-3 col-sm-3"
-                    >
-                      <img
-                        class="imageWrapper"
-                        src="../../../../assets/11668755_20945761.jpg"
-                        alt=""
-                      />
-                      <button
-                        type="button"
-                        class="rounded bg-danger text-white editImageBtn"
-                      >
-                        <i class="fas fa-file-edit fa-xs"></i>
-                        edit
-                      </button>
-                    </div>
+                      <i class="fas fa-file-edit fa-xs"></i>
+                      edit
+                    </button>
                   </div>
-
+                  </div>
+                  
                   <!-- Location iframe -->
                   <div class="container my-2" style="width: 100%">
                     <small class="text-muted">
@@ -182,26 +119,24 @@
 
                   <!-- Place Location -->
                   <div class="mb-3">
-                    <label for="PlaceLocation" class="form-label"
-                      >Location</label
-                    >
+                    <label for="Location" class="form-label">Location</label>
                     <input
                       type="text"
-                      name="PlaceLocation"
+                      name="Location"
                       id="PlaceLocation"
                       class="form-control"
-                      formControlName="PlaceLocation"
-                      placeholder="etc"
+                      formControlName="Location"
+                      placeholder="Location"
                       aria-describedby="helpId"
                     />
                     <div class="d-flex text-danger flex-column">
                       <small
-                        *ngIf="editplaceform.get('PlaceLocation')?.errors?.['required']"
+                        *ngIf="editplaceform.get('Location')?.errors?.['required']"
                       >
                         Location is required </small
                       ><br />
                       <small
-                        *ngIf="editplaceform.get('PlaceLocation')?.errors?.['maxLength']"
+                        *ngIf="editplaceform.get('Location')?.errors?.['maxLength']"
                       >
                         No more than 100 characters allowed for location
                       </small>
@@ -210,22 +145,22 @@
 
                   <!-- Place Description -->
                   <div class="mb-3">
-                    <label for="PlaceDescription" class="form-label"
+                    <label for="Description" class="form-label"
                       >Description</label
                     >
                     <textarea
                       class="form-control"
-                      name="PlaceDescription"
-                      formControlName="PlaceDescription"
+                      name="Description"
+                      formControlName="Description"
                       id="PlaceDescription"
-                      placeholder="Write a short description of the place..."
+                      placeholder="Description"
                       rows="3"
                     ></textarea>
 
                     <small
                       *ngIf="
                         editplaceform
-                          .get('PlaceDescription')
+                          .get('Description')
                           ?.hasError('required' || 'maxLength')
                       "
                     >
@@ -235,30 +170,30 @@
                   </div>
                   <!-- Property Price -->
                   <div class="mb-3">
-                    <label for="PlacePrice" class="form-label">Price</label>
+                    <label for="Price" class="form-label">Price</label>
                     <input
                       type="number"
-                      name="PlacePrice"
+                      name="Price"
                       id="PlacePrice"
                       class="form-control"
-                      formControlName="PlacePrice"
-                      placeholder="etc"
+                      formControlName="Price"
+                      placeholder="Price"
                       aria-describedby="helpId"
                     />
                   </div>
                   <!-- Category -->
                   <div class="mb-3">
-                    <label for="PlaceCategory">Choose Place Category</label>
+                    <label for="CategoryName">Choose Place Category</label>
                     <select
                       title="Choose Place Category"
                       class="form-control"
                       id="PlaceCategory"
-                      name="PlaceCategory"
-                      formControlName="PlaceCategory"
+                      name="CategoryName"
+                      formControlName="CategoryName"
                     >
-                      <option value="Cat1">Select a Category</option>
-                      <option value="Cat2">Action</option>
-                      <option value="Cat3">Disabled (Optional)</option>
+                      <option value="0">Day</option>
+                      <option value="1">Night</option>
+                      <option value="2">All Day (Optional)</option>
                     </select>
                   </div>
                   <!-- Capacity -->
@@ -266,11 +201,11 @@
                     <label for="" class="form-label">Capacity</label>
                     <input
                       type="number"
-                      name="PlaceCapacity"
+                      name="PeopleCapacity"
                       id="PlaceCapacity"
                       class="form-control"
-                      formControlName="PlaceCapacity"
-                      placeholder="etc"
+                      formControlName="PeopleCapacity"
+                      placeholder="PeopleCapacity"
                       aria-describedby="helpId"
                     />
                   </div>
@@ -304,3 +239,84 @@
     </div>
   </div>
 </div>
+
+<!-- <div
+                      class="d-flex flex-wrap justify-content-start editImageDiv col-lg-3 col-md-3 col-sm-3"
+                    >
+                      <img
+                        class="imageWrapper"
+                        src="../../../../assets/11668755_20945761.jpg"
+                        alt=""
+                      />
+                      <button
+                        type="button"
+                        class="rounded bg-danger text-white editImageBtn"
+                      >
+                        <i class="fas fa-file-edit fa-xs"></i>
+                        edit
+                      </button>
+                    </div>
+                    <div
+                      class="d-flex flex-wrap justify-content-start editImageDiv col-lg-3 col-md-3 col-sm-3"
+                    >
+                      <img
+                        class="imageWrapper"
+                        src="../../../../assets/11668755_20945761.jpg"
+                        alt=""
+                      />
+                      <button
+                        type="button"
+                        class="rounded bg-danger text-white editImageBtn"
+                      >
+                        <i class="fas fa-file-edit fa-xs"></i>
+                        edit
+                      </button>
+                    </div>
+                    <div
+                      class="d-flex flex-wrap justify-content-start editImageDiv col-lg-3 col-md-3 col-sm-3"
+                    >
+                      <img
+                        class="imageWrapper"
+                        src="../../../../assets/11668755_20945761.jpg"
+                        alt=""
+                      />
+                      <button
+                        type="button"
+                        class="rounded bg-danger text-white editImageBtn"
+                      >
+                        <i class="fas fa-file-edit fa-xs"></i>
+                        edit
+                      </button>
+                    </div>
+                    <div
+                      class="d-flex flex-wrap justify-content-start editImageDiv col-lg-3 col-md-3 col-sm-3"
+                    >
+                      <img
+                        class="imageWrapper"
+                        src="../../../../assets/11668755_20945761.jpg"
+                        alt=""
+                      />
+                      <button
+                        type="button"
+                        class="rounded bg-danger text-white editImageBtn"
+                      >
+                        <i class="fas fa-file-edit fa-xs"></i>
+                        edit
+                      </button>
+                    </div>
+                    <div
+                      class="d-flex flex-wrap justify-content-start editImageDiv col-lg-3 col-md-3 col-sm-3"
+                    >
+                      <img
+                        class="imageWrapper"
+                        src="../../../../assets/11668755_20945761.jpg"
+                        alt=""
+                      />
+                      <button
+                        type="button"
+                        class="rounded bg-danger text-white editImageBtn"
+                      >
+                        <i class="fas fa-file-edit fa-xs"></i>
+                        edit
+                      </button>
+                    </div> -->
