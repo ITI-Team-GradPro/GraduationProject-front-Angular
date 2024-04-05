@@ -1,55 +1,56 @@
 <!--start wrapper-->
-<div class="d-flex flex-column min-vh-100 justify-content-center">
+<div class="d-flex flex-column min-vh-100 justify-content-center bg">
   <div class="container p-4">
     <div class="row justify-content-center">
-      <div class="col-md-9 col-lg-9 col-sm-10">
+      <div class="col-md-9 col-lg-8 col-sm-10">
         <div class="mb-3 mx-auto">
-          <div class="text-center p-4 p-sm-5">
+          <div class="card rounded shadow text-center p-4 p-sm-5">
             <!-- Form Header -->
-            <div class="d-flex flex-column p-2 m-2 bg-light">
+            <div class="d-flex flex-column p-2 m-2 rounded bg-light">
               <h4 class="text p-sm-4 text-danger">
-                Add a New Place to Our Website
+                Add a New Property to
+                <span class="text-danger fw-bold">Event.ly</span>
               </h4>
               <p class="fw-semibold">
-                Enter the details of your property below to ask for approval
+                Enter the details of your property below
               </p>
             </div>
 
             <!--Start Form-->
-            <form [formGroup]="AddPlaceForm">
+            <form (ngSubmit)="AddPlaces(AddPlaceForm)" [formGroup]="AddPlaceForm">
               <div class="container">
                 <div class="p-sm-2 text-start">
                   <!-- Property Name-->
                   <div class="mb-3">
-                    <label for="PlaceName" class="form-label">Name</label>
+                    <label for="Name" class="form-label">Name</label>
                     <input
                       type="text"
-                      name="PlaceName"
+                      name="Name"
                       id="PlaceName"
                       class="form-control"
-                      formControlName="PlaceName"
-                      placeholder="etc"
+                      formControlName="Name"
+                      placeholder="Your Property Name"
                       aria-describedby="helpId"
                     />
                     <div class="d-flex text-danger flex-column">
                       <small
-                        *ngIf="AddPlaceForm.get('PlaceName')?.errors?.['required'] || AddPlaceForm.get('PlaceName')?.errors?.['minLength']"
+                        *ngIf="AddPlaceForm.get('Name')?.errors?.['required'] || AddPlaceForm.get('Name')?.errors?.['minLength']"
                       >
                         Name is required and must be at least 3 characters long.
                       </small>
                     </div>
                   </div>
+
                   <!-- Place Images -->
                   <div class="mb-3">
-                    <label for="PlaceImages" class="form-label">Images</label>
+                    <label for="files" class="form-label">files</label>
                     <input
                       type="file"
-                      accept="image/*"
-                      name="PlaceImages"
+                      accept="files/*"
+                      name="files"
                       id="PlaceImages"
                       class="form-control"
-                      formControlName="PlaceImages"
-                      placeholder="inesrt your image files here "
+                      formControlName="files"
                       aria-describedby="helpId"
                       (change)="onFilesSelected($event)"
                       (drop)="onFileDrop($event)"
@@ -57,15 +58,16 @@
                     />
                     <div class="d-flex flex-column text-danger">
                       <small
-                        *ngIf="AddPlaceForm.get('PlaceImages')?.errors?.['required']"
+                        *ngIf="AddPlaceForm.get('files')?.errors?.['required']"
                       >
-                        Upload 5 images at least</small
+                        Uploading 5 images at least is required</small
                       >
                     </div>
                   </div>
+
                   <!-- Images Preview -->
                   <label for="imagesPreview">Images Preview</label>
-                  <div class="imagesPreview my-2">
+                  <div class="imagesPreview my-2 bg-light">
                     <div class="imageWrapper justify-content-center d-flex">
                       <img
                         *ngFor="let previewUrl of previewUrls; let i = index"
@@ -78,6 +80,10 @@
 
                   <!-- Location iframe -->
                   <div style="width: 100%">
+                    <small class="text-muted">
+                      Click on view larger map in the frame below to get the location of your place as a link and
+                      copy it in location input.
+                    </small>
                     <iframe
                       width="100%"
                       height="480"
@@ -86,52 +92,52 @@
                       marginheight="0"
                       marginwidth="0"
                       src="https://maps.google.com/maps?width=100%25&amp;height=480&amp;hl=en&amp;q=Alexandria,%20Egypt.+(Evently)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
-                      ><a href="https://www.gps.ie/"
-                        >gps tracker sport</a
-                      ></iframe
-                    >
+                    ></iframe>
                   </div>
 
                   <!-- Place Location -->
                   <div class="mb-3">
-                    <label for="PlaceLocation" class="form-label"
+                    <label for="Location" class="form-label"
                       >Location</label
                     >
                     <input
                       type="text"
-                      name="PlaceLocation"
+                      name="Location"
                       id="PlaceLocation"
                       class="form-control"
-                      formControlName="PlaceLocation"
-                      placeholder="etc"
+                      formControlName="Location"
+                      placeholder="Your Property's Location"
                       aria-describedby="helpId"
                     />
                     <div class="d-flex text-danger flex-column">
                       <small
-                        *ngIf="AddPlaceForm.get('PlaceLocation')?.errors?.['required']"
+                        *ngIf="AddPlaceForm.get('Location')?.errors?.['required']"
                       >
                         Location is required </small
                       ><br />
-                      <small
-                        *ngIf="AddPlaceForm.get('PlaceLocation')?.errors?.['maxLength']"
-                      >
-                        No more than 100 characters allowed for location
-                      </small>
+                      
                     </div>
                   </div>
+
                   <!-- Place Description -->
                   <div class="mb-3">
-                    <label for="PlaceDescription" class="form-label"
+                    <label for="Description" class="form-label"
                       >Description</label
                     >
                     <textarea
                       class="form-control"
-                      name="PlaceDescription"
-                      formControlName="PlaceDescription"
+                      name="Description"
+                      formControlName="Description"
                       id="PlaceDescription"
                       placeholder="Write a short description of the place..."
-                      rows="3"
                     ></textarea>
+
+                    <small
+                      class="text-danger"
+                      *ngIf="AddPlaceForm.get('Description')?.errors?.['required']"
+                    >
+                      Description is required
+                    </small>
 
                     <small>
                       1000 characters at max, this will be shown in search
@@ -140,32 +146,32 @@
                   </div>
                   <!-- Property Price -->
                   <div class="mb-3">
-                    <label for="PlacePrice" class="form-label">Price</label>
+                    <label for="Price" class="form-label">Price</label>
                     <input
                       type="number"
-                      name="PlacePrice"
+                      name="Price"
                       id="PlacePrice"
                       class="form-control"
-                      formControlName="PlacePrice"
-                      placeholder="etc"
+                      formControlName="Price"
+                      placeholder="Your Property's Location"
                       aria-describedby="helpId"
                     />
                     <small
                       class="text-danger"
-                      *ngIf="AddPlaceForm.get('PlacePrice')?.errors?.['required']"
+                      *ngIf="AddPlaceForm.get('Price')?.errors?.['required']"
                     >
                       Property Price is required
                     </small>
                   </div>
                   <!-- Category -->
                   <div class="mb-3">
-                    <label for="PlaceCategory">Choose Place Category</label>
+                    <label for="CategoryName">Choose Place Category</label>
                     <select
                       title="Choose Place Category"
                       class="form-control"
                       id="PlaceCategory"
-                      name="PlaceCategory"
-                      formControlName="PlaceCategory"
+                      name="CategoryName"
+                      formControlName="CategoryName"
                     >
                       <option value="Cat1">Select a Category</option>
                       <option value="Cat2">Action</option>
@@ -173,7 +179,7 @@
                     </select>
                     <small
                       class="text-muted"
-                      *ngIf="AddPlaceForm.get('PlaceCategory')?.errors?.['required']"
+                      *ngIf="AddPlaceForm.get('CategoryName')?.errors?.['required']"
                     >
                       Selecting the category of your property from the list
                       provided is required.
@@ -184,16 +190,16 @@
                     <label for="" class="form-label">Capacity</label>
                     <input
                       type="number"
-                      name="PlaceCapacity"
+                      name="PeopleCapacity"
                       id="PlaceCapacity"
                       class="form-control"
-                      formControlName="PlaceCapacity"
-                      placeholder="etc"
+                      formControlName="PeopleCapacity"
+                      placeholder="999"
                       aria-describedby="helpId"
                     />
                     <small
                       class="text-danger"
-                      *ngIf="AddPlaceForm.get('PlaceCapacity')?.errors?.['required']"
+                      *ngIf="AddPlaceForm.get('PeopleCapacity')?.errors?.['required']"
                     >
                       Place capacity is required
                     </small>
@@ -215,7 +221,7 @@
                 <button
                   type="submit"
                   class="btn btn-danger rounded mt-4"
-                  [disabled]="!AddPlaceForm.valid"
+                  [disabled]="AddPlaceForm.invalid"
                 >
                   Submit Request
                 </button>

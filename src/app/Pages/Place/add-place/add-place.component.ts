@@ -7,24 +7,30 @@ import {
   FormControl,
 } from '@angular/forms';
 import { throwError } from 'rxjs';
+import { PlacesService } from '../../../Services/places.service';
+import { LoginService } from '../../../Services/Login/login.service';
+
+
+
 @Component({
   selector: 'app-add-place',
   templateUrl: './add-place.component.html',
   styleUrl: './add-place.component.css',
 })
-export class AddPlaceComponent {
+export class AddPlaceComponent implements OnInit{
   //array of selected imagess
   previewUrls: string[] = [];
 
   //on selection function to handle preview
   onFilesSelected(event: any) {
     this.previewUrls = []; // Reset previewUrls on new selection
-    const files = event.target.files;
+    let files = event.target.files;
     if (files.length < 5) {
+      this.resetForm();
       alert('Please select at least 5 images');
-      event.target.value = null;
       return;
-    } else {
+    } 
+    else {
       for (const file of files) {
         //allowed formats
         const validImageTypes = [
@@ -54,6 +60,13 @@ export class AddPlaceComponent {
   //on files drop into input cancel select if any file is not a picture
   onFileDrop(event: any) {
     const files = event.dataTransfer.files;
+    if(files.length < 5){
+      alert('You must upload 5 images at least');
+      files.forEach(()=>{
+        event.dataTransfer.items.remove(event.dataTransfer.items.get(0));
+      });
+      return;
+    }
     for (const file of files) {
       if (!(file instanceof File && file.type.match('image.*'))) {
         alert(
@@ -63,50 +76,73 @@ export class AddPlaceComponent {
       }
     }
   }
-
-  ngOnInit() {
+  //userData? : any;
+  ngOnInit() {//on intialization of form
+    // this._LoginService.user();
+    // this.userData = this._LoginService.UserData;
     this.resetForm();
-    this.previewUrls = [];
-
   }
 
   AddPlaceForm: FormGroup = new FormGroup({
     //name control
-    PlaceName: new FormControl(null, [
+    Name: new FormControl(null, [
       Validators.minLength(3),
-
       Validators.required,
-      Validators.maxLength(50),
     ]),
     //price control
-    PlacePrice: new FormControl(null, [Validators.required, Validators.min(1)]),
+    Price: new FormControl(null, [Validators.required, Validators.min(1)]),
     //location control
-    PlaceLocation: new FormControl(null, [
-      Validators.maxLength(256),
+    Location: new FormControl(null, [
       Validators.required,
     ]),
     //location description
-    PlaceDescription: new FormControl(null, [
+    Description: new FormControl(null, [
       Validators.required,
       Validators.maxLength(1000),
     ]),
     //place capacity
-    PlaceCapacity: new FormControl(null, [
+    PeopleCapacity: new FormControl(null, [
       Validators.min(1),
       Validators.required,
     ]),
+    OwnerId: new FormControl(),
     //place category
-    PlaceCategory: new FormControl(null, [Validators.required]),
+    CategoryName: new FormControl(null, [Validators.required]),
     //place images
-    PlaceImages: new FormControl(null, [Validators.required]),
+    files: new FormControl(null, [Validators.required]),
   });
 
-  constructor(private fb: FormBuilder) {}
-
-  submitForm(): void {
-    if (this.AddPlaceForm.invalid) return;
-    console.log(`You submitted: ${JSON.stringify(this.AddPlaceForm.value)}`);
+  constructor(private fb: FormBuilder, private _PlacesService:PlacesService, private _LoginService:LoginService) {}
+  error:string = '';
+  isLoading:boolean = false;
+  AddPlaces(AddPlaceForm: FormGroup)
+  {
+    console.log(AddPlaceForm.value);
+    //console.log(this.userData);
+    
+    this.isLoading = true;
+    this._PlacesService.AddPlace(AddPlaceForm.value).subscribe({
+      next:(Response)=>{
+        this.isLoading = false;
+        console.log(Response)
+        if(Response.message === "Place Added Successfully.")
+        {
+            // this._PlacesService.navigate(["/Login"])
+            console.log("success");
+            
+        }
+        else
+        {
+          this.error = Response.message
+        }
+      }
+    })
   }
+
+  // submitForm(): void {
+  //   if (this.AddPlaceForm.invalid) return;
+  //   console.log(`You submitted: ${JSON.stringify(this.AddPlaceForm.value)}`);
+  // }
 
   resetForm(): void {
     this.AddPlaceForm.reset();
