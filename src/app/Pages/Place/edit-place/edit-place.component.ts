@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
-import { Cloudinary } from '@cloudinary/url-gen';
 
 import {
   FormGroup,

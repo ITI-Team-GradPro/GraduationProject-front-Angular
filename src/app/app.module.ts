@@ -42,8 +42,6 @@ import { AdminLayoutComponent } from './Layouts/admin-layout/admin-layout.compon
 import { HostLayoutComponent } from './Layouts/host-layout/host-layout.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { EditPlaceComponent } from './Pages/Place/edit-place/edit-place.component';
-// In app.module.ts, import the Cloudinary module:
-import {CloudinaryModule} from '@cloudinary/ng';
 
 
 
@@ -94,7 +92,6 @@ register();
     ReactiveFormsModule,
     HttpClientModule,
     DragDropModule,
-    CloudinaryModule
   ],
   providers: [provideClientHydration()],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
