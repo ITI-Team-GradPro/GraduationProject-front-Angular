@@ -4,7 +4,8 @@
  <div class="img-container">
   <div class="Images">
     <swiper-container [navigation]="{ nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }" [pagination]="{ clickable: true }">
-      <ng-container  *ngFor="let Img of CarImg; let i = index">
+    imagesUrls:string[],
+      <ng-container  *ngFor="let Img of Place.imagesUrls ; let i = index">
         <swiper-slide class="Slider"><img class="Images w-100 h-100" [src]="Img" alt=""></swiper-slide>
       </ng-container>
       <div class="swiper-button-next"></div>
