@@ -8,15 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class ChangePasswordService {
 
-  // private apiUrl = 'https://localhost:44329/api/ForgotPassword/ChangePassword'; 
-
-  // constructor(private http: HttpClient) { }
-
-  // changePassword(userId: string, oldPassword: string, newPassword: string): Observable<any> {
-  //   const requestBody = { userId, oldPassword, newPassword };
-  //   return this.http.post<any>(this.apiUrl, requestBody);
-  // }
-
+ 
 
    constructor(private _HttpClient: HttpClient) { }
 
@@ -24,6 +16,13 @@ export class ChangePasswordService {
           {
             return this._HttpClient.put('http://localhost:5004/api/ForgotPassword/ChangePassword', PasswordData);
           }
+
+
+changeUserData(userId:string):Observable<any>
+{
+  return this._HttpClient.put(`http://localhost:5004/api/User/${userId}`,null);
+         
+ }
 }
 
 
