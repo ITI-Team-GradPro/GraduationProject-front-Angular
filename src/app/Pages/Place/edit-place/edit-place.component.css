@@ -1,0 +1,42 @@
+.bg{
+  background-image: url(../../../../assets/Imgs/hero1.jpg);
+}
+
+#PlaceImages {
+  padding: 10px 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.imagesPreview {
+  padding: 10px 20px;
+  border: 1px dashed #ccc;
+  border-radius: 5px;
+  /* width: 100%; */
+  min-height: 180px;
+  min-width: 80%;
+}
+
+.imageWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  border: 1px solid black;
+  border-radius: 5px;
+  min-height: 160px;
+  min-width: 100%;
+}
+
+.imageWrapper img {
+  z-index: 10;
+}
+
+.editImageDiv {
+  position: relative;
+}
+.editImageBtn {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+}
