@@ -2,29 +2,29 @@
 
      <div #swiper class="swiper-container">
         <div class="swiper-wrapper tabs">
-        <div class="tab ActiveTab">
+        <div class="tab" routerLink="Home" routerLinkActive="ActiveTab">
          <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m4 12 8-8 8 8M6 10.5V19a1 1 0 0 0 1 1h3v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h3a1 1 0 0 0 1-1v-8.5"/>
            </svg>
          <h6 class="my-0">All </h6>
         </div>
-        <div class="tab">
+        <div class="tab" routerLink="Places/Wedding" routerLinkActive="ActiveTab">
          <img style="width: 24px; height: 24px;" src="../../../assets/Imgs/Filter Icon/icons8-wedding-64.png" alt="">
          <h6 class="my-0">Wedding </h6>
         </div>
-        <div class="tab">
+        <div class="tab" routerLink="Places/BirthDay" routerLinkActive="ActiveTab">
          <img style="width: 24px; height: 24px;" src="../../../assets/Imgs/Filter Icon/icons8-birthday-50.png" alt="">
          <h6 class="my-0">Birthday </h6>
         </div>
-        <div class="tab">
+        <div class="tab" routerLink="Places/PhotoSession" routerLinkActive="ActiveTab">
          <img style="width: 24px; height: 24px;" src="../../../assets/Imgs/Filter Icon/icons8-camera-50.png" alt="">
          <h6 class="my-0">Photosession </h6>
         </div>
-        <div class="tab">
+        <div class="tab" routerLink="Places/inDoor" routerLinkActive="ActiveTab">
          <img style="width: 24px; height: 24px;" src="../../../assets/Imgs/Filter Icon/icons8-indoor-50.png" alt="">
          <h6 class="my-0">In door </h6>
         </div>
-        <div class="tab">
+        <div class="tab" routerLink="Places/outDoor" routerLinkActive="ActiveTab">
          <img style="width: 24px; height: 24px;" src="../../../assets/Imgs/Filter Icon/icons8-outdoor-toilet-50.png" alt="">
          <h6 class="my-0">Out door</h6>
         </div>
@@ -34,24 +34,30 @@
      <div style="flex-grow: 1;" class="Search-Filter">
           <div style="flex-grow: 1;" class="d-flex justify-content-center">
                <!-- search -->
-               <form class="d-flex" >
+               <form class="d-flex" (ngSubmit)="search()">
                 <div class="position-relative w-100">
                   <input
-                    position-relative
                     class="form-control seach-input p-2 w-100"
                     type="search"
-                    placeholder="Search"
+                    placeholder="Search with name or location"
                     aria-label="Search"
+                    [(ngModel)]="searchValue"         
+                    name="search"
                   />
-                  <button
-                    class="p-search btn btn-success btn-r d-flex justify-content-center align-items-center"
-                    type="submit"
-                  >
+                  <button class="p-search Evently-btn btn-r d-flex justify-content-center align-items-center" type="submit">
                     <i class="fa-solid fa-magnifying-glass"></i>
                   </button>
                 </div>
               </form>
+              
+              
         </div>
+
+
+
+
+
+
           <button (click)="OpenFilter()" class="btn btn-outline-success mx-2 mx-lg-0">
             <svg class="w-5 h-5 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                 <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M20 6H10m0 0a2 2 0 1 0-4 0m4 0a2 2 0 1 1-4 0m0 0H4m16 6h-2m0 0a2 2 0 1 0-4 0m4 0a2 2 0 1 1-4 0m0 0H4m16 6H10m0 0a2 2 0 1 0-4 0m4 0a2 2 0 1 1-4 0m0 0H4"/>

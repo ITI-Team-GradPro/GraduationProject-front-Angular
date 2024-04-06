@@ -1,3 +1,9 @@
 .logo-width{
     width: 100px;
 }
+
+.Evently-btn {
+    background-color: #ad4c04; /* Bootstrap primary color */
+    border-color: #ad4c04; /* Border color */
+    color: #fff; /* Text color */
+  }

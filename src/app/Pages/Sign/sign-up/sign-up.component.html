@@ -9,9 +9,9 @@
 
             <div class="SignForm mx-2 px-4">
                 <h2>Sign Up</h2>
-                <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+                <div class="alert-danger">{{Errormsg}}</div>
                 <form class="Signup-Form" (ngSubmit)="RegisterForm(registerForm)" [formGroup]="registerForm">
-        
+                    
                     <div class="row">
                         <div class="col-md-6">
                             <label for="firstName">firstName: </label>

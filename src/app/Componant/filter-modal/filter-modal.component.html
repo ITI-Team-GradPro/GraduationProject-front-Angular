@@ -3,42 +3,41 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">Filter Places</h5>
-        <button (click)="CloseFilter()" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="CloseFilter()"></button>
       </div>
       <div class="modal-body">
         <!-- Form for filtration -->
         <form>
           <div class="mb-3">
-            <label for="name" class="form-label">Name:</label>
-            <input type="text" class="form-control" id="name" placeholder="Enter Place name">
+            <label for="location" class="form-label">Location:</label>
+            <input type="text" class="form-control" id="location" placeholder="Enter Place location" #locationInput>
           </div>
           <div class="mb-3">
-            <label for="price" class="form-label">Price Range:</label>
-            <div class="row">
-              <div class="col-6">
-                <input type="number" class="form-control" id="minPrice" placeholder="Min">              
-              </div>
-              <div class="col-6">
-                <input type="number" class="form-control" id="maxPrice" placeholder="Max">
-              </div>
-            </div>
+            <label for="capacity" class="form-label">Capacity:</label>
+            <input type="number" class="form-control" id="capacity" placeholder="Enter Capacity" #capacityInput>
           </div>
-          <!-- Add more filtration options here -->
-
           <div class="mb-3">
-            <label for="price" class="form-label">Rate</label>
-                <input type="number" class="form-control" id="rate" placeholder="Rate (from 1-5)">              
+            <label for="Category" class="form-label">Category:</label>
+            <input type="text" class="form-control" id="Category" placeholder="Enter Category" #categoryInput>
           </div>
-
           <div class="mb-3">
-            <label for="price" class="form-label">Location</label>
-                <input type="number" class="form-control" id="location" placeholder="Enter Location">              
+            <label for="price" class="form-label">Price:</label>
+            <input type="number" class="form-control" id="price" placeholder="Enter Price" #priceInput>
           </div>
-
+          <div class="mb-3">
+            <label for="rate" class="form-label">Rate:</label>
+            <input type="number" class="form-control" id="rate" placeholder="Enter Rate" #rateInput>
+          </div>
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-success">Apply Filters</button>
+        <button type="button" class="btn btn-success" (click)="applyFilters(
+    locationInput.value ? locationInput.value : '',
+    capacityInput.value ? capacityInput.value.toString() : '0',
+    categoryInput.value ? categoryInput.value : '',
+    priceInput.value ? priceInput.value.toString() : '9999',
+    rateInput.value ? rateInput.value.toString() : '0')">Apply Filters</button>
+
       </div>
     </div>
   </div>

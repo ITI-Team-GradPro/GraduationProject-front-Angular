@@ -16,7 +16,7 @@ import { LoginService } from '../../../Services/Login/login.service';
 @Component({
   selector: 'app-add-place',
   templateUrl: './add-place.component.html',
-  styleUrl: './add-place.component.css',
+  styleUrl: './add-place.component.css'
 })
 export class AddPlaceComponent implements OnInit{
   //array of selected imagess
