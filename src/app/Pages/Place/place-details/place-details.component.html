@@ -236,7 +236,9 @@
   </form>
       </div>
       <div class="modal-footer">
-        <button (click)="submitReview(PlaceDetail.placeId , userData.Id)" type="button" class="btn Evently-btn" >Submit Review</button>
+      
+        <button (click)="submitReview(PlaceDetail.placeId , userData.Id)" type="button" class="btn Evently-btn" data-bs-dismiss="modal" aria-label="Close">Submit Review</button>
+
       </div>
     </div>
   </div>
