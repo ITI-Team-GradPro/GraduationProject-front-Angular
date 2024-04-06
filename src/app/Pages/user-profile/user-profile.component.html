@@ -1,0 +1,56 @@
+<div class="container">
+
+<div class="row">
+
+    <div class="col-md-4 side-profile" >
+        <div class="Profile-container ">
+            <div class="card-container my-3">
+              <div style="flex-grow: 1" class="d-none d-lg-flex"></div>
+              <div class="card border-dark card shadow" style="max-width: 20rem">
+                <div class="card-body" >
+                    <div class="Owner_profile" >
+                        <div class="ImageProfile" >
+                          <img *ngIf="ProfileData.imageUrl != null ; else userimg"
+                            class="w-100"
+                            [src]="ProfileData.imageUrl"
+                            alt=""
+                          />
+                          <ng-template #userimg>
+                            <div class="ImageProfile D-user" >
+                              {{ProfileData.firstName.split('').slice(0,1).join()}}
+                            </div>
+                          </ng-template>
+                        </div>
+              
+                        <div class="my-2">
+                          <h5>
+                            {{ ProfileData.firstName }}
+                            {{ ProfileData.lastName }}
+                          </h5> 
+                        </div>
+                        <h6>{{ProfileData.email}}</h6>
+                      </div>
+                </div>
+              </div>
+            </div>
+           </div>
+    </div>
+
+    <div class="col-md-8 p-3">
+    
+    <h3>About {{ProfileData.firstName}} {{ProfileData.lastName}}</h3>
+    <hr>
+    <p>{{ProfileData.bio == null ? "There is no information about this host" : ProfileData.bio }}</p>
+    <hr>
+
+
+        <div class="UserPlaces">
+            <app-place-card [PlaceData]="ProfileData.ownedPlaces"></app-place-card>
+        </div>
+
+    </div>
+
+
+</div>
+
+</div>

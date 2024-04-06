@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../../../Services/Auth/auth.service';
 import { Router} from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 
 
 @Component({
@@ -12,6 +13,8 @@ import { Router} from '@angular/router';
 
 
 export class SignUpComponent implements OnInit{
+
+  Errormsg:string = '';
 
   error:string = '';
   isLoading:boolean = false;
@@ -60,12 +63,13 @@ export class SignUpComponent implements OnInit{
         console.log(Response)
         if(Response.message === "User created successfully!")
         {
-            this._Router.navigate(["/Home"])
+            this._Router.navigate(["/Login"])
         }
-        else
-        {
-          this.error = Response.message
-        }
+      } ,
+      error : (err : HttpErrorResponse) => {
+        this.isLoading = false;
+        console.log(err.error.message)
+        this.Errormsg = err.error.message
       }
     })
   }

@@ -1,12 +1,122 @@
-.Image{
+/* .Image{
   border-radius: 15px;
+} */
+
+
+.card{
+  min-width:300px;
 }
 
+.Total{
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
 
 .card-container{
-  display: flex;
+position: sticky;
+top: 170px;
+display: flex;
   @media screen  and (max-width: 991px) {
     display: flex;
     justify-content: center;
   }
 }
+
+.Rate{
+  display: flex;
+  align-items: baseline;
+  justify-content: start;
+}
+
+
+.Owner_profile{
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  /* height: fit-content; */
+}
+
+
+.ImageProfile{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.Evently-btn {
+  background-color: #ad4c04; /* Bootstrap primary color */
+  border-color: #ad4c04; /* Border color */
+  color: #fff; /* Text color */
+}
+
+.review-container{
+  width: 50%;
+  @media screen and (max-width: 776px) {
+    width: 100%;
+
+  }
+}
+
+.R-C{
+  display: flex;
+  flex-wrap: wrap;
+
+}
+
+.Review{
+  height: 200px;
+  width: 100%;
+  padding: 10px;
+
+}
+
+.D-user{
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 22px;
+}
+/* 
+.N-owner{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-content: center;
+  border: 2px solid black;
+  } */
+
+
+  .rating-stars {
+    font-size: 12px;
+  }
+  
+.Add-rating-stars{
+  font-size: 30px;
+}
+
+
+  .fa-star {
+    cursor: pointer;
+  }
+  
+  .fa-star.filled {
+    color: gold;
+  }
+
+  .Rating{
+    display: flex;
+    align-items: baseline;
+  }
+
+  .Add-Review{
+    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }

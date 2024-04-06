@@ -15,6 +15,8 @@ import { LoginService } from '../../../Services/Login/login.service';
 import { json } from 'stream/consumers';
 import { HttpClient } from '@angular/common/http';
 import { response } from 'express';
+import { ActivatedRoute } from '@angular/router';
+
 @Component({
   selector: 'app-edit-place',
   templateUrl: './edit-place.component.html',
@@ -25,15 +27,50 @@ export class EditPlaceComponent {
   previewUrls: string[] = [];
   intialFormValues: any;
   
+  userData : any;
 
-
+  private getuser(id:number){
+    if(id === this.userData)
+      {
+        this.userData = {
+          Name: null,
+          //price control
+          Price: null,
+          //location control
+          Location: null,
+          //location description
+          Description: null,
+          //place capacity
+          PeopleCapacity: null,
+          OwnerId: '',
+          //place category
+          CategoryName: 'selected',
+          //place images
+          files: null,
+        };
+      }
+      else{
+        this.userData = this._PlacesService.updatePlaceDataNoPic(id);
+      }
+  }
 
   ngOnInit() {
-    // const cld = new Cloudinary({ cloud: { cloudName: 'dkqgchxph' } });
-    this._PlacesService.GetPlaceDataById(9).subscribe((response)=>{
-      console.log(response);
-      this.intialFormValues=response;
+    this._route.paramMap.subscribe(parameterMap =>{
+      const id = +parameterMap.getAll('id') ;
+      this.getuser(id);
     });
+    this._LoginService.user();
+    //this.userData = this._LoginService.UserData;
+
+
+
+    // const cld = new Cloudinary({ cloud: { cloudName: 'dkqgchxph' } });
+    // this._PlacesService.GetPlaceDataById(9).subscribe((response)=>{
+    // console.log(response);
+    // this.intialFormValues=response;
+    
+    // this.resetForm();
+    // });
   }
 
   
@@ -84,39 +121,16 @@ export class EditPlaceComponent {
     }
   }
 
-  //
-  editplaceform: FormGroup = new FormGroup({
-    //name control
-    Name: new FormControl(null, [Validators.minLength(3)]),
-    //price control
-    Price: new FormControl(null, [Validators.min(1)]),
-    //location control
-    Location: new FormControl(null),
-    //location description
-    Description: new FormControl(null, [
-      Validators.required,
-      Validators.maxLength(1000),
-    ]),
-    //place capacity
-    PeopleCapacity: new FormControl(null, [
-      Validators.min(1),
-      // Validators.required,
-    ]),
-    //place category
-    CategoryName: new FormControl(null),
-    //place images
-    files: new FormControl(null),
-  });
+  resetForm() {
+    this.editplaceform.get('Name')?.setValue(this.userData.Name);
+    this.editplaceform.get('Price')?.setValue(this.userData.Price);
+    this.editplaceform.get('Location')?.setValue(this.userData.Location);
+    this.editplaceform.get('Description')?.setValue(this.userData.Description);
+    this.editplaceform.get('PeopleCapacity')?.setValue(this.userData.PeopleCapacity);
+    this.editplaceform.get('OwnerId')?.setValue(this.userData.Id);
+    this.editplaceform.get('CategoryName')?.setValue(this.userData.CategoryName);
+    this.editplaceform.get('files')?.setValue(this.userData.files);
 
-  //
-  constructor(
-    private fb: FormBuilder,
-    private _PlacesService: PlacesService,
-    private _LoginService: LoginService,
-    private http: HttpClient
-  ) {}
-
-  resetForm(): void {
     this.editplaceform.reset();
     //to remove older images preview not the images themselves
     // const oldImages = document.getElementsByClassName('oldImages');
@@ -125,5 +139,69 @@ export class EditPlaceComponent {
     //   oldImages[0].remove(); // Remove the first element each time
     // }
     // this.previewUrls = [];
+  }
+  //
+  editplaceform: FormGroup = new FormGroup({
+    //name control
+    Name: new FormControl(''),
+    //price control
+    Price: new FormControl(''),
+    //location control
+    Location: new FormControl(''),
+    //location description
+    Description: new FormControl(''),
+    //place capacity
+    PeopleCapacity: new FormControl(''),
+    OwnerId: new FormControl(''),
+    //place category
+    CategoryName: new FormControl(''),
+    //place images
+    files: new FormControl(''),
+  });
+
+  error:string = '';
+  isLoading:boolean = false;
+  EditPlace(editplaceform:FormGroup){
+    console.log(editplaceform.value);
+    //console.log(this.userData);
+
+    this.isLoading = true;
+    this._PlacesService.AddPlace(editplaceform.value).subscribe({
+      next:(Response)=>{
+        this.isLoading = false;
+        console.log(Response)
+        if(Response.message === "Place Added Successfully.")
+        {
+            // this._PlacesService.navigate(["/Login"])
+            console.log("success");          
+        }
+        else
+        {
+          this.error = Response.message
+        }
+      }
+    })
+  }
+  
+  constructor(
+    private fb: FormBuilder,
+    private _PlacesService: PlacesService,
+    private _LoginService: LoginService,
+    private http: HttpClient,
+    private _route :ActivatedRoute
+    
+  ) {}
+  editdata: any;
+  
+  loaduserdata(Id: any) {
+    this._LoginService.UserData(Id).subscribe((response: any) => {
+      this.editdata = response;
+      console.log(this.editdata);
+      // this.registerform.setValue({
+      //   id: this.editdata.id, name: this.editdata.name,
+      //   password: this.editdata.password, email: this.editdata.email, gender: this.editdata.gender,
+      //   role: this.editdata.role, isactive: this.editdata.isactive
+      // });
+    });
   }
 }

@@ -1,15 +1,6 @@
-<!--header start-->
-<!-- <div class="container mt-5 ">
-<div class= "row">
-  <h2 >Radisson Blu <i class="fa-regular fa-heart me-2 w-30"></i> <i class="fa-solid fa-share me-2 w-30"></i></h2>
-</div>
-</div> -->
-<!--header end-->
-<!--image start-->
-
 <div class="container my-4">
   <div class="title">
-    <h2>Lorem ipsum dolor sit amet consectetur</h2>
+    <h2>{{ PlaceDetail.name }}</h2>
   </div>
 
   <div class="row img-grid">
@@ -63,45 +54,208 @@
   </div>
 </div>
 
-<!--image end-->
-<div class="container mt-3">
+<!-- details -->
+<div class="container" style="position: relative;">
   <div class="row">
     <div class="col-md-8">
       <div>
-        <h3>Place Details</h3>
-        <p class="fw-semibold lh-sm d-flex justify-content-center">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur
-          suscipit ipsum, in repudiandae omnis, iste necessitatibus recusandae
-          optio, aspernatur nemo aperiam sint odit quae! Fugiat dolor amet nemo
-          debitis dolores?
-        </p>
-        <p class="fw-semibold lh-sm d-flex justify-content-center">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur
-          suscipit ipsum, in repudiandae omnis, iste necessitatibus recusandae
-          optio, aspernatur nemo aperiam
-        </p>
-      </div>
-    </div>
+        <h4>{{ PlaceDetail.name }}</h4>
+        <p>Category : {{PlaceDetail.categoryDetailsDto.categoryName}}</p>
+        <div class="Rate">
+          <i class="fa-solid fa-star"></i>
+          <h6 class="mx-1">
+            {{
+              PlaceDetail.overAllRating == 0 ? "New" : PlaceDetail.overAllRating.toFixed(1)
+            }}
+          </h6>
+        </div>
 
-    <div class="col-md-4 card-container">
-      <div style="flex-grow: 1" class="d-none d-lg-flex"></div>
-      <div class="card border-dark card shadow" style="max-width: 20rem">
-        <div class="card-header">Price: 120$</div>
-        <div class="card-body">
-          <p class="card-title fw-semibold">Available in: 2/4/2024</p>
-          <hr />
-          <p class="card-text fw-semibold">
-            Total: 100$ 10% Off includes taxes and charges
-          </p>
-          <hr />
-          <div
-            class="card-body d-flex justify-content-center align-items-center"
-          >
-            <button class="btn btn-success">Reserve</button>
+        <hr />
+        <div class="Owner_profile">
+          <div class="ImageProfile" [routerLink]="['/Profile' , PlaceDetail.ownerDetailsDto.id]" >
+            <img *ngIf="PlaceDetail.ownerDetailsDto.imageUrl != null ; else userimg"
+              class="w-100"
+              [src]="PlaceDetail.ownerDetailsDto.imageUrl"
+              alt=""
+            />
+            <ng-template #userimg>
+              <div class="ImageProfile D-user" >
+                {{PlaceDetail.ownerDetailsDto.firstName.split('').slice(0,1).join()}}
+              </div>
+            </ng-template>
+          </div>
+
+          <div class="mx-2">
+            <h5>
+              {{ PlaceDetail.ownerDetailsDto.firstName }}
+              {{ PlaceDetail.ownerDetailsDto.lastName }}
+            </h5>
+            <p class="muted">{{ PlaceDetail.ownerDetailsDto.bio }}</p>
           </div>
         </div>
+        <hr />
+
+        <div>
+          <h5>Description</h5>
+          <p>{{ PlaceDetail.description }}</p>
+        </div>
+        <hr />
+        <div>
+          <h4>Locations</h4>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3319.529162451015!2d-122.08440178513968!3d37.422516879820966!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80859a6d00690021%3A0x4a501367f076adff!2sGolden%20Gate%20Bridge!5e0!3m2!1sen!2sus!4v1631038592910!5m2!1sen!2sus" width="100%" height="400px" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+        
+        
+        
+        
+        
+        </div>
+
+      </div>
+    </div>
+ <div class="col-md-4 reserve-container ">
+  <div class="card-container">
+    <div style="flex-grow: 1" class="d-none d-lg-flex"></div>
+    <div class="card border-dark card shadow" style="max-width: 20rem">
+      <h5 class="card-header fw-semibold">Price: ${{PlaceDetail.price}}</h5>
+      <div class="card-body">
+        <p class="card-title fw-semibold">Available From : 2/4/2024</p>
+        <hr />
+        <div
+        class="card-body d-flex justify-content-center align-items-center"
+      >
+      <button *ngIf="userData?.RoleName !== 'Client' else Reserbtn" disabled class="btn Evently-btn w-100">Reserve</button>
+      
+      <ng-template #Reserbtn>
+        <button  class="btn Evently-btn w-100">Reserve</button>
+      </ng-template>
+    
+    
+    </div>
+      <hr />
+       <div class="Total">
+        <p class="card-text fw-semibold ">
+          Total befor Taxes : 
+        </p>
+        <h5 class="fw-semibold">${{PlaceDetail.price + 50}}</h5>
+       </div>
+      </div>
+    </div>
+  </div>
+ </div>
+  </div>
+</div>
+<hr>
+<!--  reviews -->
+<div class="container">
+  <h4>Review</h4>
+<div class="R-C" style="width: 100%; ">
+  <div  class="review-container" *ngFor="let Review of PlaceDetail.reviewDetailsDto">
+    <div class="Review" >
+      <div class="Owner_profile">
+        <div class="ImageProfile">
+          <img *ngIf="Review.user.image != null ; else userimg"
+            class="w-100"
+            [src]="Review.user.image"
+            alt=""
+          />
+          <ng-template #userimg>
+            <div class="ImageProfile D-user" >
+              {{Review.user.firstName.split('').slice(0,1).join()}}
+            </div>
+          </ng-template>
+        </div>
+        <div class="mx-2 my-2 N-owner" >
+  
+          <!-- __________________________________________________________________________________________ -->
+          <div class="fw-semibold" style="font-size: 16px;">
+            {{ Review.user.firstName }}
+            {{ Review.user.lastName }}
+          </div>
+          <!-- __________________________________________________________________________________________ -->
+  
+          <div class="muted">{{ Review.user.email }}</div>
+        </div>
+      </div>
+      <div class="Rating" style="height: fit-content;">
+        <div class="rating-stars">
+          <span *ngFor="let star of stars" class="fa fa-star" [class.filled]="star <= Review.rating"></span>
+        </div>
+                <!-- __________________________________________________________________________________________ -->
+  
+        <p class="mx-2" style="margin-bottom: 0;">from : 07-04-2024 </p>
+                <!-- __________________________________________________________________________________________ -->
+  
+            </div>
+        <p>{{Review.review}}</p>
+  </div>
+   </div>
+</div>
+ 
+<!--  Rating -->
+
+<div *ngIf="Token">
+  <button *ngIf="userData?.RoleName == 'Client'" 
+  type="button" 
+  class="btn btn-outline-secondary " 
+  data-bs-toggle="modal" 
+  data-bs-target="#exampleModal" 
+  data-bs-whatever="&#64;mdo"> Rate the Place</button>
+</div>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Add your Rating for this place</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="Add-Review">
+          <div class="Add-rating-stars">
+            <!-- Star rating -->
+            <span *ngFor="let star of stars; let i = index" 
+                  class="fa fa-star" 
+                  [class.filled]="i < rating"
+                  (click)="setRating(i + 1)"></span>
+          </div>
+    <!-- Review form -->
+  <form>
+    <div class="form-group">
+      <!-- Review comment input -->
+      <label for="comment">Please Leave Your Review Comment:</label>
+      <textarea placeholder="Write your review here" class="w-100 form-control" id="comment" name="comment" [(ngModel)]="comment"></textarea>
+    </div>
+  </form>
+      </div>
+      <div class="modal-footer">
+        <button (click)="submitReview(PlaceDetail.placeId , userData.Id)" type="button" class="btn Evently-btn" >Submit Review</button>
       </div>
     </div>
   </div>
 </div>
-<!--details end-->
+
+</div>
+
+
+
+
+
+<!-- <div class="container review-container" *ngFor="let Review of PlaceDetail.reviewDetailsDto" >
+
+ <div class="Review" >
+  <div class="ImageProfile">
+    <img *ngIf="Review.user.image != null ; else userimg"
+      class="w-100"
+      [src]=""
+      alt=""
+    />
+    <ng-template #userimg>
+      <div class="ImageProfile D-user" >
+        {{Review.user.name.split('').slice(0,1).join()}}
+      </div>
+    </ng-template>
+  </div>
+ </div>
+
+</div> -->

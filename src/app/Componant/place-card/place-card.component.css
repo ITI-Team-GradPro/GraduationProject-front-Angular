@@ -1,15 +1,20 @@
 .Card{
-    width: 300px;
-    height: 380px;
-    border-radius: 15px;
+    width: 270px;
+    height: 350px;
     overflow: hidden;
-    box-shadow: 1px 1px 1px #888888;
+    /* box-shadow: 1px 1px 1px #888888; */
     position: relative;
     cursor: pointer;
+
+}
+
+.img-container{
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 .Images{
-    border-radius: 15px;
+    overflow: hidden;
 }
 
 .Slider{
@@ -50,7 +55,10 @@ swiper-container::part(button-prev) {
     margin: 0;
     color: black;
     border-radius: 50%;
-    display: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1s ease, visibility 1s ease;
+
   }
   
   swiper-container::part(button-next) {
@@ -61,19 +69,57 @@ swiper-container::part(button-prev) {
     color: black;
     margin: 0;
     border-radius: 50%;
-    display: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1s ease, visibility 1s ease;
+
   }
 
   .Card:hover swiper-container::part(button-prev){
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: 3s;
+    opacity: 1;
+    visibility: visible;
   }
 
   .Card:hover swiper-container::part(button-next){
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: 3s;
+    opacity: 1;
+    visibility: visible;
   }
+
+
+  .Card-container{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.C-Price{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.details{
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1s ease, visibility 1s ease;
+}
+
+.details-container:hover .details{
+    opacity: 1;
+    visibility: visible;
+}
+
+.favicon{
+    color: red;
+}
+
+.favhover:hover{
+    transform: scale(1.2);
+    transition: transform 0.2s;
+}
