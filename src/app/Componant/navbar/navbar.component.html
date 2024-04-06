@@ -97,10 +97,10 @@
               <button *ngIf="userData.RoleName == 'Client'" class="btn list-hover c-btn" (click)="toggleMenu()" routerLink="Booking">
                 <span>Booking</span>
               </button>
-              <button *ngIf="userData.RoleName == 'Host'" class="btn list-hover c-btn" (click)="toggleMenu()" routerLink="Booking">
+              <button *ngIf="userData.RoleName == 'Host'" class="btn list-hover c-btn" (click)="toggleMenu()" routerLink="AddPlace">
                 <span>Add New Place</span>
               </button>
-              <button *ngIf="userData.RoleName == 'Host'" class="btn list-hover c-btn" (click)="toggleMenu()" routerLink="Booking">
+              <button *ngIf="userData.RoleName == 'Host'" class="btn list-hover c-btn" (click)="toggleMenu()" routerLink="MyPlaces">
                 <span>My Places</span>
               </button>
               <button 
