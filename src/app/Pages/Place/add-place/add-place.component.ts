@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import {
   FormGroup,
   FormBuilder,
   Validators,
   FormControl,
+  FormArray,
 } from '@angular/forms';
 import { throwError } from 'rxjs';
 import { PlacesService } from '../../../Services/places.service';
@@ -20,6 +20,25 @@ import { LoginService } from '../../../Services/Login/login.service';
 export class AddPlaceComponent implements OnInit{
   //array of selected imagess
   previewUrls: string[] = [];
+  userData : any;
+  IdData:object= {};
+
+  constructor(private _PlacesService:PlacesService, private _LoginService:LoginService) {}
+
+  ngOnInit(): void {//on intialization of form
+    this._LoginService.user();
+    this.userData = this._LoginService.UserData;
+    this.resetForm();
+  }
+  TakeId(userId: string) {
+    // let Name =(document.getElementById('Name') as HTMLInputElement).value;
+    this.IdData= {
+      userId : userId
+    };
+    console.log(this.IdData);
+    
+  }
+
 
   //on selection function to handle preview
   onFilesSelected(event: any) {
@@ -76,13 +95,9 @@ export class AddPlaceComponent implements OnInit{
       }
     }
   }
-  //userData? : any;
-  ngOnInit() {//on intialization of form
-    // this._LoginService.user();
-    // this.userData = this._LoginService.UserData;
-    this.resetForm();
-  }
+  
 
+  
   AddPlaceForm: FormGroup = new FormGroup({
     //name control
     Name: new FormControl(null, [
@@ -105,14 +120,14 @@ export class AddPlaceComponent implements OnInit{
       Validators.min(1),
       Validators.required,
     ]),
-    OwnerId: new FormControl(),
+    OwnerId: new FormControl(''),
     //place category
     CategoryName: new FormControl(null, [Validators.required]),
     //place images
-    files: new FormControl(null, [Validators.required]),
+    files: new FormArray([ ],[Validators.required]),
   });
+  
 
-  constructor(private fb: FormBuilder, private _PlacesService:PlacesService, private _LoginService:LoginService) {}
   error:string = '';
   isLoading:boolean = false;
   AddPlaces(AddPlaceForm: FormGroup)
@@ -147,5 +162,7 @@ export class AddPlaceComponent implements OnInit{
   resetForm(): void {
     this.AddPlaceForm.reset();
     this.previewUrls = [];
+    this.AddPlaceForm.get('OwnerId')?.setValue(this.userData.Id);
+    this.AddPlaceForm.get('files') as FormArray
   }
 }

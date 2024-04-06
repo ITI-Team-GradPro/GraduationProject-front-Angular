@@ -26,7 +26,7 @@
                     <input
                       type="text"
                       name="Name"
-                      id="PlaceName"
+                      id="Name"
                       class="form-control"
                       formControlName="Name"
                       placeholder="Your Property Name"
@@ -40,15 +40,16 @@
                       </small>
                     </div>
                   </div>
+                  <div></div>
 
                   <!-- Place Images -->
                   <div class="mb-3">
                     <label for="files" class="form-label">files</label>
                     <input
                       type="file"
-                      accept="files/*"
+                      accept="image/*"
                       name="files"
-                      id="PlaceImages"
+                      id="files"
                       class="form-control"
                       formControlName="files"
                       aria-describedby="helpId"
@@ -79,8 +80,8 @@
                   </div>
 
                   <!-- Location iframe -->
-                  <div style="width: 100%">
-                    <small class="text-muted">
+                  <!-- <div style="width: 100%"> -->
+                    <!-- <small class="text-muted">
                       Click on view larger map in the frame below to get the location of your place as a link and
                       copy it in location input.
                     </small>
@@ -93,7 +94,7 @@
                       marginwidth="0"
                       src="https://maps.google.com/maps?width=100%25&amp;height=480&amp;hl=en&amp;q=Alexandria,%20Egypt.+(Evently)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
                     ></iframe>
-                  </div>
+                  </div> -->
 
                   <!-- Place Location -->
                   <div class="mb-3">
@@ -103,7 +104,7 @@
                     <input
                       type="text"
                       name="Location"
-                      id="PlaceLocation"
+                      id="Location"
                       class="form-control"
                       formControlName="Location"
                       placeholder="Your Property's Location"
@@ -128,7 +129,7 @@
                       class="form-control"
                       name="Description"
                       formControlName="Description"
-                      id="PlaceDescription"
+                      id="Description"
                       placeholder="Write a short description of the place..."
                     ></textarea>
 
@@ -150,7 +151,7 @@
                     <input
                       type="number"
                       name="Price"
-                      id="PlacePrice"
+                      id="Price"
                       class="form-control"
                       formControlName="Price"
                       placeholder="Your Property's Location"
@@ -169,7 +170,7 @@
                     <select
                       title="Choose Place Category"
                       class="form-control"
-                      id="PlaceCategory"
+                      id="CategoryName"
                       name="CategoryName"
                       formControlName="CategoryName"
                     >
@@ -191,7 +192,7 @@
                     <input
                       type="number"
                       name="PeopleCapacity"
-                      id="PlaceCapacity"
+                      id="PeopleCapacity"
                       class="form-control"
                       formControlName="PeopleCapacity"
                       placeholder="999"
@@ -222,9 +223,11 @@
                   type="submit"
                   class="btn btn-danger rounded mt-4"
                   [disabled]="AddPlaceForm.invalid"
+                  (click)="TakeId(userData.Id)"
                 >
                   Submit Request
                 </button>
+                
               </div>
             </form>
             <!--end of form-->
