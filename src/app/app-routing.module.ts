@@ -65,7 +65,7 @@ const routes: Routes = [
 
 // start Host Layout
 {path : "AddPlace" , component : AddPlaceComponent },
-{path: "editplace" , component : EditPlaceComponent },
+{path: "EditPlace" , component : EditPlaceComponent },
 
 // end Host Layout
 // End Host Layout

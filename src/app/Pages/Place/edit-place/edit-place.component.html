@@ -17,16 +17,168 @@
               </p>
             </div>
             <!--Start Form-->
-            <form [formGroup]="editplaceform">
+            <form (ngSubmit)="editdata(editplaceform)" [formGroup]="editplaceform">
               <div class="container">
                 <div class="p-sm-2 text-start">
+                  
                   <!-- Property Name-->
                   <div class="mb-3">
                     <label for="Name" class="form-label">Name</label>
                     <input
                       type="text"
                       name="Name"
-                      id="PlaceName"
+                      id="Name"
+                      class="form-control"
+                      formControlName="Name"
+                      placeholder="Your Property Name"
+                      aria-describedby="helpId"
+                    />
+                  </div>
+
+                  <!-- Place Images -->
+                  <div class="mb-3">
+                    <label for="files" class="form-label">files</label>
+                    <input
+                      type="file"
+                      accept="image/*"
+                      name="files"
+                      id="files"
+                      class="form-control"
+                      formControlName="files"
+                      aria-describedby="helpId"
+                      (change)="onFilesSelected($event)"
+                      (drop)="onFileDrop($event)"
+                      multiple
+                      [src]="onFilesSelected"
+                    />
+                  </div>
+
+                  <!-- Images Preview -->
+                  <label for="imagesPreview">Images Preview</label>
+                  <div class="imagesPreview my-2 bg-light">
+                    <div class="imageWrapper justify-content-center d-flex">
+                      <img
+                        *ngFor="let previewUrl of previewUrls; let i = index"
+                        [src]="previewUrl"
+                        alt="Image Preview"
+                        class="rounded img-thumbnail col-lg-4 col-md-4 col-sm-4"
+                      />
+                    </div>
+                  </div>
+
+                  <!-- Location iframe -->
+                  <!-- <div style="width: 100%">
+                    <small class="text-muted">
+                      Click on view larger map in the frame below to get the location of your place as a link and
+                      copy it in location input.
+                    </small>
+                    <iframe
+                      width="100%"
+                      height="480"
+                      frameborder="0"
+                      scrolling="no"
+                      marginheight="0"
+                      marginwidth="0"
+                      src="https://maps.google.com/maps?width=100%25&amp;height=480&amp;hl=en&amp;q=Alexandria,%20Egypt.+(Evently)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+                    ></iframe>
+                  </div> -->
+
+                  <!-- Place Location -->
+                  <div class="mb-3">
+                    <label for="Location" class="form-label"
+                      >Location</label
+                    >
+                    <input
+                      type="text"
+                      name="Location"
+                      id="Location"
+                      class="form-control"
+                      formControlName="Location"
+                      placeholder="Your Property's Location"
+                      aria-describedby="helpId"
+                    />
+                  </div>
+
+                  <!-- Place Description -->
+                  <div class="mb-3">
+                    <label for="Description" class="form-label"
+                      >Description</label
+                    >
+                    <textarea
+                      class="form-control"
+                      name="Description"
+                      formControlName="Description"
+                      id="Description"
+                      placeholder="Write a short description of the place..."
+                    ></textarea>
+                  </div>
+                  <!-- Property Price -->
+                  <div class="mb-3">
+                    <label for="Price" class="form-label">Price</label>
+                    <input
+                      type="number"
+                      name="Price"
+                      id="Price"
+                      class="form-control"
+                      formControlName="Price"
+                      placeholder="Your Property's Price"
+                      aria-describedby="helpId"
+                    />
+                  </div>
+                  <!-- Category -->
+                  <div class="mb-3">
+                    <label for="CategoryName">Choose Place Category</label>
+                    <select
+                      title="Choose Place Category"
+                      class="form-control"
+                      id="CategoryName"
+                      name="CategoryName"
+                      formControlName="CategoryName"
+                    >
+                      <option value="Cat1">Select a Category</option>
+                      <option value="Cat2">Action</option>
+                      <option value="Cat3">Disabled (Optional)</option>
+                    </select>
+                  </div>
+                  <!-- Capacity -->
+                  <div class="mb-3">
+                    <label for="" class="form-label">Capacity</label>
+                    <input
+                      type="number"
+                      name="PeopleCapacity"
+                      id="PeopleCapacity"
+                      class="form-control"
+                      formControlName="PeopleCapacity"
+                      placeholder="999"
+                      aria-describedby="helpId"
+                    />
+                  </div>
+              </div>
+              <!-- Reset Button -->
+              <div class="d-flex justify-content-end mt-4">
+                <button
+                  type="button"
+                  class="btn btn-danger rounded mt-4"
+                  (click)="resetForm()"
+                >
+                  Reset Form
+                </button>
+              </div>
+              <!-- Submit Button -->
+              <div class="d-flex justify-content-end mt-4">
+                <button
+                  type="submit"
+                  class="btn btn-danger rounded mt-4"
+                  [disabled]="editplaceform.invalid"
+                >
+                  Submit Request
+                </button>
+                  <!-- <div class="mb-3" *ngDefaultControl="resetForm('Name')">
+                    <label for="Name" class="form-label" >Name</label>
+                    <input 
+                      type="text"
+                      name="Name"
+                      id="Name"
                       class="form-control"
                       formControlName="Name"
                       placeholder="name"
@@ -46,14 +198,14 @@
                     </div>
                   </div>
 
-                  <!-- Place Images -->
+                  <-- Place Images ->
                   <div class="mb-3">
                     <label for="files" class="form-label">Images</label>
                     <input
                       type="file"
                       accept="image/*"
                       name="files"
-                      id="PlaceImages"
+                      id="files"
                       class="form-control"
                       formControlName="files"
                       aria-describedby="helpId"
@@ -62,16 +214,16 @@
                       multiple
                     />
                   </div>
-                  <!-- Images Preview -->
+                  <-- Images Preview ->
                   <label for="imagesPreview">Selected Images Preview</label>
                   <div
                     class="container d-flex flex-wrap gap-2 imagesPreview justify-content-center"
                   >
-                    <!-- Image with absolute button div -->
+                    <-- Image with absolute button div ->
                     <div
                       class="d-flex flex-wrap justify-content-start editImageDiv col-lg-3 col-md-3 col-sm-3"
                     >
-                      <!-- *ngFor="let image of {{ files }}" -->
+                      <!-- *ngFor="let image of {{ files }}" ->
                       <img class="imageWrapper" src=" " alt="" />
                       <input
                         type="file"
@@ -80,7 +232,7 @@
                         id="PlaceImagesPreview"
                       />
                     </div>
-                    <!-- end of img with btn -->
+                    <!-- end of img with btn ->
                     <div
                     class="d-flex flex-wrap justify-content-start editImageDiv col-lg-3 col-md-3 col-sm-3"
                   >
@@ -89,7 +241,7 @@
                       src="../../../../assets/11668755_20945761.jpg"
                       alt=""
                     />
-                    <button
+                    <button 
                       type="button"
                       class="rounded bg-danger text-white editImageBtn"
                     >
@@ -99,7 +251,7 @@
                   </div>
                   </div>
                   
-                  <!-- Location iframe -->
+                  <!-- Location iframe ->
                   <div class="container my-2" style="width: 100%">
                     <small class="text-muted">
                       Click on view larger map in the frame below to get the
@@ -117,13 +269,13 @@
                     ></iframe>
                   </div>
 
-                  <!-- Place Location -->
+                  <!-- Place Location ->
                   <div class="mb-3">
                     <label for="Location" class="form-label">Location</label>
                     <input
                       type="text"
                       name="Location"
-                      id="PlaceLocation"
+                      id="Location"
                       class="form-control"
                       formControlName="Location"
                       placeholder="Location"
@@ -143,7 +295,7 @@
                     </div>
                   </div>
 
-                  <!-- Place Description -->
+                  <!-- Place Description ->
                   <div class="mb-3">
                     <label for="Description" class="form-label"
                       >Description</label
@@ -152,7 +304,7 @@
                       class="form-control"
                       name="Description"
                       formControlName="Description"
-                      id="PlaceDescription"
+                      id="Description"
                       placeholder="Description"
                       rows="3"
                     ></textarea>
@@ -168,26 +320,26 @@
                       be shown in search results.
                     </small>
                   </div>
-                  <!-- Property Price -->
+                  <!-- Property Price ->
                   <div class="mb-3">
                     <label for="Price" class="form-label">Price</label>
                     <input
                       type="number"
                       name="Price"
-                      id="PlacePrice"
+                      id="Price"
                       class="form-control"
                       formControlName="Price"
                       placeholder="Price"
                       aria-describedby="helpId"
                     />
                   </div>
-                  <!-- Category -->
+                  <!-- Category ->
                   <div class="mb-3">
                     <label for="CategoryName">Choose Place Category</label>
                     <select
                       title="Choose Place Category"
                       class="form-control"
-                      id="PlaceCategory"
+                      id="CategoryName"
                       name="CategoryName"
                       formControlName="CategoryName"
                     >
@@ -196,13 +348,13 @@
                       <option value="2">All Day (Optional)</option>
                     </select>
                   </div>
-                  <!-- Capacity -->
+                  <!-- Capacity ->
                   <div class="mb-3">
                     <label for="" class="form-label">Capacity</label>
                     <input
                       type="number"
                       name="PeopleCapacity"
-                      id="PlaceCapacity"
+                      id="PeopleCapacity"
                       class="form-control"
                       formControlName="PeopleCapacity"
                       placeholder="PeopleCapacity"
@@ -211,7 +363,7 @@
                   </div>
                 </div>
               </div>
-              <!-- Reset Button -->
+              <!-- Reset Button ->
               <div class="d-flex justify-content-end mt-4">
                 <button
                   type="button"
@@ -221,15 +373,16 @@
                   Reset Form
                 </button>
               </div>
-              <!-- Submit Button -->
+              <!-- Submit Button ->
               <div class="d-flex justify-content-end mt-4">
                 <button
                   type="submit"
                   class="btn btn-danger rounded mt-4"
-                  [disabled]="!editplaceform.valid"
+                  [disabled]="editplaceform.invalid"
                 >
                   Confirm Modifications
-                </button>
+                </button> -->
+                </div>
               </div>
             </form>
             <!--end of form-->
