@@ -120,3 +120,15 @@ display: flex;
     align-items: center;
     flex-direction: column;
   }
+
+  .fullwidth{
+    max-height: 60vh;
+  }
+
+.imageheight{
+  max-height: 60vh;
+
+}
+
+
+  

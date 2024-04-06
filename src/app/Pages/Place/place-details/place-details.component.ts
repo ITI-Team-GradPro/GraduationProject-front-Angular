@@ -32,8 +32,6 @@ export class PlaceDetailsComponent implements OnInit {
     this.rating = selectedRating;
   }
 
-
-
       View(){
         this.ViewReview = !this.ViewReview
       }
