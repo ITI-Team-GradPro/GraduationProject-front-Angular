@@ -69,5 +69,4 @@ export class PlacesService {
                 locationCheck = "ne"
             return this._HttpClient.get(`http://localhost:5004/Api/Place/filter?$filter=CategoryName%20${categoryCheck}%20%27${categoryName}%27%20and%20price%20le%20${price}%20and%20rating%20ge%20${rating}%20and%20PeopleCapacity%20ge%20${capacity}%20and%20location%20${locationCheck}%20%27${location}%27&$orderby=id%20desc`);
           }
-
 }
