@@ -39,10 +39,10 @@ export class PlaceCardComponent {
 
 
   CarImg: string[] = [
-    "../../../assets/Imgs/Hero3.jpg",
-    "../../../assets/Imgs/Hero2.jpg",
-    "../../../assets/Imgs/hero1.jpg",
-    "../../../assets/Imgs/hero4.jpg",
+    "https://images.unsplash.com/photo-1712313498056-1feb70bd6999?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxNHx8fGVufDB8fHx8fA%3D%3D",
+    "https://images.unsplash.com/photo-1706460014927-b8be7c474c9b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxOHx8fGVufDB8fHx8fA%3D%3D",
+    "https://plus.unsplash.com/premium_photo-1689177356639-ba90d04a5285?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyMXx8fGVufDB8fHx8fA%3D%3D",
+    "https://plus.unsplash.com/premium_photo-1689177356639-ba90d04a5285?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyMXx8fGVufDB8fHx8fA%3D%3D",
   ]
 
   userData: any;

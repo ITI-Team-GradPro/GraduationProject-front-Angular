@@ -4,53 +4,60 @@
   </div>
 
   <div class="row img-grid">
-    <div class="col-12 col-lg-6 p-1">
-      <div class="w-100 h-100">
+    <div [class]=" PlaceDetail.imageUrls.length >1 ? 'col-12 col-lg-6 p-1' : 'col-12 '">
+      <div class="w-100 h-100 fullwidth">
         <img
-          class="w-100 h-100 Image"
-          src="../../../../assets/Imgs/Hero3.jpg"
+          class="w-100 h-100 Image imageheight"
+          [src]="PlaceDetail.imageUrls[0]"
           alt=""
         />
       </div>
     </div>
 
-    <div class="col-3 p-1 d-none d-lg-block">
+    <div *ngIf="PlaceDetail.imageUrls.length > 1" class="col-3 p-1 d-none d-lg-block">
       <div class="h-100">
         <div class="w-100 mb-2" style="height: 49%">
           <img
             class="w-100 h-100 Image"
-            src="../../../../assets/Imgs/Hero3.jpg"
+            [src]="PlaceDetail.imageUrls[1]"
             alt=""
           />
         </div>
         <div class="w-100" style="height: 49%">
           <img
             class="w-100 h-100 Image"
-            src="../../../../assets/Imgs/Hero3.jpg"
+            [src]="PlaceDetail.imageUrls[2]"
             alt=""
           />
         </div>
       </div>
     </div>
 
-    <div class="col-3 p-1 d-none d-lg-block">
+    <div *ngIf="PlaceDetail.imageUrls.length > 1" class="col-3 p-1 d-none d-lg-block">
       <div class="h-100">
         <div class="w-100 mb-2" style="height: 49%">
           <img
             class="w-100 h-100 Image"
-            src="../../../../assets/Imgs/Hero3.jpg"
+            [src]="PlaceDetail.imageUrls[3]"
             alt=""
           />
         </div>
         <div class="w-100" style="height: 49%">
           <img
             class="w-100 h-100 Image"
-            src="../../../../assets/Imgs/Hero3.jpg"
+            [src]="PlaceDetail.imageUrls[4]"
             alt=""
           />
         </div>
       </div>
+    
+    
+    
     </div>
+
+
+
+
   </div>
 </div>
 

@@ -1,52 +1,47 @@
-
 <div class="Card-container">
-  <div class="Card mx-3 my-3" *ngFor="let Place of PlaceData.slice(0,pagination) " >
- <div class="img-container">
-  <div class="Images">
-    <swiper-container [navigation]="{ nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }" [pagination]="{ clickable: true }">
-    
-      <ng-container  *ngFor="let Img of Place.imagesUrls ; let i = index">
-        <swiper-slide class="Slider"><img class="Images w-100 h-100" [src]="Img" alt=""  loading=“lazy” decoding=“async”></swiper-slide>
-      </ng-container>
-      <div class="swiper-button-next"></div>
-      <div class="swiper-button-prev"></div>
-    </swiper-container>
-  </div>
- </div>
-  <div class="details-container" [routerLink]="['/PlaceDetails' , Place.id == null ? Place.placeId :Place.id ]">
-    <div class="px-2 mt-2 d-flex justify-content-between align-items-baseline">
-      <h6 class="title">{{Place.name}}</h6>
-  
-      <div class="Rate">
-        <i class="fa-solid fa-star"></i>
-          <h6 class="mx-1">{{Place.rating == 0 || Place.overAllRating == 0 ? "New" : Place.rating | number:'1.1-1'}}</h6>
+  <div class="Card mx-3 my-3" *ngFor="let Place of PlaceData.slice(0, pagination)">
+    <div class="img-container">
+      <div class="Images">
+        <swiper-container [navigation]="{ nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }" [pagination]="{ clickable: true }">
+          <ng-container *ngIf="Place.imagesUrls; else fallbackImages">
+            <swiper-slide class="Slider" *ngFor="let Img of Place.imagesUrls">
+              <img class="Images w-100 h-100" [src]="Img" alt="">
+            </swiper-slide>
+          </ng-container>
+          <ng-template #fallbackImages>
+            <swiper-slide class="Slider" *ngFor="let Img of Place.images">
+              <img class="Images w-100 h-100" [src]="Img" alt="">
+            </swiper-slide>
+          </ng-template>
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+        </swiper-container>
       </div>
     </div>
-  
-  <div class="disc px-2">
-  <p style="color:gray;">{{Place.description.split(' ').slice(0,4).join()}}</p>
-  </div>
-  
-  <div class="px-2 C-Price" >
-    <h6 class="price">${{Place.price}}</h6>
-    <i class="fa-solid fa-arrow-right details"></i>
+    <div class="details-container" [routerLink]="['/PlaceDetails', Place.id == null ? Place.placeId : Place.id]">
+      <div class="px-2 mt-2 d-flex justify-content-between align-items-baseline">
+        <h6 class="title">{{ Place.name }}</h6>
+        <div class="Rate">
+          <i class="fa-solid fa-star"></i>
+          <h6 class="mx-1">{{ Place.rating == 0 || Place.overAllRating == 0 ? "New" : Place.rating?Place.rating:Place.overAllRating  | number:'1.1-1' }}</h6>
+        </div>
+      </div>
+      <div class="disc px-2">
+        <p style="color:gray;">{{ Place.description.split(' ').slice(0, 4).join() }}</p>
+      </div>
+      <div class="px-2 C-Price">
+        <h6 class="price">${{ Place.price }}</h6>
+        <i class="fa-solid fa-arrow-right details"></i>
+      </div>
+    </div>
+    <div class="fav" (click)="toggleMenu(userData.Id, Place.id)">
+      <i style="font-size: 25px;" class="fa-solid fa-heart"></i>
     </div>
   </div>
-
-  <div class="fav" (click)="toggleMenu(userData.Id, Place.id )">
-    <i style="font-size: 25px;"
-    class="fa-solid fa-heart"></i>
-</div>
-  </div>
 </div>
 
-<div *ngIf="PlaceData.length > 20" class="" style="width: 100%; display: flex; justify-content: center; align-items: center;">
-  <button
-  class="btn btn-outline-none mx-2"
->
-ViewMore
-</button>
-
+<div *ngIf="PlaceData.length > 20" class="text-center">
+  <button class="btn btn-outline-none mx-2">
+    View More
+  </button>
 </div>
-
-

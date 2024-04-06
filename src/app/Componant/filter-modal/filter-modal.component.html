@@ -20,6 +20,17 @@
             <label for="Category" class="form-label">Category:</label>
             <input type="text" class="form-control" id="Category" placeholder="Enter Category" #categoryInput>
           </div>
+          <!-- <div class="mb-3" >
+            <div (click)="toggleSelect()">
+              <select id="categories" multiple [class.open]="isSelectOpen" (change)="onSelect($event)">
+                <option *ngFor="let category of categories" [value]="category.name">{{ category.name }}</option>
+              </select>
+            </div>
+          </div> -->
+
+
+
+
           <div class="mb-3">
             <label for="price" class="form-label">Price:</label>
             <input type="number" class="form-control" id="price" placeholder="Enter Price" #priceInput>
