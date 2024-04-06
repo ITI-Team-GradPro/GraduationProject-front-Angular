@@ -124,7 +124,7 @@ export class AddPlaceComponent implements OnInit{
     //place category
     CategoryName: new FormControl(null, [Validators.required]),
     //place images
-    files: new FormArray([ ],[Validators.required]),
+    files: new FormControl([],[Validators.required]),
   });
   
 

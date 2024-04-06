@@ -26,23 +26,23 @@
        <div style="flex-grow: 1;">
         <div  class=" me-auto mb-lg-0  d-flex justify-content-center">
           <button
-            class="btn btn-outline-none mx-2"
-            routerLinkActive="Evently-btn"
-            routerLink="Home"
+            class="btn btn-primary btn-rounded mx-2"
+            routerLinkActive="btn-primary"
+            routerLink="Home" mdbRipple rippleColor="dark"
           >
             Home
           </button>
           <button
-            class="btn btn-outline-none mx-2"
-            routerLinkActive="Evently-btn"
-            routerLink="About"
+            class="btn btn-primary btn-rounded mx-2"
+            routerLinkActive="btn-primary"
+            routerLink="About" mdbRipple rippleColor="dark"
           >
             About us
           </button>
          <button
-            class="btn btn-outline-none mx-2"
-            routerLinkActive="Evently-btn"
-            routerLink="ContactUs"
+            class="btn btn-primary btn-rounded mx-2"
+            routerLinkActive="btn-primary"
+            routerLink="ContactUs" mdbRipple rippleColor="dark"
           >
             Contact us
           </button>
@@ -97,10 +97,10 @@
               <button *ngIf="userData.RoleName == 'Client'" class="btn list-hover c-btn" (click)="toggleMenu()" routerLink="Booking">
                 <span>Booking</span>
               </button>
-              <button *ngIf="userData.RoleName == 'Host'" class="btn list-hover c-btn" (click)="toggleMenu()" routerLink="Booking">
+              <button *ngIf="userData.RoleName == 'Host'" class="btn list-hover c-btn" (click)="toggleMenu()" routerLink="AddPlace">
                 <span>Add New Place</span>
               </button>
-              <button *ngIf="userData.RoleName == 'Host'" class="btn list-hover c-btn" (click)="toggleMenu()" routerLink="Booking">
+              <button *ngIf="userData.RoleName == 'Host'" class="btn list-hover c-btn" (click)="toggleMenu()" routerLink="MyPlaces">
                 <span>My Places</span>
               </button>
               <button 

@@ -50,6 +50,9 @@ import { DManageadminsComponent } from './AdminDashboard/d-manageadmins/d-manage
 import { DAddAdminsComponent } from './AdminDashboard/d-add-admins/d-add-admins.component';
 import { ToastComponent } from './Componant/toast/toast.component';
 import { FilterComponent } from './Pages/filter/filter.component';
+import { EditPlaceComponent } from './Pages/Place/edit-place/edit-place.component';
+
+
 // import { SearchPipePipe } from './Componant/search-pipe.pipe';// register Swiper custom elements
 register();
 
@@ -100,6 +103,7 @@ register();
     DAddAdminsComponent,
     ToastComponent,
     FilterComponent,
+    EditPlaceComponent
     // SearchPipePipe
   ],
   imports: [

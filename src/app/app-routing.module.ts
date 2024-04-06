@@ -34,6 +34,7 @@ import { DAddAdminsComponent } from './AdminDashboard/d-add-admins/d-add-admins.
 import { DPlacesComponent } from './AdminDashboard/d-places/d-places.component';
 import { DBookingComponent } from './AdminDashboard/d-booking/d-booking.component';
 import { FilterComponent } from './Pages/filter/filter.component';
+import { EditPlaceComponent } from './Pages/Place/edit-place/edit-place.component';
 
 
 const routes: Routes = [
@@ -55,6 +56,8 @@ const routes: Routes = [
   {path : "Payment" , component : PaymentsComponent}, // for cilent only
   {path : "MyBooking" , component : PaymentsComponent}, // for cilent only
   {path : "PlaceDetails/:id" , component : PlaceDetailsComponent}, //for all
+  {path : "AddPlace" , component : AddPlaceComponent}, //for all
+  {path : "EditPlace" , component : EditPlaceComponent}, //for all
 
   {path : "addNewPlace" , component : AddPlaceComponent}, // only for Host
 
