@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import {
   FormGroup,
   FormBuilder,
