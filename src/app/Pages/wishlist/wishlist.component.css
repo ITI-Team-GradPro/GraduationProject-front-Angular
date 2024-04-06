@@ -1,0 +1,134 @@
+.Card{
+    width: 270px;
+    height: 350px;
+    overflow: hidden;
+    /* box-shadow: 1px 1px 1px #888888; */
+    position: relative;
+    cursor: pointer;
+
+}
+
+.img-container{
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.Images{
+    overflow: hidden;
+}
+
+.Slider{
+    height: 250px;
+}
+
+.title{
+    font-weight:600;
+}
+
+.price{
+    font-weight:600;
+}
+
+.Rate{
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+}
+
+.fav{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 10;
+    cursor: pointer;
+}
+
+.swiper-button-next svg{
+    display: none !important ;
+}
+
+swiper-container::part(button-prev) {
+    background-color: #FFF;
+    width: 15px;
+    height: 15px;
+    padding: 7px;
+    margin: 0;
+    color: black;
+    border-radius: 50%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1s ease, visibility 1s ease;
+
+  }
+  
+  swiper-container::part(button-next) {
+    background-color: #FFF;
+    width: 15px;
+    height: 15px;
+    padding: 7px;
+    color: black;
+    margin: 0;
+    border-radius: 50%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1s ease, visibility 1s ease;
+
+  }
+
+  .Card:hover swiper-container::part(button-prev){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .Card:hover swiper-container::part(button-next){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    visibility: visible;
+  }
+
+
+  .Card-container{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.C-Price{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.details{
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1s ease, visibility 1s ease;
+}
+
+.details-container:hover .details{
+    opacity: 1;
+    visibility: visible;
+}
+
+.favicon{
+    color: red;
+}
+
+.favhover:hover{
+    transform: scale(1.2);
+    transition: transform 0.2s;
+}
+
+
+.Empty-Wishlist{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 50vh;
+}

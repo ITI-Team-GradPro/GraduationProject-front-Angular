@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HostLayoutComponent } from './host-layout.component';
+import { DManageadminsComponent } from './d-manageadmins.component';
 
-describe('HostLayoutComponent', () => {
-  let component: HostLayoutComponent;
-  let fixture: ComponentFixture<HostLayoutComponent>;
+describe('DManageadminsComponent', () => {
+  let component: DManageadminsComponent;
+  let fixture: ComponentFixture<DManageadminsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [HostLayoutComponent]
+      declarations: [DManageadminsComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(HostLayoutComponent);
+    fixture = TestBed.createComponent(DManageadminsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

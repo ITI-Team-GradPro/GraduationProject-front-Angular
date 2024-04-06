@@ -14,7 +14,6 @@ import { AddPlaceComponent } from './Pages/Place/add-place/add-place.component';
 import { PlaceDetailsComponent } from './Pages/Place/place-details/place-details.component';
 import { BookingComponent } from './Pages/booking/booking.component';
 import { PaymentsComponent } from './Pages/payments/payments.component';
-import { WishListComponent } from './Pages/wish-list/wish-list.component';
 import { SearchComponent } from './Pages/search/search.component';
 import { ProfileComponent } from './Pages/Profile/profile/profile.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -36,10 +35,23 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthLayoutComponent } from './Layouts/auth-layout/auth-layout.component';
 import { ClientLayoutComponent } from './Layouts/client-layout/client-layout.component';
 import { AdminLayoutComponent } from './Layouts/admin-layout/admin-layout.component';
-import { HostLayoutComponent } from './Layouts/host-layout/host-layout.component';
-// register Swiper custom elements
+import { AllPlacesComponent } from './Pages/home/all-places/all-places.component';
+import { CategoriesComponent } from './Pages/home/categories/categories.component';
+import { MyPlacesComponent } from './Pages/Place/my-places/my-places.component';
+import { DetailsLayoutComponent } from './Layouts/details-layout/details-layout.component';
+import { StarRatingModule } from 'angular-star-rating';
+import { WishlistComponent } from './Pages/wishlist/wishlist.component';
+import { UserProfileComponent } from './Pages/user-profile/user-profile.component';
+import { DHomeComponent } from './AdminDashboard/d-home/d-home.component';
+import { DPlacesComponent } from './AdminDashboard/d-places/d-places.component';
+import { DBookingComponent } from './AdminDashboard/d-booking/d-booking.component';
+import { DManagusersComponent } from './AdminDashboard/d-managusers/d-managusers.component';
+import { DManageadminsComponent } from './AdminDashboard/d-manageadmins/d-manageadmins.component';
+import { DAddAdminsComponent } from './AdminDashboard/d-add-admins/d-add-admins.component';
+import { ToastComponent } from './Componant/toast/toast.component';
+import { FilterComponent } from './Pages/filter/filter.component';
+// import { SearchPipePipe } from './Componant/search-pipe.pipe';// register Swiper custom elements
 register();
-
 
 @NgModule({
   declarations: [
@@ -56,7 +68,6 @@ register();
     PlaceDetailsComponent,
     BookingComponent,
     PaymentsComponent,
-    WishListComponent,
     SearchComponent,
     ProfileComponent,
     SettingsComponent,
@@ -75,14 +86,29 @@ register();
     AuthLayoutComponent,
     ClientLayoutComponent,
     AdminLayoutComponent,
-    HostLayoutComponent
+    AllPlacesComponent,
+    CategoriesComponent,
+    MyPlacesComponent,
+    DetailsLayoutComponent,
+    WishlistComponent,
+    UserProfileComponent,
+    DHomeComponent,
+    DPlacesComponent,
+    DBookingComponent,
+    DManagusersComponent,
+    DManageadminsComponent,
+    DAddAdminsComponent,
+    ToastComponent,
+    FilterComponent,
+    // SearchPipePipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule ,
+    StarRatingModule.forRoot(), // Import StarRatingModule
   ],
   providers: [
     provideClientHydration()

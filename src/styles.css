@@ -1,3 +1,7 @@
+
+@import '@fortawesome/fontawesome-free/css/all.css';
+@import 'mdb-angular-ui-kit/assets/scss/mdb.scss';
+
 /* :root
 {
     --bg-main: white;
@@ -5,6 +9,9 @@
     --text-color: rgb(0, 0, 0); 
     --border-color:rgb(14, 13, 13);
 }
+
+
+
 
 body
 {
@@ -30,3 +37,9 @@ a,a:hover
     color: var(--text-color);
     border: solid 1px var(--border-color);
 } */
+
+.Evently-btn {
+    background-color: #ad4c04; /* Bootstrap primary color */
+    border-color: #ad4c04; /* Border color */
+    color: #fff; /* Text color */
+  }

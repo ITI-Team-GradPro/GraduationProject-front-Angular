@@ -1,0 +1,80 @@
+
+<div class="container my-3 d-flex justify-content-center">
+    <h6 class="" style="font-size: 25;font-weight: 700;">My wishlist Places</h6>
+</div>
+<div>
+
+<div *ngIf="WishlistPlaces.length !== 0; else Empty" class="Card-container">
+    <div class="Card mx-3 my-3" *ngFor="let Place of WishlistPlaces.slice(0,pagination) " >
+   <div class="img-container">
+    <div class="Images">
+      <swiper-container [navigation]="{ nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }" [pagination]="{ clickable: true }">
+        <ng-container  *ngFor="let Img of CarImg; let i = index">
+          <swiper-slide class="Slider"><img class="Images w-100 h-100" [src]="Img" alt=""></swiper-slide>
+        </ng-container>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </swiper-container>
+    </div>
+   </div>
+    <div class="details-container" [routerLink]="['/PlaceDetails' , Place.id ]">
+      <div class="px-2 mt-2 d-flex justify-content-between align-items-baseline">
+        <h6 class="title">{{Place.name}}</h6>
+    
+        <div class="Rate">
+          <i class="fa-solid fa-star"></i>
+            <h6 class="mx-1">{{Place.overAllRating == 0 ? "New" : Place.overAllRating | number:'1.1-1'}}</h6>
+        </div>
+      </div>
+    
+    <div class="disc px-2">
+    <p style="color:gray;">{{Place.description.split(' ').slice(0,4).join()}}</p>
+    </div>
+    
+    <div class="px-2 C-Price" >
+      <h6 class="price">${{Place.price}}</h6>
+      <i class="fa-solid fa-arrow-right details"></i>
+      </div>
+    </div>
+<!--     
+    <div class="fav" (click)="toggleMenu(userData.Id, Place.id )">
+    
+    <button *ngIf="userData?.UserRole == 'Client'; else Fav" style="background-color: transparent; outline: none; border: none;">
+      <i style="font-size: 25px; color: red;" class="fa-solid fa-heart favhover disable"></i>
+    </button>
+  
+    <ng-template #Fav>
+      <i (click)="Notaccess()" style="font-size: 25px; color: red;" class="fa-solid fa-heart favhover disable"></i>
+    </ng-template>
+    </div> -->
+
+
+    <div class="fav" (click)="toggleMenu(userData.Id, Place.placeId )">
+        <i style="font-size: 25px;"
+        class="fa-solid fa-heart red"></i>
+    </div>
+
+    </div>
+  </div>
+
+  <ng-template #Empty >
+    <div class="Empty-Wishlist">
+        <h4>
+            WishList Is Empty!
+        </h4>
+    </div>
+</ng-template>
+  
+  <div *ngIf="WishlistPlaces.length > 20" class="" style="width: 100%; display: flex; justify-content: center; align-items: center;">
+    <button
+    class="btn btn-outline-none mx-2"
+  >
+  ViewMore
+  </button>
+  
+  </div>
+
+
+
+  
+</div>

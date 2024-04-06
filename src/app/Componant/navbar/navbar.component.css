@@ -66,10 +66,23 @@ background-color: #ffff;
 box-shadow: 2px 2px 5px #888888;
 border-radius: 10px;
 z-index: 10000;
-
 }
 
-.list-hover:hover{
-    background-color: lightgray;
-}
+.Evently-btn {
+    background-color: #ad4c04; /* Bootstrap primary color */
+    border-color: #ad4c04; /* Border color */
+    color: #fff; /* Text color */
+  }
 
+
+.c-btn:hover{
+
+
+background-color: #EEEE;
+
+}
+   
+
+.Nav-icons{
+    font-size: 30px;
+}

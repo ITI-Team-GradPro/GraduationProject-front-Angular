@@ -6,7 +6,6 @@ import { error } from 'console';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -24,6 +23,9 @@ export class LoginComponent implements OnInit{
     Password: new FormControl(null, [Validators.required]),
   });
 
+
+
+
   SubmitLoginForm()
   {
     console.log(this.loginForm.value);
@@ -38,7 +40,7 @@ export class LoginComponent implements OnInit{
           
           this._LoginServices.user();
           
-            if (Response.userData.roleName == "Client") {
+            if (Response.userData.roleName == "Client" || Response.userData.roleName == "Host" ) {
               this.Router.navigate(["/Home"])
             }
         },

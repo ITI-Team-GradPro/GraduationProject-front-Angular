@@ -1,0 +1,9 @@
+<app-place-card *ngIf="CatigoryPlaces.length != 0 && CatigoryPlaces != null ; else NewCategory " [PlaceData]="CatigoryPlaces"></app-place-card>
+
+<ng-template #NewCategory >
+    <div class="NewCategory">
+        <h4>
+            This category currently has no places
+        </h4>
+    </div>
+</ng-template>
