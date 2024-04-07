@@ -13,4 +13,10 @@ export class MyPlaceService {
   { 
     return this._HttpClient.get(`http://localhost:5004/api/Category`);
   }
+
+  PlaceBooking():Observable<any>
+  { 
+    return this._HttpClient.get(`http://localhost:5004/api/Category`);
+  }
+
 }
