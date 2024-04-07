@@ -22,30 +22,29 @@
         </div>
         <div class="tab" routerLink="Places/inDoor" routerLinkActive="ActiveTab">
          <img style="width: 24px; height: 24px;" src="../../../assets/Imgs/Filter Icon/icons8-indoor-50.png" alt="">
-         <h6 class="my-0">In door </h6>
+         <h6 class="my-0">Indoor </h6>
         </div>
         <div class="tab" routerLink="Places/outDoor" routerLinkActive="ActiveTab">
          <img style="width: 24px; height: 24px;" src="../../../assets/Imgs/Filter Icon/icons8-outdoor-toilet-50.png" alt="">
-         <h6 class="my-0">Out door</h6>
+         <h6 class="my-0">Outdoor</h6>
         </div>
         </div>
       </div>
       
      <div style="flex-grow: 1;" class="Search-Filter">
-          <div style="flex-grow: 1;" class="d-flex justify-content-center">
+          <div style="flex-grow: 1;" class="d-flex justify-content-center .shadow-0">
                <!-- search -->
-               <form class="d-flex" (ngSubmit)="search()">
-                <div class="position-relative w-100">
+               <form class="d-flex " (ngSubmit)="search()">
+                <div class="position-relative w-100 ">
                   <input
-                    class="form-control seach-input p-2 w-100"
+                    class="form-control seach-input p-2 w-100 "
                     type="search"
-                    placeholder="Search with name or location"
+                    placeholder="   Search with name or location"
                     aria-label="Search"
                     [(ngModel)]="searchValue"         
                     name="search"
-                    mdbInput
                   />
-                  <button class=" btn p-search btn-floating btn-primary d-flex justify-content-center align-items-center " style="margin-top: -3px;" type="submit">
+                  <button class=" btn p-search btn-floating Evently-btn d-flex justify-content-center align-items-center " style="margin-top: -4px; margin-left: -5;" type="submit">
                     <i class="fa-solid fa-magnifying-glass"></i>
                   </button>
                 </div>
