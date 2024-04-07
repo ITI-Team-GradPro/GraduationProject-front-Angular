@@ -86,3 +86,21 @@ export interface OwnedPlace {
     userId: string;
     user: User;
   }
+
+
+  export interface Category {
+    name: string;
+  }
+
+
+  export interface UserProfile {
+    email: string,
+    firstName: string,
+    lastName: string,
+    phone: number,
+    bio: string;
+    address: string | null;
+    imageUrl: string | null;
+    ownedPlaces: OwnedPlace[];
+    }
+  
