@@ -94,7 +94,7 @@
               <button *ngIf="userData.RoleName == 'Client'" class="btn list-hover c-btn" (click)="toggleMenu()" [routerLink]="['Wishlist' , userData.Id]">
                 <span>WishList</span>  
               </button>
-              <button *ngIf="userData.RoleName == 'Client'" class="btn list-hover c-btn" (click)="toggleMenu()" routerLink="Booking">
+              <button *ngIf="userData.RoleName == 'Client'" class="btn list-hover c-btn" (click)="toggleMenu()" routerLink="MyBooking">
                 <span>Booking</span>
               </button>
               <button *ngIf="userData.RoleName == 'Host'" class="btn list-hover c-btn" (click)="toggleMenu()" routerLink="AddPlace">

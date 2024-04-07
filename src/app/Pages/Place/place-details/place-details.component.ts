@@ -124,7 +124,7 @@ SubmitBooking(totalPrice: number): void {
   this._PlacesService.PlaceBooking(this.Booking).subscribe({
     next : (Response) => {
       console.log(Response)
-      this._ToastServises.showToast("Your Bookin Add Succefully")
+      this._ToastServises.showToast("Booking add Please add your Payment")
     }
   
   })
@@ -136,6 +136,10 @@ SubmitBooking(totalPrice: number): void {
 
 
   ngOnInit(): void {
+    this._LoginServices.user(); // Call the method to fetch user data
+    this.userData = this._LoginServices.UserData.Id; 
+    console.log(this.userData)
+
     this._ActivatedRoute.paramMap.subscribe({
       next: (params) => {
         let IdParam: any = params.get("id");
@@ -148,11 +152,6 @@ SubmitBooking(totalPrice: number): void {
           //   bookingDate: new Date(),
           //   period: this.period
           // }
-  
-   
-
-
-
 
         this._PlacesService.getPlaceDetails(IdParam).subscribe({
           next: (response) => {
@@ -167,31 +166,11 @@ SubmitBooking(totalPrice: number): void {
           this.Token = false
         }
 
-        this._LoginServices.user();
-        // Assign user data to the userData variable
-    
-
+      
         console.log(IdParam);
       } 
     });
   }
-
-  // paymentForm: FormGroup;
-
-
-
-
-  // createForm() {
-  //   this.paymentForm = this.fb.group({
-  //     cardType: ['', Validators.required], // New field for card type
-  //     name: ['', Validators.required],
-  //     cardNumber: ['', Validators.required],
-  //     expMonth: ['', Validators.required],
-  //     expYear: ['', Validators.required],
-  //     cvc: ['', Validators.required]
-  //   });
-  // }
-
 
 
   

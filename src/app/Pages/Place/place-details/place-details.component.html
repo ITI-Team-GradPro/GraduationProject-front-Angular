@@ -213,9 +213,9 @@
 </div>
  
 <!--  Rating -->
-
+<!-- *ngIf="userData?.RoleName == 'Client'" -->
 <div *ngIf="Token">
-  <button *ngIf="userData?.RoleName == 'Client'" 
+  <button  
   type="button" 
   class="btn btn-outline-secondary " 
   data-bs-toggle="modal" 
