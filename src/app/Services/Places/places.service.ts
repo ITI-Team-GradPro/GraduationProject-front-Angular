@@ -71,6 +71,11 @@ export class PlacesService {
           }
 
 
+          userProfile(id:string):Observable<any>{
+            return  this._HttpClient.get(`http://localhost:5004/api/User/${id}`);
+            }
+
+
 
           PlaceBooking(BookingData : object):Observable<any>
           { 
