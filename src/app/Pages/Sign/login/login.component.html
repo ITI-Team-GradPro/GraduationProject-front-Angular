@@ -2,7 +2,7 @@
     
     <div class="d-flex align-items-center justify-content-center "  >
     
-        <div class="SignCard d-flex align-items-center justify-content-center">
+        <div class="SignCard d-flex align-items-center justify-content-center shadow-5">
             <div style="width: 300px;" class="SignImage d-none d-lg-block">
             <img class="w-100 h-100" src="../../../../assets/Imgs/Login.jpg" alt="">
             </div>
@@ -12,8 +12,8 @@
                 <h6 class="alert-danger">{{Errormsg}}</h6>
                 <form class="Signup-Form" (ngSubmit)="SubmitLoginForm()" [formGroup]="loginForm">
                 <div>
-                    <label for="email">Email: </label>
-                    <input formControlName="email" type="email" class="form-control mb-2 input-mine">
+                    <!-- <label for="email">Email: </label> -->
+                    <input formControlName="email" type="email" class="form-control mb-2 input-mine" placeholder="Email Address">
                     <div *ngIf="loginForm.get('email')?.errors && loginForm.get('email')?.touched" class="alert-danger">
                         <p class="m-0" *ngIf="loginForm.get('email')?.getError('required')">Email is required</p>
                         <p class="m-0" *ngIf="loginForm.get('email')?.getError('email')">Email format is invalid</p>      
@@ -21,8 +21,8 @@
                 </div>
     
                 <div>
-                    <label for="Password">Password: </label>
-                    <input formControlName="Password" type="password" class="form-control mb-2 input-mine">
+                    <!-- <label for="Password">Password: </label> -->
+                    <input formControlName="Password" type="password" class="form-control mb-2 input-mine" placeholder="Email Address">
             
                     <div *ngIf="loginForm.get('Password')?.errors && loginForm.get('Password')?.touched" class="alert-danger">
                         <p class="m-0" *ngIf="loginForm.get('Password')?.getError('required')">Password is required</p>      
@@ -34,8 +34,8 @@
                     Login
                 </button>
                 <div class="text-center">
-                    <p><span class="register" routerLink="/forgotpassword">Forgotten password?</span></p>
-                    <p>Don't have acount ? <span class="register" routerLink="/SignUp">register</span></p>
+                    <p><span class="register" routerLink="/forgotpassword" style="color: #ad4c04;">Forgot password?</span></p>
+                    <p>Don't Have An Account ? <span class="register" routerLink="/SignUp" style="color: #ad4c04;">Register Now!</span></p>
                 </div>
                 
                 </form>

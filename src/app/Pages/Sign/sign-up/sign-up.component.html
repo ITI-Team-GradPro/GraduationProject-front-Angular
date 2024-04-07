@@ -2,7 +2,7 @@
     
     <div class="d-flex align-items-center justify-content-center "  >
 
-        <div class="SignCard d-flex align-items-center justify-content-center">
+        <div class="SignCard d-flex align-items-center justify-content-center shadow-5">
             <div style="width: 300px;" class="SignImage d-none d-lg-block">
                 <img class="w-100 h-100" src="../../../../assets/Imgs/Sign up img.jpg" alt="">
             </div>
@@ -14,56 +14,79 @@
                     
                     <div class="row">
                         <div class="col-md-6">
-                            <label for="firstName">firstName: </label>
-                            <input formControlName="firstName" type="text" class="form-control mb-2 input-mine">
+                            <!-- <label for="firstName">First Name: </label> -->
+                            <input formControlName="firstName" type="text" class="form-control mb-2 input-mine" placeholder="First Name">
                             <div *ngIf="registerForm.get('firstName')?.errors && registerForm.get('firstName')?.touched" class="alert-danger">
-                                <p class="m-0" *ngIf="registerForm.get('firstName')?.getError('required')">firstName is required</p>
-                                <p class="m-0" *ngIf="registerForm.get('firstName')?.getError('minlength')">firstName is less than 3 Char</p>      
+                                <p class="m-0" *ngIf="registerForm.get('firstName')?.getError('required')">First Name is required</p>
+                                <p class="m-0" *ngIf="registerForm.get('firstName')?.getError('minlength')">First Name is less than 3 Char</p>      
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <label for="lastName">lastName: </label>
-                            <input formControlName="lastName" type="text" class="form-control mb-2 input-mine">
+                            <!-- <label for="lastName">Last Name: </label> -->
+                            <input formControlName="lastName" type="text" class="form-control mb-2 input-mine" placeholder="Last Name">
                     
                             <div *ngIf="registerForm.get('lastName')?.errors && registerForm.get('lastName')?.touched" class="alert-danger">
-                                <p class="m-0" *ngIf="registerForm.get('lastName')?.getError('required')">lastName is required</p>
-                                <p class="m-0" *ngIf="registerForm.get('lastName')?.getError('minlength')">lastName is less than 3</p>      
+                                <p class="m-0" *ngIf="registerForm.get('lastName')?.getError('required')">Last Name is required</p>
+                                <p class="m-0" *ngIf="registerForm.get('lastName')?.getError('minlength')">Last Name is less than 3</p>      
                             </div>
                         </div>
                     </div>
                     <div>
-                        <label for="email">email: </label>
-                        <input formControlName="email" type="email" class="form-control mb-2 input-mine">
+                        <!-- <label for="email">email: </label> -->
+                        <input formControlName="email" type="email" class="form-control mb-2 input-mine" placeholder="Email Address">
                         <div *ngIf="registerForm.get('email')?.errors && registerForm.get('email')?.touched" class="alert-danger">
-                            <p class="m-0" *ngIf="registerForm.get('email')?.getError('required')">email is required</p>
-                            <p class="m-0" *ngIf="registerForm.get('email')?.getError('email')">email format is invalid</p>      
+                            <p class="m-0" *ngIf="registerForm.get('email')?.getError('required')">Email is required</p>
+                            <p class="m-0" *ngIf="registerForm.get('email')?.getError('email')">Email format is invalid</p>      
                         </div>
                     </div>
                     <div>
-                        <label for="Password">Password: </label>
-                        <input formControlName="Password" type="Password" class="form-control mb-2 input-mine">
+                        <!-- <label for="Password">Password: </label> -->
+                        <input formControlName="Password" type="Password" class="form-control mb-2 input-mine" placeholder="Password">
                         <div *ngIf="registerForm.get('Password')?.errors && registerForm.get('Password')?.touched" class="alert-danger">
                             <p class="m-0" *ngIf="registerForm.get('Password')?.getError('required')">Password is required</p>      
                         </div>
                     </div>
                     
+                    <div class="btn-group">
+                        <input
+                            mdbRadio
+                            type="radio"
+                            class="btn-check"
+                            name="RoleName"
+                            id="Host"
+                            autocomplete="off"
+                            formControlName="RoleName"
+                            value="Host"
+                            [checked]="registerForm.value.RoleName === 'Host'"
+                        />
+                        <label class="btn btn-outline-primary" for="Host">Host</label>
+                        <input
+                            mdbRadio
+                            type="radio"
+                            class="btn-check"
+                            name="RoleName"
+                            id="Client"
+                            autocomplete="off"
+                            formControlName="RoleName"
+                            value="Client"
+                            [checked]="registerForm.value.RoleName === 'Client'"
+                        />
+                        <label class="btn btn-primary" for="Client">Client</label>
+                    </div>
+
                     <div>
-                        <label for="RoleName">Choose a RoleName: </label>&nbsp;
-                        <select  formControlName="RoleName" name="RoleName" id="RoleName">
-                            <option value="Host">Host</option>
-                            <option value="Client">Client </option>
-                        </select>
                         <div *ngIf="registerForm.get('RoleName')?.errors && registerForm.get('RoleName')?.touched " class="alert alert-danger">
                             <p class="m-0" *ngIf="registerForm.get('RoleName')?.getError('required')">RoleName is required</p>   
                         </div>
-                    </div >
-                        <button *ngIf="registerForm.value.RoleName != 'Host';else SubmitHostRegisterForm"  [disabled] ="registerForm.invalid" type="submit" class="btn btn-success my-3 w-100">
-                            <span >SignUp</span>
-                            <i *ngIf="isLoading" class="fas fa-spinner fa-spin"></i>
-                        </button>
+                    </div>
+
+                    <button *ngIf="registerForm.value.RoleName !== 'Host'; else SubmitHostRegisterForm" [disabled]="registerForm.invalid" type="submit" class="btn btn-success my-3 w-100">
+                        <span>SignUp</span>
+                        <i *ngIf="isLoading" class="fas fa-spinner fa-spin"></i>
+                    </button>
                     
                     <div class="text-center">
-                        <p>Already Have Acoount ? <span class="Login" routerLink="/Login">Login</span></p>
+                        <p>Already Have An Account ? <span class="Login" routerLink="/Login" style="color: #ad4c04;">Login</span></p>
                     </div>
                 
                 </form>
