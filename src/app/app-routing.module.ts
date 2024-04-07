@@ -53,7 +53,7 @@ const routes: Routes = [
   {path:"ContactUs", component:ContactComponent}, //done
   {path : "Wishlist/:id" , component : WishlistComponent}, // for cilent only
   {path : "Booking" , component : BookingComponent}, // for cilent only
-  {path : "Payment" , component : PaymentsComponent}, // for cilent only
+  {path : "Payment" , component : PaymentComponent}, // for cilent only
   {path : "MyBooking" , component : PaymentsComponent}, // for cilent only
   {path : "PlaceDetails/:id" , component : PlaceDetailsComponent}, //for all
   {path : "AddPlace" , component : AddPlaceComponent}, //for all

@@ -4,7 +4,7 @@
   </div>
 
   <div class="row img-grid">
-    <div [class]=" PlaceDetail.imageUrls.length >1 ? 'col-12 col-lg-6 p-1' : 'col-12 '">
+    <div [class]=" PlaceDetail.imageUrls.length >4 ? 'col-12 col-lg-6 p-1' : 'col-12 '">
       <div class="w-100 h-100 fullwidth">
         <img
           class="w-100 h-100 Image imageheight"
@@ -14,7 +14,7 @@
       </div>
     </div>
 
-    <div *ngIf="PlaceDetail.imageUrls.length > 1" class="col-3 p-1 d-none d-lg-block">
+    <div *ngIf="PlaceDetail.imageUrls.length > 4" class="col-3 p-1 d-none d-lg-block">
       <div class="h-100">
         <div class="w-100 mb-2" style="height: 49%">
           <img
@@ -33,7 +33,7 @@
       </div>
     </div>
 
-    <div *ngIf="PlaceDetail.imageUrls.length > 1" class="col-3 p-1 d-none d-lg-block">
+    <div *ngIf="PlaceDetail.imageUrls.length > 4" class="col-3 p-1 d-none d-lg-block">
       <div class="h-100">
         <div class="w-100 mb-2" style="height: 49%">
           <img
@@ -78,8 +78,8 @@
         </div>
 
         <hr />
-        <div class="Owner_profile">
-          <div class="ImageProfile" [routerLink]="['/Profile' , PlaceDetail.ownerDetailsDto.id]" >
+        <div class="Owner_profile" [routerLink]="['/Profile' , PlaceDetail.ownerDetailsDto.id]">
+          <div class="ImageProfile"  >
             <img *ngIf="PlaceDetail.ownerDetailsDto.imageUrl != null ; else userimg"
               class="w-100"
               [src]="PlaceDetail.ownerDetailsDto.imageUrl"
@@ -125,17 +125,31 @@
     <div class="card border-dark card shadow" style="max-width: 20rem">
       <h5 class="card-header fw-semibold">Price: ${{PlaceDetail.price}}</h5>
       <div class="card-body">
-        <p class="card-title fw-semibold">Available From : 2/4/2024</p>
+        <div>
+          <p class="card-title fw-semibold">Choose Date :</p>
+          <input type="date" id="Bookindate" id="BookinDate" name="birthday" class="w-100 mb-4"  />  
+        </div>
         <hr />
+        <div>Choose Period </div>
+        <Select (ngModel)="period"> 
+          <option value="2" >All day</option>
+          <option value="0" >Day</option>
+          <option value="1" >Night</option>
+        </Select>
         <div
         class="card-body d-flex justify-content-center align-items-center"
       >
-      <button *ngIf="userData?.RoleName !== 'Client' else Reserbtn" disabled class="btn Evently-btn w-100">Reserve</button>
+      <button *ngIf="userData?.RoleName == 'client' else Reserbtn" 
+       class="btn Evently-btn w-100" 
+       (click)="SubmitBooking(PlaceDetail.price)"
+       >Reserve</button>
       
       <ng-template #Reserbtn>
-        <button  class="btn Evently-btn w-100">Reserve</button>
+        <button  class="btn Evently-btn w-100"
+        (click)="SubmitBooking(PlaceDetail.price)"
+
+        >Reserve</button>
       </ng-template>
-    
     
     </div>
       <hr />
@@ -150,7 +164,7 @@
   </div>
  </div>
   </div>
-</div>
+
 <hr>
 <!--  reviews -->
 <div class="container">
