@@ -17,7 +17,7 @@
 }
 
 .N-border{
-    border-bottom: 1px solid gray;
+    /* border-bottom: 1px solid gray; */
 
 }
 
@@ -62,15 +62,15 @@ right: 0px;
 top: 50px;
 width: 200px;
 height: fit-content;
-background-color: #ffff;
-box-shadow: 2px 2px 5px #888888;
-border-radius: 10px;
+/* background-color: #ffff; */
+/* box-shadow: 2px 2px 5px #888888; */
+/* border-radius: 10px; */
 z-index: 10000;
 }
 
 .Evently-btn {
     background-color: #ad4c04; /* Bootstrap primary color */
-    border-color: #ad4c04; /* Border color */
+    border-color: #9a4504; /* Border color */
     color: #fff; /* Text color */
   }
 
