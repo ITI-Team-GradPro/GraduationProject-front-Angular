@@ -7,9 +7,9 @@ export interface Place {
     description:string,
     price:number,
     imagesUrls:string[],
-    imgsPlaces:string[]
+    imgsPlaces:[];
+    imageUrls:[],
 }
-
 
 
 export interface OwnerProfile {
@@ -32,6 +32,7 @@ export interface OwnedPlace {
   categoryId: number;
   images: string[];
 }
+
 
   export interface PlaceDetails {
     placeId: number;
@@ -84,9 +85,4 @@ export interface OwnedPlace {
     rating: number;
     userId: string;
     user: User;
-  }
-
-
-  export interface Category {
-    name: string;
   }

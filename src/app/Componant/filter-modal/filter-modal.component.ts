@@ -3,7 +3,6 @@ import { MyGlobalServiceService } from '../../Services/Global/my-global-service.
 import { PlacesService } from '../../Services/Places/places.service';
 import { Router } from '@angular/router';
 import { MyPlaceService } from '../../Services/MyPlace/my-place.service';
-import { Category } from '../../Interfaces/place';
 
 @Component({
   selector: 'app-filter-modal',
@@ -12,7 +11,7 @@ import { Category } from '../../Interfaces/place';
 })
 export class FilterModalComponent {
 
-  Allcategpries:Category[] = []
+  Allcategpries:any[] = []
 
 
   constructor(private _router:Router , private _MyPlaceService:MyPlaceService ,private myGlobalService: MyGlobalServiceService , private _PlaceService : PlacesService ) { }
